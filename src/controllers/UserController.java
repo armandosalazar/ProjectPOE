@@ -68,6 +68,7 @@ public class UserController {
                     @Override public void run () {
                         SwingUtilities.invokeLater(new Runnable(){
                             @Override public void run() {
+                                frmUser.setVisible(false);
                                 hideComponents();
                                 jtfUser.setVisible(true);
                                 jlbId.setVisible(true);
@@ -80,7 +81,7 @@ public class UserController {
 
                                 jlbRegistrarse.setLocation(140,440);
                                 frmUser.setSize(400,510);
-
+                                frmUser.setVisible(true);
                             }
                         });
                     }
@@ -179,11 +180,18 @@ public class UserController {
             public void actionPerformed(ActionEvent e) {
                 String user = jtfUser.getText();
                 String pass = String.valueOf(jpfPass.getPassword());
-                if ( usersList.compareElements(user,pass)){
-                    frmUser.setVisible(false);
-                    frmMenu frmMenu = new frmMenu();
-                    new MenuController(frmMenu);
-                    frmMenu.setVisible(true);
+
+                if (user.equals("") || pass.equals("")){
+                    JOptionPane.showMessageDialog(frmUser, "Ingrese el Usuario y/o la Contraseña", "Campos en blanco", JOptionPane.INFORMATION_MESSAGE);
+                }else{
+                    if ( usersList.compareElements(user,pass)){
+                        frmUser.setVisible(false);
+                        frmMenu frmMenu = new frmMenu();
+                        new MenuController(frmMenu);
+                        frmMenu.setVisible(true);
+                    }else{
+                        JOptionPane.showMessageDialog(frmUser,"Usuario o contraseña invalidos","Datos invalidos",JOptionPane.INFORMATION_MESSAGE);
+                    }
                 }
             }
         };
