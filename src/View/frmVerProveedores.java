@@ -66,36 +66,36 @@ public class frmVerProveedores extends javax.swing.JFrame {
         setIconImage(getIconImage());
 
         jPanel1.setOpaque(false);
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        //jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jlbLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoS.png"))); // NOI18N
-        jPanel1.add(jlbLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        //jPanel1.add(jlbLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
 
         jlbTitulo.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jlbTitulo.setForeground(new java.awt.Color(153, 0, 0));
         jlbTitulo.setText("Nuestros proveedores");
-        jPanel1.add(jlbTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, -1, -1));
+        //jPanel1.add(jlbTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 50, -1, -1));
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/compras.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 50, -1, -1));
+        //jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 50, -1, -1));
 
         jbnLimpiar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jbnLimpiar.setText("Limpiar");
         jbnLimpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jbnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 430, 100, 40));
+        //jPanel1.add(jbnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(460, 430, 100, 40));
 
         jbnBuscar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jbnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/search.png"))); // NOI18N
         jbnBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jbnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 50, 40));
+        //jPanel1.add(jbnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 110, 50, 40));
 
         jtfBuscar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jPanel1.add(jtfBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 200, 40));
+        //jPanel1.add(jtfBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 200, 40));
 
         jbnMostrarTodo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jbnMostrarTodo.setText("Mostrar todo");
         jbnMostrarTodo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jbnMostrarTodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 430, -1, 40));
+        //jPanel1.add(jbnMostrarTodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 430, -1, 40));
 
         jtContenido.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -110,12 +110,12 @@ public class frmVerProveedores extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(jtContenido);
 
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 750, 240));
+        //jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 750, 240));
 
         jbnRegresar1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jbnRegresar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/back.png"))); // NOI18N
         jbnRegresar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jbnRegresar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 0, 40, 40));
+        //jPanel1.add(jbnRegresar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 0, 40, 40));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -131,6 +131,40 @@ public class frmVerProveedores extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(825, 537));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+  
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(frmVerProveedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(frmVerProveedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(frmVerProveedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(frmVerProveedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new frmVerProveedores().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

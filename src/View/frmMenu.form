@@ -15,8 +15,9 @@
               <Image iconType="3" name="/Imagenes/compras.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="  Proveedores  "/>
+            <Property name="borderPainted" type="boolean" value="true"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor de Mano"/>
             </Property>
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
@@ -28,7 +29,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Sistema de proveedores"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Cursor de Mano"/>
                 </Property>
               </Properties>
             </MenuItem>
@@ -39,7 +40,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Ver proveedores"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Cursor de Mano"/>
                 </Property>
               </Properties>
             </MenuItem>
@@ -56,8 +57,9 @@
               <Image iconType="3" name="/Imagenes/ventas2.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="  Ventas  "/>
+            <Property name="borderPainted" type="boolean" value="true"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor de Mano"/>
             </Property>
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
@@ -69,7 +71,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Sistema de vendedores"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Cursor de Mano"/>
                 </Property>
               </Properties>
             </MenuItem>
@@ -80,7 +82,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Ver vendedores"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Cursor de Mano"/>
                 </Property>
               </Properties>
             </MenuItem>
@@ -93,7 +95,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Sistema de ventas"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Cursor de Mano"/>
                 </Property>
               </Properties>
             </MenuItem>
@@ -104,7 +106,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Ver ventas"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Cursor de Mano"/>
                 </Property>
               </Properties>
             </MenuItem>
@@ -121,8 +123,9 @@
               <Image iconType="3" name="/Imagenes/clientes.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="  Clientes  "/>
+            <Property name="borderPainted" type="boolean" value="true"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor de Mano"/>
             </Property>
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
@@ -134,7 +137,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Sistema de clientes"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Cursor de Mano"/>
                 </Property>
               </Properties>
             </MenuItem>
@@ -147,7 +150,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Ver clientes"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Cursor de Mano"/>
                 </Property>
               </Properties>
             </MenuItem>
@@ -164,8 +167,9 @@
               <Image iconType="3" name="/Imagenes/catalogo.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="  Cat&#xe1;logo  "/>
+            <Property name="borderPainted" type="boolean" value="true"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor de Mano"/>
             </Property>
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
@@ -177,7 +181,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Sistema de Productos"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Cursor de Mano"/>
                 </Property>
               </Properties>
             </MenuItem>
@@ -188,7 +192,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Ver productos"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Cursor de Mano"/>
                 </Property>
               </Properties>
             </MenuItem>
@@ -205,8 +209,9 @@
               <Image iconType="3" name="/Imagenes/proveedores.png"/>
             </Property>
             <Property name="text" type="java.lang.String" value="  Usuario  "/>
+            <Property name="borderPainted" type="boolean" value="true"/>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor de Mano"/>
             </Property>
             <Property name="opaque" type="boolean" value="true"/>
           </Properties>
@@ -218,7 +223,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Usuarios"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Cursor de Mano"/>
                 </Property>
               </Properties>
             </MenuItem>
@@ -231,7 +236,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Regresar  a iniciar sesi&#xf3;n"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Cursor de Mano"/>
                 </Property>
               </Properties>
             </MenuItem>
@@ -242,7 +247,7 @@
                 </Property>
                 <Property name="text" type="java.lang.String" value="Salir"/>
                 <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-                  <Color id="Default Cursor"/>
+                  <Color id="Cursor de Mano"/>
                 </Property>
               </Properties>
             </MenuItem>
@@ -356,7 +361,7 @@
               <Image iconType="3" name="/Imagenes/logo.png"/>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor Por defecto"/>
             </Property>
           </Properties>
           <Constraints>
@@ -410,7 +415,7 @@
               <Image iconType="3" name="/Imagenes/Whatsapp.png"/>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor de Mano"/>
             </Property>
           </Properties>
           <Constraints>
@@ -425,7 +430,7 @@
               <Image iconType="3" name="/Imagenes/messenger.png"/>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor de Mano"/>
             </Property>
           </Properties>
           <Constraints>
@@ -440,7 +445,7 @@
               <Image iconType="3" name="/Imagenes/instagram.png"/>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor de Mano"/>
             </Property>
           </Properties>
           <Constraints>
@@ -455,7 +460,7 @@
               <Image iconType="3" name="/Imagenes/facebook.png"/>
             </Property>
             <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
-              <Color id="Default Cursor"/>
+              <Color id="Cursor de Mano"/>
             </Property>
           </Properties>
           <Constraints>

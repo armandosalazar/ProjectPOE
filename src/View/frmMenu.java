@@ -81,54 +81,66 @@ public class frmMenu extends javax.swing.JFrame {
         setIconImage(getIconImage());
 
         jPanel1.setOpaque(false);
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.setLayout(null);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel6.setText("44638 Guadalajara, Jal.");
-        jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 50, -1, -1));
+        jLabel6.setBounds(30,50,jLabel1.getPreferredSize().width,jLabel6.getPreferredSize().height);
+        jPanel1.add(jLabel6);
 
         jlbDireccion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlbDireccion.setText("C. Nueva Escocia 1885,");
-        jPanel1.add(jlbDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 30, -1, -1));
+        jlbDireccion.setBounds(30,30,jlbDireccion.getPreferredSize().width,jlbDireccion.getPreferredSize().height);
+        jPanel1.add(jlbDireccion);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel2.setText("Dirección: ");
-        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 10, 190, 20));
+        jLabel2.setBounds(30,10,190,20);
+        jPanel1.add(jLabel2);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/tiras-de-colores-en-colores-pastel-37137957.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 10, 180, 60));
+        jLabel1.setBounds(20,10,200,60);
+        jPanel1.add(jLabel1);
 
         jlbLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logo.png"))); // NOI18N
         jlbLogo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jPanel1.add(jlbLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 90, -1, -1));
+        jlbLogo.setBounds(280,90,jlbLogo.getPreferredSize().width,jlbLogo.getPreferredSize().height);
+        jPanel1.add(jlbLogo);
 
         jlbTelefono.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlbTelefono.setText("Teléfono:");
-        jPanel1.add(jlbTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 260, -1, 20));
+        jlbTelefono.setBounds(30,260,jlbTelefono.getPreferredSize().width,20);
+        jPanel1.add(jlbTelefono);
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel7.setText("33 3641 3250");
-        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 280, -1, -1));
+        jLabel7.setBounds(60,280,jLabel7.getPreferredSize().width,jLabel7.getPreferredSize().height);
+        jPanel1.add(jLabel7);
 
         jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/tiras-de-colores-en-colores-pastel-37137957.png"))); // NOI18N
         jLabel8.setText("jLabel8");
-        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 260, 140, 40));
+        jLabel8.setBounds(20,260,160,40);
+        jPanel1.add(jLabel8);
 
         jlbWhatsapp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Whatsapp.png"))); // NOI18N
         jlbWhatsapp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jlbWhatsapp, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 270, -1, -1));
+        jlbWhatsapp.setBounds(510,270,jlbWhatsapp.getPreferredSize().width,jlbWhatsapp.getPreferredSize().height);
+        jPanel1.add(jlbWhatsapp);
 
         jlbMessenger.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/messenger.png"))); // NOI18N
         jlbMessenger.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jlbMessenger, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 270, -1, -1));
+        jlbMessenger.setBounds(560,270,jlbMessenger.getPreferredSize().width,jlbMessenger.getPreferredSize().height);
+        jPanel1.add(jlbMessenger);
 
         jlbInstagram.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/instagram.png"))); // NOI18N
         jlbInstagram.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jlbInstagram, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 270, -1, -1));
+        jlbInstagram.setBounds(460,270,jlbInstagram.getPreferredSize().width,jlbInstagram.getPreferredSize().height);
+        jPanel1.add(jlbInstagram);
 
         jlbFacebook.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/facebook.png"))); // NOI18N
         jlbFacebook.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jlbFacebook, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 270, -1, -1));
+        jlbFacebook.setBounds(410,270,jlbFacebook.getPreferredSize().width,jlbFacebook.getPreferredSize().height);
+        jPanel1.add(jlbFacebook);
 
         jmProveedores.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
         jmProveedores.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/compras.png"))); // NOI18N
@@ -256,9 +268,42 @@ public class frmMenu extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(545, 396));
+        setSize(new java.awt.Dimension(635, 396));
         setLocationRelativeTo(null);
+        setResizable(false);
     }// </editor-fold>//GEN-END:initComponents
+
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(frmMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(frmMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(frmMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(frmMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new frmMenu().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
