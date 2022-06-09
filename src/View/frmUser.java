@@ -17,10 +17,10 @@ public class frmUser extends JFrame {
     private Point defaultFrameSize;
     private Point defaultRegistrarPosition;
     private JTextField jtfPuesto;
-    private JLabel jlbApellidos;
+    private JLabel jlbLastName;
     private JLabel jlbContrasena;
     private JLabel jlbFondo;
-    private JLabel jlbID;
+    private JLabel jlbUsuario;
     private JLabel jlbIconUser;
     private JLabel jlbIniciarSesion;
     private JLabel jlbNombre;
@@ -28,10 +28,11 @@ public class frmUser extends JFrame {
     private JLabel jlbRegistrase;
     private JLabel jlbTelefono;
     private JPasswordField jpfContrasena;
-    private JTextField jtfApellidos;
-    private JTextField jtfID;
-    private JTextField jtfNombre;
     private JTextField jtfTelefono;
+    private JTextField jtfUsuario;
+    private JTextField jtfNombre;
+    private JTextField jtfLastName;
+    private JButton jbnRegistrarse, jbnCancelar, jbnIngresar;
     public frmUser() {
         initComponents();
     }
@@ -51,21 +52,23 @@ public class frmUser extends JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        defaultFrameSize = new Point(400,621);
-        defaultRegistrarPosition = new Point(140,590);
-
+        defaultFrameSize = new Point(400,681);
+        defaultRegistrarPosition = new Point(140,640);
+        jbnRegistrarse = new JButton("Registrar");
+        jbnCancelar = new JButton("Cancelar");
+        jbnIngresar = new JButton("Ingresar");
         jButton1 = new JButton();
         jlbIconUser = new JLabel();
-        jlbID = new JLabel();
+        jlbUsuario = new JLabel();
         jlbNombre = new JLabel();
-        jtfID = new JTextField();
+        jtfUsuario = new JTextField();
         jpfContrasena = new JPasswordField();
-        jlbApellidos = new JLabel();
+        jlbLastName = new JLabel();
         jlbTelefono = new JLabel();
         jlbContrasena = new JLabel();
         jtfNombre = new JTextField();
-        jtfApellidos = new JTextField();
         jtfTelefono = new JTextField();
+        jtfLastName = new JTextField();
         jlbRegistrase = new JLabel();
         jlbIniciarSesion = new JLabel();
         jlbPuesto = new JLabel();
@@ -77,6 +80,18 @@ public class frmUser extends JFrame {
         setUndecorated(true);
         setLayout(null);
 
+        jbnIngresar.setBounds(90,380,jbnIngresar.getPreferredSize().width,jbnIngresar.getPreferredSize().height);
+        jbnIngresar.setVisible(false);
+        add(jbnIngresar);
+
+        jbnCancelar.setBounds(220,380,jbnCancelar.getPreferredSize().width,jbnCancelar.getPreferredSize().height);
+        jbnCancelar.setVisible(false);
+        add(jbnCancelar);
+
+        jbnRegistrarse.setBounds(90,580,jbnRegistrarse.getPreferredSize().width,jbnRegistrarse.getPreferredSize().height);
+        jbnRegistrarse.setVisible(false);
+        add(jbnRegistrarse);
+
         jButton1.setIcon(new ImageIcon(getClass().getResource("/Imagenes/exit.png"))); // NOI18N
         jButton1.setCursor(new Cursor(Cursor.HAND_CURSOR));
         jButton1.setBounds(350, 0,50,50);
@@ -86,11 +101,11 @@ public class frmUser extends JFrame {
         jlbIconUser.setBounds(130,80, jlbIconUser.getMinimumSize().width, jlbIconUser.getMinimumSize().height);
         add(jlbIconUser);
 
-        jlbID.setBackground(new Color(204, 255, 153));
-        jlbID.setFont(new Font("Tahoma", Font.BOLD, 14)); // NOI18N
-        jlbID.setText(" ID:");
-        jlbID.setBounds(45, 280, 30, 20);
-        add(jlbID);
+        jlbUsuario.setBackground(new Color(204, 255, 153));
+        jlbUsuario.setFont(new Font("Tahoma", Font.BOLD, 14)); // NOI18N
+        jlbUsuario.setText(" Usuario:");
+        jlbUsuario.setBounds(45, 280, jlbUsuario.getPreferredSize().width, 20);
+        add(jlbUsuario);
 
         jlbNombre.setBackground(new Color(204, 255, 153));
         jlbNombre.setFont(new Font("Tahoma", Font.BOLD, 14)); // NOI18N
@@ -98,21 +113,21 @@ public class frmUser extends JFrame {
         jlbNombre.setBounds(45, 380, jlbNombre.getMinimumSize().width, 20);
         add(jlbNombre);
 
-        jtfID.setFont(new Font("Tahoma", 0, 14)); // NOI18N
-        jtfID.setCursor(new Cursor(Cursor.TEXT_CURSOR));
-        jtfID.setBounds(155,280,200,jtfID.getMinimumSize().height);
-        add(jtfID);
+        jtfUsuario.setFont(new Font("Tahoma", 0, 14)); // NOI18N
+        jtfUsuario.setCursor(new Cursor(Cursor.TEXT_CURSOR));
+        jtfUsuario.setBounds(155,280,200, jtfUsuario.getMinimumSize().height);
+        add(jtfUsuario);
 
         jpfContrasena.setFont(new Font("Tahoma", Font.PLAIN, 14)); // NOI18N
         jpfContrasena.setCursor(new Cursor(Cursor.TEXT_CURSOR));
         jpfContrasena.setBounds(155,330,200,jpfContrasena.getPreferredSize().height);
         add(jpfContrasena);
 
-        jlbApellidos.setBackground(new Color(204, 255, 153));
-        jlbApellidos.setFont(new Font("Tahoma", 1, 14)); // NOI18N
-        jlbApellidos.setText(" Apellido:");
-        jlbApellidos.setBounds(50,430,jlbApellidos.getPreferredSize().width,20);
-        add(jlbApellidos);
+        jlbLastName.setBackground(new Color(204, 255, 153));
+        jlbLastName.setFont(new Font("Tahoma", 1, 14)); // NOI18N
+        jlbLastName.setText(" Apellido:");
+        jlbLastName.setBounds(50,430, jlbLastName.getPreferredSize().width,20);
+        add(jlbLastName);
 
         jlbTelefono.setBackground(new Color(204, 255, 153));
         jlbTelefono.setFont(new Font("Tahoma", 1, 14)); // NOI18N
@@ -131,15 +146,15 @@ public class frmUser extends JFrame {
         jtfNombre.setBounds(155,480,200,jtfNombre.getPreferredSize().height);
         add(jtfNombre);
 
-        jtfApellidos.setFont(new Font("Tahoma", Font.PLAIN, 14)); // NOI18N
-        jtfApellidos.setCursor(new Cursor(Cursor.TEXT_CURSOR));
-        jtfApellidos.setBounds(155,380,200,jtfApellidos.getPreferredSize().height);
-        add(jtfApellidos);
-
-        jtfTelefono.setFont(new Font("Tahoma", 0, 14)); // NOI18N
+        jtfTelefono.setFont(new Font("Tahoma", Font.PLAIN, 14)); // NOI18N
         jtfTelefono.setCursor(new Cursor(Cursor.TEXT_CURSOR));
-        jtfTelefono.setBounds(155, 430, 200, jtfTelefono.getPreferredSize().height);
+        jtfTelefono.setBounds(155,380,200, jtfTelefono.getPreferredSize().height);
         add(jtfTelefono);
+
+        jtfLastName.setFont(new Font("Tahoma", 0, 14)); // NOI18N
+        jtfLastName.setCursor(new Cursor(Cursor.TEXT_CURSOR));
+        jtfLastName.setBounds(155, 430, 200, jtfLastName.getPreferredSize().height);
+        add(jtfLastName);
 
         jlbRegistrase.setBackground(new Color(255, 153, 153));
         jlbRegistrase.setFont(new Font("Tahoma", Font.BOLD, 14)); // NOI18N
@@ -167,12 +182,58 @@ public class frmUser extends JFrame {
         add(jtfPuesto);
 
         jlbFondo.setIcon(new ImageIcon(getClass().getResource("/Imagenes/fondoMulticolor.jpg"))); // NOI18N
-        jlbFondo.setBounds(0,0,jlbFondo.getMinimumSize().width,620);
+        jlbFondo.setBounds(0,0,jlbFondo.getMinimumSize().width,681);
         add(jlbFondo);
+
+
 
         setSize(new Dimension(400, 621));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(frmUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(frmUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(frmUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(frmUser.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+
+        /* Create and display the form */
+        EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new frmUser().setVisible(true);
+            }
+        });
+    }
+
+    public void cleanAllFields(){
+        jtfTelefono.setText("");
+        jtfNombre.setText("");
+        jtfPuesto.setText("");
+        jtfLastName.setText("");
+        jtfUsuario.setText("");
+        jpfContrasena.setText("");
+    }
 
     public JButton getjButton1() {
         return jButton1;
@@ -182,24 +243,16 @@ public class frmUser extends JFrame {
         return jtfPuesto;
     }
 
-    public JLabel getJlbApellidos() {
-        return jlbApellidos;
+    public JLabel getJlbLastName() {
+        return jlbLastName;
     }
 
     public JLabel getJlbContrasena() {
         return jlbContrasena;
     }
 
-    public JLabel getJlbFondo() {
-        return jlbFondo;
-    }
-
-    public JLabel getJlbID() {
-        return jlbID;
-    }
-
-    public JLabel getJlbIconUser() {
-        return jlbIconUser;
+    public JLabel getJlbUsuario() {
+        return jlbUsuario;
     }
 
     public JLabel getJlbIniciarSesion() {
@@ -226,20 +279,20 @@ public class frmUser extends JFrame {
         return jpfContrasena;
     }
 
-    public JTextField getJtfApellidos() {
-        return jtfApellidos;
+    public JTextField getJtfTelefono() {
+        return jtfTelefono;
     }
 
-    public JTextField getJtfID() {
-        return jtfID;
+    public JTextField getJtfUsuario() {
+        return jtfUsuario;
     }
 
     public JTextField getJtfNombre() {
         return jtfNombre;
     }
 
-    public JTextField getJtfTelefono() {
-        return jtfTelefono;
+    public JTextField getJtfLastName() {
+        return jtfLastName;
     }
 
     public Point getDefaultFrameSize() {
@@ -248,6 +301,18 @@ public class frmUser extends JFrame {
 
     public Point getDefaultRegistrarPosition() {
         return defaultRegistrarPosition;
+    }
+
+    public JButton getJbnRegistrarse() {
+        return jbnRegistrarse;
+    }
+
+    public JButton getJbnCancelar() {
+        return jbnCancelar;
+    }
+
+    public JButton getJbnIngresar() {
+        return jbnIngresar;
     }
 }
 

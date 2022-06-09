@@ -74,50 +74,62 @@ public class frmVendedores extends javax.swing.JFrame {
         setIconImage(getIconImage());
 
         jPanel1.setOpaque(false);
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.setLayout(null);
 
         jlbLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoS.png"))); // NOI18N
-        jPanel1.add(jlbLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jlbLogo.setBounds(0,0,jlbLogo.getPreferredSize().width,jlbLogo.getPreferredSize().height);
+        jPanel1.add(jlbLogo);
 
         jlbTitulo.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jlbTitulo.setForeground(new java.awt.Color(153, 0, 0));
         jlbTitulo.setText("Sistema de vendedores");
-        jPanel1.add(jlbTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(330, 40, -1, -1));
+        jlbTitulo.setBounds(330,40,jlbTitulo.getPreferredSize().width,jlbTitulo.getPreferredSize().height);
+        jPanel1.add(jlbTitulo);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/proveedores.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(570, 40, 50, 30));
+        jLabel1.setBounds(650,40,50,30);
+        jPanel1.add(jLabel1);
 
         jlbID.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlbID.setText("ID:");
-        jPanel1.add(jlbID, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 110, -1, -1));
+        jlbID.setBounds(40,110,jlbID.getPreferredSize().width,jlbID.getPreferredSize().height);
+        jPanel1.add(jlbID);
 
         jlbNombre.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlbNombre.setText("Nombre:");
-        jPanel1.add(jlbNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, -1, -1));
+        jlbNombre.setBounds(40,150,jlbNombre.getPreferredSize().width,jlbNombre.getPreferredSize().height);
+        jPanel1.add(jlbNombre);
 
         jlbApellido.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlbApellido.setText("Apellido:");
-        jPanel1.add(jlbApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 190, -1, -1));
+        jlbApellido.setBounds(40,190, jlbApellido.getPreferredSize().width,jlbApellido.getPreferredSize().height);
+        jPanel1.add(jlbApellido);
 
         jlbTeléfono.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlbTeléfono.setText("Teléfono:");
-        jPanel1.add(jlbTeléfono, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 230, -1, -1));
+        jlbTeléfono.setBounds(40,230,jlbTeléfono.getPreferredSize().width,jlbTeléfono.getPreferredSize().height);
+        jPanel1.add(jlbTeléfono);
 
         jlbDireccion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlbDireccion.setText("Dirección:");
-        jPanel1.add(jlbDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, -1));
+        jlbDireccion.setBounds(40,270,jlbDireccion.getPreferredSize().width,jlbDireccion.getPreferredSize().height);
+        jPanel1.add(jlbDireccion);
 
         jtfNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jPanel1.add(jtfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 150, 200, -1));
+        jtfNombre.setBounds(140,150,200,jtfNombre.getPreferredSize().height);
+        jPanel1.add(jtfNombre);
 
         jtfApellido.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jPanel1.add(jtfApellido, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 190, 200, -1));
+        jtfApellido.setBounds(140,190,200,jtfApellido.getPreferredSize().height);
+        jPanel1.add(jtfApellido);
 
         jtfTelefono.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jPanel1.add(jtfTelefono, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 230, 200, -1));
+        jtfTelefono.setBounds(140,230,200,jtfTelefono.getPreferredSize().height);
+        jPanel1.add(jtfTelefono);
 
         jtfDireccion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jPanel1.add(jtfDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 270, 200, -1));
+        jtfDireccion.setBounds(140,270,200,jtfDireccion.getPreferredSize().height);
+        jPanel1.add(jtfDireccion);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -132,32 +144,37 @@ public class frmVendedores extends javax.swing.JFrame {
         ));
         jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jScrollPane1.setViewportView(jTable1);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 110, 490, 240));
+        jScrollPane1.setBounds(390,110,490,240);
+        jPanel1.add(jScrollPane1);
 
         jlbEditable.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlbEditable.setText("1");
-        jPanel1.add(jlbEditable, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 110, 20, -1));
+        jlbEditable.setBounds(70,110,20,jlbEditable.getPreferredSize().height);
+        jPanel1.add(jlbEditable);
 
         jbnRegistrar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jbnRegistrar.setText("Registrar");
         jbnRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jbnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 390, -1, 40));
+        jbnRegistrar.setBounds(190,390,jbnRegistrar.getPreferredSize().width,40);
+        jPanel1.add(jbnRegistrar);
 
         jbnActualizar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jbnActualizar.setText("Actualizar");
         jbnActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jbnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 390, 100, 40));
+        jbnActualizar.setBounds(380,390,100,40);
+        jPanel1.add(jbnActualizar);
 
         jbnEliminar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jbnEliminar.setText("Eliminar");
         jbnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jbnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 390, 100, 40));
+        jbnEliminar.setBounds(580,390,100,40);
+        jPanel1.add(jbnEliminar);
 
         jbnRegresar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jbnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/back.png"))); // NOI18N
         jbnRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jbnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(870, 0, 40, 40));
+        jbnRegresar.setBounds(870,0,40,40);
+        jPanel1.add(jbnRegresar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -173,6 +190,69 @@ public class frmVendedores extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(928, 515));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    public static void main(String args[]) {
+        /* Set the Nimbus look and feel */
+        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
+        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
+         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
+         */
+        try {
+            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
+                if ("Nimbus".equals(info.getName())) {
+                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
+                    break;
+                }
+            }
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(frmVendedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(frmVendedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(frmVendedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(frmVendedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+
+        /* Create and display the form */
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            public void run() {
+                new frmVendedores().setVisible(true);
+            }
+        });
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
