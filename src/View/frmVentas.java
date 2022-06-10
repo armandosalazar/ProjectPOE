@@ -4,7 +4,7 @@ import java.awt.Cursor;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
-import javax.swing.ImageIcon;
+import javax.swing.*;
 
 public class frmVentas extends javax.swing.JFrame {
 
@@ -73,56 +73,68 @@ public class frmVentas extends javax.swing.JFrame {
         setIconImage(getIconImage());
 
         jPanel1.setOpaque(false);
-        //jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.setLayout(null);
 
         jlbLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoS.png"))); // NOI18N
-        //jPanel1.add(jlbLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jlbLogo.setBounds(0,0,jlbLogo.getPreferredSize().width,jlbLogo.getPreferredSize().height);
+        jPanel1.add(jlbLogo);
 
         jlbTitulo.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jlbTitulo.setForeground(new java.awt.Color(153, 0, 0));
         jlbTitulo.setText("Registro ventas");
-        //jPanel1.add(jlbTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 40, -1, -1));
+        jlbTitulo.setBounds(350,40,jlbTitulo.getPreferredSize().width,jlbTitulo.getPreferredSize().height);
+        jPanel1.add(jlbTitulo);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ventas2.png"))); // NOI18N
-        //jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(520, 40, 50, 30));
+        jLabel1.setBounds(560,40,50,30);
+        jPanel1.add(jLabel1);
 
         jlbNumeroDeVenta.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlbNumeroDeVenta.setText("Número de venta: ");
-        //jPanel1.add(jlbNumeroDeVenta, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 90, -1, -1));
+        jlbNumeroDeVenta.setBounds(40,90,jlbNumeroDeVenta.getPreferredSize().width,jlbNumeroDeVenta.getPreferredSize().height);
+        jPanel1.add(jlbNumeroDeVenta);
 
         jlbProductos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlbProductos.setText("Productos:");
-        //jPanel1.add(jlbProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 130, -1, -1));
+        jlbProductos.setBounds(40,130,jlbProductos.getPreferredSize().width,jlbProductos.getPreferredSize().height);
+        jPanel1.add(jlbProductos);
 
         jlbCliente.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlbCliente.setText("Cliente:");
-        //jPanel1.add(jlbCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 200, -1, -1));
+        jlbCliente.setBounds(40,200,jlbCliente.getPreferredSize().width,jlbCliente.getPreferredSize().height);
+        jPanel1.add(jlbCliente);
 
         jlbVendedor.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlbVendedor.setText("Vendedor:");
-        //jPanel1.add(jlbVendedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 270, -1, -1));
+        jlbVendedor.setBounds(40,270,jlbVendedor.getPreferredSize().width,jlbVendedor.getPreferredSize().height);
+        jPanel1.add(jlbVendedor);
 
         jlbTotal.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlbTotal.setText("Total:");
-        //jPanel1.add(jlbTotal, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 360, -1, -1));
+        jlbTotal.setBounds(40,360,jlbTotal.getPreferredSize().width,jlbTotal.getPreferredSize().height);
+        jPanel1.add(jlbTotal);
 
         jtfDireccion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        //jPanel1.add(jtfDireccion, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 360, 80, -1));
+        jtfDireccion.setBounds(100,360,80,jtfDireccion.getPreferredSize().height);
+        jPanel1.add(jtfDireccion);
 
         jcbProductos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jcbProductos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elige:" }));
         jcbProductos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        //jPanel1.add(jcbProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 120, -1));
+        jcbProductos.setBounds(40,150,120,jcbProductos.getPreferredSize().height);
+        jPanel1.add(jcbProductos);
 
         jcbCliente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jcbCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elige:" }));
         jcbCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        //jPanel1.add(jcbCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, 120, -1));
+        jcbCliente.setBounds(40,220,120,jcbCliente.getPreferredSize().height);
+        jPanel1.add(jcbCliente);
 
         jcbVendedor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jcbVendedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elige:" }));
         jcbVendedor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        //jPanel1.add(jcbVendedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 290, 120, -1));
+        jcbVendedor.setBounds(40,290,120,jcbVendedor.getPreferredSize().height);
+        jPanel1.add(jcbVendedor);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -137,32 +149,37 @@ public class frmVentas extends javax.swing.JFrame {
         ));
         jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jScrollPane1.setViewportView(jTable1);
-
-        //jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(250, 120, 590, 270));
+        jScrollPane1.setBounds(250,120,590,270);
+        jPanel1.add(jScrollPane1);
 
         jbnRegistrar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jbnRegistrar.setText("Registrar");
         jbnRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        //jPanel1.add(jbnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 460, -1, 40));
+        jbnRegistrar.setBounds(210,460,jbnRegistrar.getPreferredSize().width,40);
+        jPanel1.add(jbnRegistrar);
 
         jbnActualizar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jbnActualizar.setText("Actualizar");
         jbnActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        //jPanel1.add(jbnActualizar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 460, 100, 40));
+        jbnActualizar.setBounds(380,460,100,40);
+        jPanel1.add(jbnActualizar);
 
         jbnEliminar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jbnEliminar.setText("Eliminar");
         jbnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        //jPanel1.add(jbnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(580, 460, 100, 40));
+        jbnEliminar.setBounds(580,460,100,40);
+        jPanel1.add(jbnEliminar);
 
         jlbEditable.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlbEditable.setText("1");
-        //jPanel1.add(jlbEditable, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 90, 20, -1));
+        jlbEditable.setBounds(170,90,20,jlbEditable.getPreferredSize().height);
+        jPanel1.add(jlbEditable);
 
         jbnRegresar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jbnRegresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/back.png"))); // NOI18N
         jbnRegresar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        //jPanel1.add(jbnRegresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(850, 0, 40, 40));
+        jbnRegresar.setBounds(850,0,40,40);
+        jPanel1.add(jbnRegresar);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

@@ -170,7 +170,8 @@ public class frmProveedores extends javax.swing.JFrame {
         jbnRegistrar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jbnRegistrar.setText("Registrar");
         jbnRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        //jPanel1.add(jbnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 420, -1, 40));
+        jbnRegistrar.setBounds(190,420,jbnRegistrar.getPreferredSize().width,40);
+        jPanel1.add(jbnRegistrar);
 
         jbnEliminar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jbnEliminar.setText("Eliminar");

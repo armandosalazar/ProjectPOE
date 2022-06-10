@@ -12,7 +12,7 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class AddClientController implements Operations {
+public class ClientController implements Operations {
 
     private final frmMenu frmMenu;
     private final frmClientes frmClientes;
@@ -20,8 +20,9 @@ public class AddClientController implements Operations {
     private final DefaultTableModel model;
     private final String [] header = {"ID","Nombre","Apellido","Telefono","Dirección"};
     private Client clientSelected;
+    private int index;
 
-    public AddClientController(frmMenu frmMenu, frmClientes frmClientes){
+    public ClientController(frmMenu frmMenu, frmClientes frmClientes){
         this.frmMenu = frmMenu;
         this.frmClientes = frmClientes;
         this.jTable = frmClientes.getTable();
@@ -37,7 +38,7 @@ public class AddClientController implements Operations {
         jTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
             @Override
             public void valueChanged(ListSelectionEvent e) {
-                int index = jTable.getSelectedRow();
+                index = jTable.getSelectedRow();
                 Client [] clients = frmMenu.getClients();
                 frmClientes.getJlbEditable().setText(String.valueOf(clients[index].getId()));
                 frmClientes.getJtfNombre().setText(clients[index].getName());
@@ -121,6 +122,16 @@ public class AddClientController implements Operations {
                 if (isBlank()){
                     JOptionPane.showMessageDialog(frmClientes,"Favor de llenar todos los campos",
                             "Campos vacios",JOptionPane.INFORMATION_MESSAGE);
+                }else{
+                    String name = frmClientes.getJtfNombre().getText();
+                    String lastName = frmClientes.getJtfApellido().getText();
+                    int indexThatMatch = getIndexIfMatch(name,lastName);
+                    if(indexThatMatch != -1){
+                        deleteClient(indexThatMatch);
+                    }else{
+                        JOptionPane.showMessageDialog(frmMenu,"No existe el cliente: "+name+" "+lastName,
+                                "No se encontro el cliente",JOptionPane.INFORMATION_MESSAGE);
+                    }
                 }
             }
         };
@@ -162,12 +173,40 @@ public class AddClientController implements Operations {
     }
 
     private boolean isSame(Client a){
-        return a.getName().equals(frmClientes.getJtfNombre().getText()) && a.getLastname().equals(frmClientes.getJtfApellido().getText())
-                && a.getPhone().equals(frmClientes.getJtfTelefono().getText()) && a.getAddress().equals(frmClientes.getJtfDireccion().getText());
+        if (a != null){
+            return a.getName().equals(frmClientes.getJtfNombre().getText()) && a.getLastname().equals(frmClientes.getJtfApellido().getText())
+                    && a.getPhone().equals(frmClientes.getJtfTelefono().getText()) && a.getAddress().equals(frmClientes.getJtfDireccion().getText());
+        }
+        return false;
     }
 
     private boolean isBlank(){
         return frmClientes.getJtfNombre().getText().equals("") || frmClientes.getJtfApellido().getText().equals("")
                 || frmClientes.getJtfTelefono().getText().equals("") || frmClientes.getJtfDireccion().getText().equals("");
+    }
+
+    private int getIndexIfMatch(String name, String lastName){
+        Client [] clients = frmMenu.getClients();
+        for (int i = 0; i < frmMenu.getSizeClient(); i++) {
+            if ( name.equals(clients[i].getName()) && lastName.equals(clients[i].getLastname())){
+                return i;
+            }
+        }
+       return -1;
+    }
+    private void deleteClient(int indexThatMatch){
+        int input = JOptionPane.showConfirmDialog(frmClientes,"¿Desea eliminar el cliente "
+                        +frmMenu.getClients()[indexThatMatch].getName()+" "+frmMenu.getClients()[indexThatMatch].getLastname()+"?",
+                "Confirmación para eliinar",JOptionPane.YES_NO_CANCEL_OPTION);
+        if (input == JOptionPane.YES_OPTION){
+            frmMenu.getClients()[indexThatMatch] = null;
+            int id = frmMenu.getSizeClient();
+            id--;
+            frmMenu.setCountClients(id);
+            JOptionPane.showMessageDialog(frmClientes,"Se elimino correctamente el cliente",
+                    "Eliminación correcta",JOptionPane.INFORMATION_MESSAGE);
+        }else{
+            JOptionPane.showMessageDialog(frmClientes,"No se elimino nada","Canelación de eliminación",JOptionPane.INFORMATION_MESSAGE);
+        }
     }
 }
