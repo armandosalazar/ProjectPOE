@@ -4,7 +4,7 @@ import java.awt.Cursor;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
-import javax.swing.ImageIcon;
+import javax.swing.*;
 
 public class frmProductos extends javax.swing.JFrame {
 
@@ -299,4 +299,21 @@ public class frmProductos extends javax.swing.JFrame {
     private javax.swing.JTextField jtfNombre;
     private javax.swing.JTextField jtfPrecio;
     // End of variables declaration//GEN-END:variables
+
+
+    public JButton getJbnActualizar() {
+        return jbnActualizar;
+    }
+
+    public JButton getJbnEliminar() {
+        return jbnEliminar;
+    }
+
+    public JButton getJbnRegistrar() {
+        return jbnRegistrar;
+    }
+
+    public JButton getJbnRegresar() {
+        return jbnRegresar;
+    }
 }

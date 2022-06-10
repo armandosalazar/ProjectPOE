@@ -282,5 +282,22 @@ public class frmVentas extends javax.swing.JFrame {
     private javax.swing.JLabel jlbTotal;
     private javax.swing.JLabel jlbVendedor;
     private javax.swing.JTextField jtfDireccion;
+
+    public JButton getJbnActualizar() {
+        return jbnActualizar;
+    }
+
+    public JButton getJbnEliminar() {
+        return jbnEliminar;
+    }
+
+    public JButton getJbnRegistrar() {
+        return jbnRegistrar;
+    }
+
+    public JButton getJbnRegresar() {
+        return jbnRegresar;
+    }
+
     // End of variables declaration//GEN-END:variables
 }

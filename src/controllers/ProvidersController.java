@@ -14,6 +14,11 @@ public class ProvidersController implements Operations {
     public ProvidersController(frmMenu frmMenu, frmProveedores frmProveedores){
         this.frameMenu = frmMenu;
         this.frameProveedores = frmProveedores;
+        addListeners();
+    }
+
+    private void addListeners(){
+        frameProveedores.getJbnRegresar().addActionListener(regresar());
     }
 
     @Override

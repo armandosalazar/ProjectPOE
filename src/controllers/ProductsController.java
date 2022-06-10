@@ -15,6 +15,11 @@ public class ProductsController implements Operations {
     public ProductsController(frmMenu frameMenu, frmProductos frameProductos){
         this.frameProductos = frameProductos;
         this.frameMenu = frameMenu;
+        addListeners();
+    }
+
+    private void addListeners(){
+        frameProductos.getJbnRegresar().addActionListener(regresar());
     }
 
     @Override

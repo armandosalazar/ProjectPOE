@@ -14,6 +14,11 @@ public class SalesController implements Operations {
     public SalesController(frmMenu frameMenu, frmVentas frameVentas){
         this.frameMenu = frameMenu;
         this.frameVentas = frameVentas;
+        addListeners();
+    }
+
+    private void addListeners(){
+        frameVentas.getJbnRegresar().addActionListener(regresar());
     }
 
     @Override

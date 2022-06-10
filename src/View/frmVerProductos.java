@@ -5,13 +5,20 @@ import java.awt.Cursor;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
-import javax.swing.ImageIcon;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 
 public class frmVerProductos extends javax.swing.JFrame {
 
     //Objeto de la clase ImagenFondo
     ImagenFondo fondo;
+    private DefaultTableModel model = new DefaultTableModel(){
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            return false;
+        }
+    };
     
     public frmVerProductos() {
                 
@@ -104,17 +111,6 @@ public class frmVerProductos extends javax.swing.JFrame {
         jbnMostrarTodo.setBounds(260,420,jbnMostrarTodo.getPreferredSize().width,40);
         jPanel1.add(jbnMostrarTodo);
 
-        jtContenido.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
         jScrollPane2.setViewportView(jtContenido);
         jScrollPane2.setBounds(30,160,750,240);
         jPanel1.add(jScrollPane2);
@@ -191,4 +187,13 @@ public class frmVerProductos extends javax.swing.JFrame {
     private javax.swing.JTable jtContenido;
     private javax.swing.JTextField jtfBuscar;
     // End of variables declaration//GEN-END:variables
+
+
+    public DefaultTableModel getModel() {
+        return model;
+    }
+
+    public JTable getJtContenido() {
+        return jtContenido;
+    }
 }

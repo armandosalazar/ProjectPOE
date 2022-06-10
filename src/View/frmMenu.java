@@ -372,6 +372,38 @@ public class frmMenu extends javax.swing.JFrame {
         return jmiVerCliente;
     }
 
+    public JMenuItem getJmiRegresar() {
+        return jmiRegresar;
+    }
+
+    public JMenuItem getJmiSalr() {
+        return jmiSalr;
+    }
+
+    public JMenuItem getJmiEditarProducto() {
+        return jmiEditarProducto;
+    }
+
+    public JMenuItem getJmiEditarVenta() {
+        return jmiEditarVenta;
+    }
+
+    public JMenuItem getJmiComprasCliente() {
+        return jmiComprasCliente;
+    }
+
+    public JMenuItem getJmiProductosProveedor() {
+        return jmiProductosProveedor;
+    }
+
+    public JMenuItem getJmiVentasVendedor() {
+        return jmiVentasVendedor;
+    }
+
+    public JMenuItem getJmiVerUsuarios() {
+        return jmiVerUsuarios;
+    }
+
     public Client[] getClients() {
         return clients;
     }

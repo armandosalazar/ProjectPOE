@@ -4,12 +4,34 @@ import java.awt.Cursor;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
-import javax.swing.ImageIcon;
+import javax.swing.*;
 
 public class frmVendedores extends javax.swing.JFrame {
 
     //Objeto de la clase ImagenFondo
     ImagenFondo fondo;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JButton jbnActualizar;
+    private javax.swing.JButton jbnEliminar;
+    private javax.swing.JButton jbnRegistrar;
+    private javax.swing.JButton jbnRegresar;
+    private javax.swing.JLabel jlbApellido;
+    private javax.swing.JLabel jlbDireccion;
+    private javax.swing.JLabel jlbEditable;
+    private javax.swing.JLabel jlbID;
+    private javax.swing.JLabel jlbLogo;
+    private javax.swing.JLabel jlbNombre;
+    private javax.swing.JLabel jlbTeléfono;
+    private javax.swing.JLabel jlbTitulo;
+    private javax.swing.JTextField jtfApellido;
+    private javax.swing.JTextField jtfDireccion;
+    private javax.swing.JTextField jtfNombre;
+    private javax.swing.JTextField jtfTelefono;
 
     public frmVendedores() {
 
@@ -253,29 +275,36 @@ public class frmVendedores extends javax.swing.JFrame {
             }
         });
     }
+    public JButton getJbnActualizar() {
+        return jbnActualizar;
+    }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JButton jbnActualizar;
-    private javax.swing.JButton jbnEliminar;
-    private javax.swing.JButton jbnRegistrar;
-    private javax.swing.JButton jbnRegresar;
-    private javax.swing.JLabel jlbApellido;
-    private javax.swing.JLabel jlbDireccion;
-    private javax.swing.JLabel jlbEditable;
-    private javax.swing.JLabel jlbID;
-    private javax.swing.JLabel jlbLogo;
-    private javax.swing.JLabel jlbNombre;
-    private javax.swing.JLabel jlbTeléfono;
-    private javax.swing.JLabel jlbTitulo;
-    private javax.swing.JTextField jtfApellido;
-    private javax.swing.JTextField jtfDireccion;
-    private javax.swing.JTextField jtfNombre;
-    private javax.swing.JTextField jtfTelefono;
+    public void setJbnActualizar(JButton jbnActualizar) {
+        this.jbnActualizar = jbnActualizar;
+    }
+
+    public JButton getJbnEliminar() {
+        return jbnEliminar;
+    }
+
+    public void setJbnEliminar(JButton jbnEliminar) {
+        this.jbnEliminar = jbnEliminar;
+    }
+
+    public JButton getJbnRegistrar() {
+        return jbnRegistrar;
+    }
+
+    public void setJbnRegistrar(JButton jbnRegistrar) {
+        this.jbnRegistrar = jbnRegistrar;
+    }
+
+    public JButton getJbnRegresar() {
+        return jbnRegresar;
+    }
+
+    public void setJbnRegresar(JButton jbnRegresar) {
+        this.jbnRegresar = jbnRegresar;
+    }
     // End of variables declaration//GEN-END:variables
 }

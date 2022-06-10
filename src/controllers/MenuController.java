@@ -85,8 +85,9 @@ public class MenuController {
         return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frmMenu.setVisible(true);
+                frmMenu.setVisible(false);
                 frmVendedores frmVendedores = new frmVendedores();
+                frmVendedores.setVisible(true);
                 new SellerController(frmMenu,frmVendedores);
             }
         };

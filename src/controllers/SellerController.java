@@ -14,8 +14,13 @@ public class SellerController implements Operations {
     public SellerController(frmMenu frameMenu, frmVendedores frameVendedores){
         this.frameVendedores = frameVendedores;
         this.frameMenu = frameMenu;
+        addListeners();
     }
 
+
+    private void addListeners(){
+        frameVendedores.getJbnRegresar().addActionListener(regresar());
+    }
     @Override
     public ActionListener registrar() {
         return null;
