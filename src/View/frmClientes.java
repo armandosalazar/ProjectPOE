@@ -112,11 +112,11 @@ public class frmClientes extends javax.swing.JFrame {
         jlbTitulo.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jlbTitulo.setForeground(new java.awt.Color(153, 0, 0));
         jlbTitulo.setText("Sistema de clientes");
-        jlbTitulo.setBounds(350,40,jlbTitulo.getPreferredSize().width,jlbTitulo.getPreferredSize().height);
+        jlbTitulo.setBounds(320,40,jlbTitulo.getPreferredSize().width,jlbTitulo.getPreferredSize().height);
         jPanel1.add(jlbTitulo);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/clientes.png"))); // NOI18N
-        jLabel1.setBounds(570,40,50,30);
+        jLabel1.setBounds(580,40,50,30);
         jPanel1.add(jLabel1);
 
         jbnRegresar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -194,8 +194,8 @@ public class frmClientes extends javax.swing.JFrame {
         jPanel1.add(jbnEliminar);
 
         jlbEditable.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jlbEditable.setText("");
-        jlbEditable.setBounds(70,100,jlbEditable.getPreferredSize().width,jlbEditable.getPreferredSize().height);
+        jlbEditable.setText("1");
+        jlbEditable.setBounds(70,100,20,jlbEditable.getPreferredSize().height);
         jPanel1.add(jlbEditable);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());

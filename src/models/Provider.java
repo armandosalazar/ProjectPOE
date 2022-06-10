@@ -20,6 +20,13 @@ public class Provider {
         this.product = product;
     }
 
+    public Provider(int id, String name, String lastname, String phone) {
+        this.id = id;
+        this.name = name;
+        this.lastname = lastname;
+        this.phone = phone;
+    }
+
     public int getId() {
         return id;
     }

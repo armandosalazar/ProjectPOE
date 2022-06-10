@@ -3,6 +3,7 @@ package View;
 import models.Client;
 import models.Product;
 import models.Provider;
+import models.Seller;
 
 import java.awt.Cursor;
 import java.awt.Image;
@@ -51,14 +52,17 @@ public class frmMenu extends javax.swing.JFrame {
     ImagenFondo fondo;
     private Client [] clients;
     private int countClients;
+    private int countProviders;
+    private int countProducts;
+    private int countSellers;
     private Provider [] providers;
-    private Product []products;
+    private Seller [] sellers;
 
     public frmMenu() {
         //Instanciar objetos de ImagenFondo
         clients = new Client[20];
         providers = new Provider[20];
-        products = new Product[20];
+        sellers = new Seller[20];
         fondo = new ImagenFondo("src/Imagenes/fondoMenuPrincipal.jpg");
         this.setContentPane(fondo);
 
@@ -411,6 +415,10 @@ public class frmMenu extends javax.swing.JFrame {
         this.clients[index] = client;
     }
 
+    public void setClients(Client [] clients){
+        this.clients = clients;
+    }
+
     public void setCountClients(int countClients) {
         this.countClients = countClients;
     }
@@ -422,8 +430,36 @@ public class frmMenu extends javax.swing.JFrame {
     public Provider[] getProviders() {
         return providers;
     }
+    public void setProviders(Provider []providers){
+        this.providers = providers;
+    }
 
-    public Product[] getProducts() {
-        return products;
+    public void setCountProviders(int countProviders){
+        this.countProviders = countProviders;
+    }
+
+    public int getSizeProviders(){
+        return countProviders;
+    }
+    public void addProvider(Provider provider, int index){
+        this.providers[index] = provider;
+    }
+    public Seller[] getSellers() {
+        return sellers;
+    }
+
+    public void setCountSellers(int countSellers){
+        this.countSellers = countSellers;
+    }
+
+    public int getSizeSellers(){
+        return countSellers;
+    }
+    public void addSeller(Seller seller, int index){
+        this.sellers[index] = seller;
+    }
+
+    public void setSellers(Seller[] sellers) {
+        this.sellers = sellers;
     }
 }

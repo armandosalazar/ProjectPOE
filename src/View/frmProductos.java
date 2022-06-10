@@ -179,7 +179,7 @@ public class frmProductos extends javax.swing.JFrame {
         jbnActualizar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jbnActualizar.setText("Actualizar");
         jbnActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jbnActualizar.setBounds(350,420,100,40);
+        jbnActualizar.setBounds(350,420,jbnActualizar.getPreferredSize().width,40);
         jPanel1.add(jbnActualizar);
 
         jbnEliminar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
