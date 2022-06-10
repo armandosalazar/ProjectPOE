@@ -194,7 +194,7 @@ public class frmClientes extends javax.swing.JFrame {
         jPanel1.add(jbnEliminar);
 
         jlbEditable.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jlbEditable.setText("1");
+        jlbEditable.setText("");
         jlbEditable.setBounds(70,100,jlbEditable.getPreferredSize().width,jlbEditable.getPreferredSize().height);
         jPanel1.add(jlbEditable);
 
@@ -297,6 +297,10 @@ public class frmClientes extends javax.swing.JFrame {
 
     public DefaultTableModel getModel() {
         return model;
+    }
+
+    public JLabel getJlbEditable() {
+        return jlbEditable;
     }
 
     // End of variables declaration//GEN-END:variables

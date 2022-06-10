@@ -6,6 +6,8 @@ import View.frmMenu;
 import models.Client;
 
 import javax.swing.*;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -17,8 +19,8 @@ public class AddClientController implements Operations {
     private final JTable jTable;
     private final DefaultTableModel model;
     private final String [] header = {"ID","Nombre","Apellido","Telefono","Dirección"};
+    private Client clientSelected;
 
-    //private Object[][] info = new Object[][];
     public AddClientController(frmMenu frmMenu, frmClientes frmClientes){
         this.frmMenu = frmMenu;
         this.frmClientes = frmClientes;
@@ -32,6 +34,19 @@ public class AddClientController implements Operations {
         frmClientes.getJbnRegistrar().addActionListener(registrar());
         frmClientes.getJbnEliminar().addActionListener(eliminar());
         frmClientes.getJbnActualizar().addActionListener(actualizar());
+        jTable.getSelectionModel().addListSelectionListener(new ListSelectionListener() {
+            @Override
+            public void valueChanged(ListSelectionEvent e) {
+                int index = jTable.getSelectedRow();
+                Client [] clients = frmMenu.getClients();
+                frmClientes.getJlbEditable().setText(String.valueOf(clients[index].getId()));
+                frmClientes.getJtfNombre().setText(clients[index].getName());
+                frmClientes.getJtfApellido().setText(clients[index].getLastname());
+                frmClientes.getJtfTelefono().setText(clients[index].getPhone());
+                frmClientes.getJtfDireccion().setText(clients[index].getAddress());
+                clientSelected = clients[index];
+            }
+        });
     }
 
     @Override
@@ -62,6 +77,7 @@ public class AddClientController implements Operations {
                     jTable.setModel(model);
                     id++;
                     frmMenu.setCountClients(id);
+                    cleanFields();
                 }
             }
         };
@@ -72,7 +88,27 @@ public class AddClientController implements Operations {
         return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
+                if (isBlank()){
+                    JOptionPane.showMessageDialog(frmClientes,"Favor de llenar todos los campos",
+                            "Campos vacios",JOptionPane.INFORMATION_MESSAGE);
+                }else{
+                    if (isSame(clientSelected)){
+                        JOptionPane.showMessageDialog(frmClientes,"No se ha modificado nada",
+                                "Sin cambios",JOptionPane.INFORMATION_MESSAGE);
+                    }else{
+                        String name = frmClientes.getJtfNombre().getText();
+                        String lastName = frmClientes.getJtfApellido().getText();
+                        String phone = frmClientes.getJtfTelefono().getText();
+                        String address = frmClientes.getJtfDireccion().getText();
 
+                        clientSelected.setName(name);
+                        clientSelected.setLastname(lastName);
+                        clientSelected.setAddress(address);
+                        clientSelected.setPhone(phone);
+                        JOptionPane.showMessageDialog(frmClientes,"Se ha actualizado correctamente",
+                                "Actualización exitosa",JOptionPane.INFORMATION_MESSAGE);
+                    }
+                }
             }
         };
     }
@@ -82,7 +118,10 @@ public class AddClientController implements Operations {
         return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
+                if (isBlank()){
+                    JOptionPane.showMessageDialog(frmClientes,"Favor de llenar todos los campos",
+                            "Campos vacios",JOptionPane.INFORMATION_MESSAGE);
+                }
             }
         };
     }
@@ -113,5 +152,22 @@ public class AddClientController implements Operations {
             }
         }
         jTable.setModel(model);
+    }
+
+    private void cleanFields(){
+        frmClientes.getJtfNombre().setText("");
+        frmClientes.getJtfApellido().setText("");
+        frmClientes.getJtfTelefono().setText("");
+        frmClientes.getJtfDireccion().setText("");
+    }
+
+    private boolean isSame(Client a){
+        return a.getName().equals(frmClientes.getJtfNombre().getText()) && a.getLastname().equals(frmClientes.getJtfApellido().getText())
+                && a.getPhone().equals(frmClientes.getJtfTelefono().getText()) && a.getAddress().equals(frmClientes.getJtfDireccion().getText());
+    }
+
+    private boolean isBlank(){
+        return frmClientes.getJtfNombre().getText().equals("") || frmClientes.getJtfApellido().getText().equals("")
+                || frmClientes.getJtfTelefono().getText().equals("") || frmClientes.getJtfDireccion().getText().equals("");
     }
 }
