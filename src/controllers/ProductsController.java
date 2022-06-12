@@ -15,17 +15,16 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Arrays;
 
 public class ProductsController implements Operations {
 
-    private frmMenu frameMenu;
-    private frmProductos frameProductos;
+    private final frmMenu frameMenu;
+    private final frmProductos frameProductos;
 
     private final JTable jTable;
     private Product productSelected;
     private int index;
-    private DefaultTableModel model;
+    private final DefaultTableModel model;
     private final JTextField jtfName;
     private final JTextField jtfPrice;
     private final JComboBox<Provider> jcbProvider;
@@ -48,11 +47,10 @@ public class ProductsController implements Operations {
         rbOpcion3 = frameProductos.getJrbOpcion3();
         cBoxModel = new DefaultComboBoxModel<>();
 
-        ArrayList<Provider> list= new ArrayList<>();
         for (int i = 0; i < frameMenu.getSizeProviders(); i++) {
-           list.add(frameMenu.getProviders()[i]);
+            cBoxModel.addElement(frameMenu.getProviders()[i]);
         }
-        cBoxModel.addAll(list);
+
         jcbProvider.setModel(cBoxModel);
         addListeners();
         showTable();

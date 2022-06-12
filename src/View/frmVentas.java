@@ -1,15 +1,50 @@
 package View;
 
+import models.Client;
+import models.Product;
+import models.Seller;
+
 import java.awt.Cursor;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 public class frmVentas extends javax.swing.JFrame {
 
     //Objeto de la clase ImagenFondo
     ImagenFondo fondo;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jtaProducts1;
+    private javax.swing.JButton jbnAddToCar;
+    private javax.swing.JButton jbnDeleteFromCar;
+    private javax.swing.JButton jbnRegistrar;
+    private javax.swing.JButton jbnRegresar;
+    private javax.swing.JComboBox<Client> jcbCliente;
+    private javax.swing.JComboBox<Product> jcbProductos;
+    private javax.swing.JComboBox<Seller> jcbVendedor;
+    private javax.swing.JLabel jlbCliente;
+    private javax.swing.JLabel jlbEditable;
+    private javax.swing.JLabel jlbLogo;
+    private javax.swing.JLabel jlbNumeroDeVenta;
+    private javax.swing.JLabel jlbProductos;
+    private javax.swing.JLabel jlbTitulo;
+    private javax.swing.JLabel jlbTotal;
+    private javax.swing.JLabel jlbVendedor;
+    private javax.swing.JTextField jtfTotal;
+    private JList<Product> jListProducts;
+
+    private DefaultTableModel model = new DefaultTableModel(){
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            return false;
+        }
+    };
 
     public frmVentas() {
 
@@ -40,7 +75,7 @@ public class frmVentas extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-
+        jListProducts = new JList<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -52,15 +87,15 @@ public class frmVentas extends javax.swing.JFrame {
         jlbCliente = new javax.swing.JLabel();
         jlbVendedor = new javax.swing.JLabel();
         jlbTotal = new javax.swing.JLabel();
-        jtfDireccion = new javax.swing.JTextField();
+        jtfTotal = new javax.swing.JTextField();
         jcbProductos = new javax.swing.JComboBox<>();
         jcbCliente = new javax.swing.JComboBox<>();
         jcbVendedor = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        jtaProducts1 = new javax.swing.JTextArea();
         jbnRegistrar = new javax.swing.JButton();
-        jbnActualizar = new javax.swing.JButton();
-        jbnEliminar = new javax.swing.JButton();
+        jbnAddToCar = new javax.swing.JButton();
+        jbnDeleteFromCar = new javax.swing.JButton();
         jlbEditable = new javax.swing.JLabel();
         jbnRegresar = new javax.swing.JButton();
 
@@ -114,61 +149,49 @@ public class frmVentas extends javax.swing.JFrame {
         jlbTotal.setBounds(40,360,jlbTotal.getPreferredSize().width,jlbTotal.getPreferredSize().height);
         jPanel1.add(jlbTotal);
 
-        jtfDireccion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jtfDireccion.setBounds(100,360,80,jtfDireccion.getPreferredSize().height);
-        jPanel1.add(jtfDireccion);
+        jtfTotal.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jtfTotal.setBounds(100,360,80, jtfTotal.getPreferredSize().height);
+        jtfTotal.setEditable(false);
+        jPanel1.add(jtfTotal);
 
         jcbProductos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jcbProductos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elige:" }));
         jcbProductos.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jcbProductos.setBounds(40,150,120,jcbProductos.getPreferredSize().height);
         jPanel1.add(jcbProductos);
 
         jcbCliente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jcbCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elige:" }));
         jcbCliente.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jcbCliente.setBounds(40,220,120,jcbCliente.getPreferredSize().height);
         jPanel1.add(jcbCliente);
 
         jcbVendedor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jcbVendedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elige:" }));
         jcbVendedor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jcbVendedor.setBounds(40,290,120,jcbVendedor.getPreferredSize().height);
         jPanel1.add(jcbVendedor);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
-        jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jScrollPane1.setViewportView(jTable1);
+        jtaProducts1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jtaProducts1.add(jListProducts);
+        jScrollPane1.setViewportView(jtaProducts1);
         jScrollPane1.setBounds(250,120,590,270);
         jPanel1.add(jScrollPane1);
 
         jbnRegistrar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jbnRegistrar.setText("Registrar");
+        jbnRegistrar.setText("Registrar Venta");
         jbnRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jbnRegistrar.setBounds(210,460,jbnRegistrar.getPreferredSize().width,40);
+        jbnRegistrar.setBounds(630,460,jbnRegistrar.getPreferredSize().width,40);
         jPanel1.add(jbnRegistrar);
 
-        jbnActualizar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jbnActualizar.setText("Actualizar");
-        jbnActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jbnActualizar.setBounds(380,460,100,40);
-        jPanel1.add(jbnActualizar);
+        jbnAddToCar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jbnAddToCar.setText("Añadir producto al carro");
+        jbnAddToCar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbnAddToCar.setBounds(90,460, jbnAddToCar.getPreferredSize().width,40);
+        jPanel1.add(jbnAddToCar);
 
-        jbnEliminar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jbnEliminar.setText("Eliminar");
-        jbnEliminar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jbnEliminar.setBounds(580,460,100,40);
-        jPanel1.add(jbnEliminar);
+        jbnDeleteFromCar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jbnDeleteFromCar.setText("Eliminar producto del carro");
+        jbnDeleteFromCar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jbnDeleteFromCar.setBounds(350,460, jbnDeleteFromCar.getPreferredSize().width,40);
+        jPanel1.add(jbnDeleteFromCar);
 
         jlbEditable.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlbEditable.setText("1");
@@ -260,35 +283,14 @@ public class frmVentas extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JButton jbnActualizar;
-    private javax.swing.JButton jbnEliminar;
-    private javax.swing.JButton jbnRegistrar;
-    private javax.swing.JButton jbnRegresar;
-    private javax.swing.JComboBox<String> jcbCliente;
-    private javax.swing.JComboBox<String> jcbProductos;
-    private javax.swing.JComboBox<String> jcbVendedor;
-    private javax.swing.JLabel jlbCliente;
-    private javax.swing.JLabel jlbEditable;
-    private javax.swing.JLabel jlbLogo;
-    private javax.swing.JLabel jlbNumeroDeVenta;
-    private javax.swing.JLabel jlbProductos;
-    private javax.swing.JLabel jlbTitulo;
-    private javax.swing.JLabel jlbTotal;
-    private javax.swing.JLabel jlbVendedor;
-    private javax.swing.JTextField jtfDireccion;
 
-    public JButton getJbnActualizar() {
-        return jbnActualizar;
+
+    public JButton getJbnAddToCar() {
+        return jbnAddToCar;
     }
 
-    public JButton getJbnEliminar() {
-        return jbnEliminar;
+    public JButton getJbnDeleteFromCar() {
+        return jbnDeleteFromCar;
     }
 
     public JButton getJbnRegistrar() {
@@ -297,6 +299,30 @@ public class frmVentas extends javax.swing.JFrame {
 
     public JButton getJbnRegresar() {
         return jbnRegresar;
+    }
+
+    public DefaultTableModel getModel() {
+        return model;
+    }
+
+    public JTextArea getJtaProducts1() {
+        return jtaProducts1;
+    }
+
+    public JTextField getJtfTotal() {
+        return jtfTotal;
+    }
+
+    public JComboBox<Client> getJcbCliente() {
+        return jcbCliente;
+    }
+
+    public JComboBox<Product> getJcbProductos() {
+        return jcbProductos;
+    }
+
+    public JComboBox<Seller> getJcbVendedor() {
+        return jcbVendedor;
     }
 
     // End of variables declaration//GEN-END:variables

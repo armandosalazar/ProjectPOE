@@ -1,12 +1,10 @@
 package Lists;
 
-import models.Product;
 import models.User;
 
 public class UsersList {
 
     private User start;
-    private User currentLogged;
     private User end;
     private int size;
 
@@ -42,7 +40,6 @@ public class UsersList {
         for (int i = 0; i < getSize() ; i++) {
             if (temp != null){
                 if (temp.getUser().equals(user) && temp.getPass().equals(pass)){
-                    currentLogged = temp;
                     return true;
                 }
                 temp = temp.getNext();
@@ -57,7 +54,6 @@ public class UsersList {
         for (int i = 0; i < getSize() ; i++) {
             if (temp != null){
                 if (temp.getUser().equals(user)){
-                    currentLogged = temp;
                     return true;
                 }
                 temp = temp.getNext();

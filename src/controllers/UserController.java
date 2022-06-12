@@ -223,11 +223,16 @@ public class UserController {
                 String lastName = jtfLastName.getText();
                 String phone = jtfTel.getText();
                 String type = jtfPosition.getText();
+                if (!usersList.compareElements(user)){
+                    usersList.add(id,user,pass,name,lastName,phone,type);
+                    id++;
+                    frmUser.cleanAllFields();
+                    JOptionPane.showMessageDialog(frmUser,"Registro exitoso");
+                }else{
+                    JOptionPane.showMessageDialog(frmUser,"El usuario que intenta registrar ya existe",
+                            "Usuario existente",JOptionPane.INFORMATION_MESSAGE);
+                }
 
-                usersList.add(id,user,pass,name,lastName,phone,type);
-                id++;
-                frmUser.cleanAllFields();
-                JOptionPane.showMessageDialog(frmUser,"Registro exitoso");
             }
         };
     }
