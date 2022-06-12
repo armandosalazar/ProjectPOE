@@ -38,6 +38,7 @@ public class frmVentas extends javax.swing.JFrame {
     private javax.swing.JLabel jlbVendedor;
     private javax.swing.JTextField jtfTotal;
     private JList<Product> jListProducts;
+    private DefaultListModel<Product> productDefaultListModel;
 
     private DefaultTableModel model = new DefaultTableModel(){
         @Override
