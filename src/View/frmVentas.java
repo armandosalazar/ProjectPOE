@@ -20,7 +20,7 @@ public class frmVentas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextArea jtaProducts1;
+    private javax.swing.JTable jtaProducts1;
     private javax.swing.JButton jbnAddToCar;
     private javax.swing.JButton jbnDeleteFromCar;
     private javax.swing.JButton jbnRegistrar;
@@ -37,8 +37,9 @@ public class frmVentas extends javax.swing.JFrame {
     private javax.swing.JLabel jlbTotal;
     private javax.swing.JLabel jlbVendedor;
     private javax.swing.JTextField jtfTotal;
-    private JList<Product> jListProducts;
-    private DefaultListModel<Product> productDefaultListModel;
+    private DefaultComboBoxModel<Product> cbProductModel;
+    private DefaultComboBoxModel<Client>cbClientModel;
+    private DefaultComboBoxModel<Seller>cbSellerModel;
 
     private DefaultTableModel model = new DefaultTableModel(){
         @Override
@@ -52,7 +53,9 @@ public class frmVentas extends javax.swing.JFrame {
         //Instanciar objetos de ImagenFondo
         fondo = new ImagenFondo("src/Imagenes/fondoProveedores.jpg");
         this.setContentPane(fondo);
-
+        cbSellerModel = new DefaultComboBoxModel<>();
+        cbClientModel = new DefaultComboBoxModel<>();
+        cbProductModel = new DefaultComboBoxModel<>();
         initComponents();
 
         //Definir el objeto para la imagen personalizada
@@ -76,7 +79,6 @@ public class frmVentas extends javax.swing.JFrame {
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
-        jListProducts = new JList<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -93,7 +95,7 @@ public class frmVentas extends javax.swing.JFrame {
         jcbCliente = new javax.swing.JComboBox<>();
         jcbVendedor = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jtaProducts1 = new javax.swing.JTextArea();
+        jtaProducts1 = new javax.swing.JTable();
         jbnRegistrar = new javax.swing.JButton();
         jbnAddToCar = new javax.swing.JButton();
         jbnDeleteFromCar = new javax.swing.JButton();
@@ -171,7 +173,6 @@ public class frmVentas extends javax.swing.JFrame {
         jPanel1.add(jcbVendedor);
 
         jtaProducts1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jtaProducts1.add(jListProducts);
         jScrollPane1.setViewportView(jtaProducts1);
         jScrollPane1.setBounds(250,120,590,270);
         jPanel1.add(jScrollPane1);
@@ -306,7 +307,7 @@ public class frmVentas extends javax.swing.JFrame {
         return model;
     }
 
-    public JTextArea getJtaProducts1() {
+    public JTable getJtaProducts1() {
         return jtaProducts1;
     }
 
@@ -324,6 +325,17 @@ public class frmVentas extends javax.swing.JFrame {
 
     public JComboBox<Seller> getJcbVendedor() {
         return jcbVendedor;
+    }
+    public DefaultComboBoxModel<Product> getCbProductModel() {
+        return cbProductModel;
+    }
+
+    public DefaultComboBoxModel<Client> getCbClientModel() {
+        return cbClientModel;
+    }
+
+    public DefaultComboBoxModel<Seller> getCbSellerModel() {
+        return cbSellerModel;
     }
 
     // End of variables declaration//GEN-END:variables

@@ -48,9 +48,9 @@ public class ProductsController implements Operations {
         cBoxModel = new DefaultComboBoxModel<>();
 
         for (int i = 0; i < frameMenu.getSizeProviders(); i++) {
-            cBoxModel.addElement(frameMenu.getProviders()[i]);
+            cBoxModel.insertElementAt(frameMenu.getProviders()[i],i );
         }
-
+        jcbProvider.setSelectedItem(null);
         jcbProvider.setModel(cBoxModel);
         addListeners();
         showTable();
@@ -98,7 +98,6 @@ public class ProductsController implements Operations {
         return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
                 String name = jtfName.getText();
                 int price = -1;
                 try {
@@ -113,7 +112,7 @@ public class ProductsController implements Operations {
                 ProductsList list = frameMenu.getProductsList();
                 int id = list.getSize();
 
-                if (price != -1 && provider != null && !name.equals("") && opcion != -1){
+                if (!isBlank()){
                     list.add(id,name,price,opcion,provider);
                     Product product = new Product(id,name,price,opcion,provider);
                     String providerName = provider.getName()+ " "+provider.getLastname();
@@ -127,6 +126,9 @@ public class ProductsController implements Operations {
                     model.addRow(a);
                     jTable.setModel(model);
                     cleanFields();
+                }else{
+                    JOptionPane.showMessageDialog(frameMenu,"Favor de llenar todos los campos",
+                            "Campos vacios",JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         };
@@ -141,8 +143,9 @@ public class ProductsController implements Operations {
                     JOptionPane.showMessageDialog(frameMenu,"Favor de llenar todos los campos",
                             "Campos vacios",JOptionPane.INFORMATION_MESSAGE);
                 }else{
-                    if (index != -1){
+                    if (index != -1 ){
                         Product product = frameMenu.getProductsList().getNode(index);
+                        System.out.println(product);
                         if (!isSame(product)){
                             String name = jtfName.getText();
                             product.setName(name);;
@@ -269,7 +272,7 @@ public class ProductsController implements Operations {
     private void cleanFields(){
        jtfName.setText("");
        jtfPrice.setText("");
-       jcbProvider.setSelectedIndex(0);
+       jcbProvider.setSelectedItem(null);
        frameProductos.getGrupo1().clearSelection();
     }
 
@@ -298,7 +301,8 @@ public class ProductsController implements Operations {
     }
 
     private boolean isBlank(){
-        return jtfName.getText().equals("") || jtfPrice.getText().equals("") || isJRadioSelected();
+        return jtfName.getText().equals("") || jtfPrice.getText().equals("")
+                || isJRadioSelected() || jcbProvider.getSelectedItem() == null;
     }
 
     private boolean isSame(Product product){
