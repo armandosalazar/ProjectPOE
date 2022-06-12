@@ -103,7 +103,6 @@ public class SellerController implements Operations {
                                 "Sin cambios",JOptionPane.INFORMATION_MESSAGE);
                     }else{
                         if (sellerSelected != null){
-                            System.out.println(sellerSelected);
                             String name = frameVendedores.getJtfNombre().getText();
                             String lastName = frameVendedores.getJtfApellido().getText();
                             String phone = frameVendedores.getJtfTelefono().getText();
@@ -165,11 +164,9 @@ public class SellerController implements Operations {
         model.setValueAt(null,indexThatMatch,3);
         model.removeRow(indexThatMatch);
         jTable.setModel(model);
-        System.out.println(frameMenu.getSizeClient());
     }
 
     private void showTable() {
-        System.out.println("El tamaño de la tabla es: "+frameMenu.getSizeSellers());
         model.setColumnIdentifiers(header);
         Object [][] info = new Object[frameMenu.getSizeSellers()][5];
         for (int i = 0; i < frameMenu.getSizeSellers(); i++) {

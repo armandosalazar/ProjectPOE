@@ -1,5 +1,6 @@
 package Lists;
 
+import models.Product;
 import models.User;
 
 public class UsersList {
@@ -48,6 +49,41 @@ public class UsersList {
             }
         }
         return false;
+    }
+
+    public boolean compareElements(String user){
+        User temp;
+        temp = start;
+        for (int i = 0; i < getSize() ; i++) {
+            if (temp != null){
+                if (temp.getUser().equals(user)){
+                    currentLogged = temp;
+                    return true;
+                }
+                temp = temp.getNext();
+            }
+        }
+        return false;
+    }
+
+    public User getNode(String name){
+        User aux = start;
+        User temp = null;
+        if(isEmpty()){
+            return null;
+        }else{
+            if (getSize() == 1){
+                return start;
+            }else{
+                while(aux != null  && !aux.getUser().equals(name)){
+                    aux = aux.getNext();
+                }
+                if (aux != null){
+                    return aux;
+                }
+            }
+        }
+        return null;
     }
     public int getSize(){
         return size;

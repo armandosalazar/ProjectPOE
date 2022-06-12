@@ -102,7 +102,6 @@ public class ClientController implements Operations {
                                 "Sin cambios",JOptionPane.INFORMATION_MESSAGE);
                     }else{
                         if (clientSelected != null){
-                            System.out.println(clientSelected);
                             String name = frmClientes.getJtfNombre().getText();
                             String lastName = frmClientes.getJtfApellido().getText();
                             String phone = frmClientes.getJtfTelefono().getText();
@@ -114,6 +113,7 @@ public class ClientController implements Operations {
                             clientSelected.setPhone(phone);
                             JOptionPane.showMessageDialog(frmClientes,"Se ha actualizado correctamente",
                                     "Actualización exitosa",JOptionPane.INFORMATION_MESSAGE);
+                            updateTable(index);
                             cleanFields();
                         }
                     }
@@ -181,7 +181,6 @@ public class ClientController implements Operations {
         model.setValueAt(null,indexThatMatch,3);
         model.removeRow(indexThatMatch);
         jTable.setModel(model);
-        System.out.println(frmMenu.getSizeClient());
     }
 
     private void cleanFields(){
@@ -216,7 +215,7 @@ public class ClientController implements Operations {
     private void deleteClient(int indexThatMatch){
         int input = JOptionPane.showConfirmDialog(frmClientes,"¿Desea eliminar el cliente "
                         +frmMenu.getClients()[indexThatMatch].getName()+" "+frmMenu.getClients()[indexThatMatch].getLastname()+"?",
-                "Confirmación para eliinar",JOptionPane.YES_NO_CANCEL_OPTION);
+                "Confirmación para eliminar",JOptionPane.YES_NO_CANCEL_OPTION);
         if (input == JOptionPane.YES_OPTION){
             frmMenu.setClients(eliminar(indexThatMatch, frmMenu.getClients()));
             int id = frmMenu.getSizeClient();

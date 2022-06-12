@@ -1,10 +1,13 @@
 package View;
 
+import models.Provider;
+
 import java.awt.Cursor;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 public class frmProductos extends javax.swing.JFrame {
 
@@ -56,7 +59,7 @@ public class frmProductos extends javax.swing.JFrame {
         jlbProveedor = new javax.swing.JLabel();
         jtfNombre = new javax.swing.JTextField();
         jrbOpcion1 = new javax.swing.JRadioButton();
-        jcbProveedor = new javax.swing.JComboBox<>();
+        jcbProveedor = new javax.swing.JComboBox<Provider>();
         jrbOpcion2 = new javax.swing.JRadioButton();
         jrbOpcion3 = new javax.swing.JRadioButton();
         jtfPrecio = new javax.swing.JTextField();
@@ -134,7 +137,7 @@ public class frmProductos extends javax.swing.JFrame {
         jPanel1.add(jrbOpcion1);
 
         jcbProveedor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jcbProveedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elige:" }));
+        //jcbProveedor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elige:" }));
         jcbProveedor.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jcbProveedor.setBounds(170,280,170,jcbProveedor.getPreferredSize().height);
         jPanel1.add(jcbProveedor);
@@ -155,17 +158,6 @@ public class frmProductos extends javax.swing.JFrame {
         jtfPrecio.setBounds(140,200,80,jtfPrecio.getPreferredSize().height);
         jPanel1.add(jtfPrecio);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
         jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jScrollPane1.setViewportView(jTable1);
         jScrollPane1.setBounds(392,120,490,240);
@@ -284,7 +276,7 @@ public class frmProductos extends javax.swing.JFrame {
     private javax.swing.JButton jbnEliminar;
     private javax.swing.JButton jbnRegistrar;
     private javax.swing.JButton jbnRegresar;
-    private javax.swing.JComboBox<String> jcbProveedor;
+    private JComboBox<Provider>jcbProveedor;
     private javax.swing.JLabel jlbCantidad;
     private javax.swing.JLabel jlbEditable;
     private javax.swing.JLabel jlbID;
@@ -298,6 +290,13 @@ public class frmProductos extends javax.swing.JFrame {
     private javax.swing.JRadioButton jrbOpcion3;
     private javax.swing.JTextField jtfNombre;
     private javax.swing.JTextField jtfPrecio;
+
+    private DefaultTableModel model = new DefaultTableModel(){
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            return false;
+        }
+    };
     // End of variables declaration//GEN-END:variables
 
 
@@ -315,5 +314,41 @@ public class frmProductos extends javax.swing.JFrame {
 
     public JButton getJbnRegresar() {
         return jbnRegresar;
+    }
+
+    public JComboBox<Provider>getJcbProveedor() {
+        return jcbProveedor;
+    }
+
+    public JTextField getJtfNombre() {
+        return jtfNombre;
+    }
+
+    public JTextField getJtfPrecio() {
+        return jtfPrecio;
+    }
+
+    public JRadioButton getJrbOpcion1() {
+        return jrbOpcion1;
+    }
+
+    public JRadioButton getJrbOpcion2() {
+        return jrbOpcion2;
+    }
+
+    public JRadioButton getJrbOpcion3() {
+        return jrbOpcion3;
+    }
+
+    public JTable getjTable1() {
+        return jTable1;
+    }
+
+    public DefaultTableModel getModel() {
+        return model;
+    }
+
+    public ButtonGroup getGrupo1() {
+        return Grupo1;
     }
 }

@@ -3,6 +3,7 @@ package controllers;
 import Lists.UsersList;
 import View.frmMenu;
 import View.frmUser;
+import models.User;
 
 import javax.swing.*;
 import java.awt.event.*;
@@ -68,7 +69,7 @@ public class UserController {
                     @Override public void run () {
                         SwingUtilities.invokeLater(new Runnable(){
                             @Override public void run() {
-                                frmUser.setVisible(false);
+                                frmUser.cleanAllFields();
                                 hideComponents();
                                 jtfUser.setVisible(true);
                                 jlbId.setVisible(true);
@@ -126,7 +127,8 @@ public class UserController {
                     @Override public void run () {
                         SwingUtilities.invokeLater(new Runnable(){
                             @Override public void run() {
-                                frmUser.setVisible(false);
+                                //frmUser.setVisible(false);
+                                frmUser.cleanAllFields();
                                 showAllComponents();
                                 frmUser.setVisible(true);
                             }
@@ -184,10 +186,13 @@ public class UserController {
                 if (user.equals("") || pass.equals("")){
                     JOptionPane.showMessageDialog(frmUser, "Ingrese el Usuario y/o la Contraseña", "Campos en blanco", JOptionPane.INFORMATION_MESSAGE);
                 }else{
-                    if ( usersList.compareElements(user,pass)){
+                    if (usersList.compareElements(user,pass)){
                         frmUser.setVisible(false);
                         frmMenu frmMenu = new frmMenu();
-                        new MenuController(frmMenu);
+                        User current = usersList.getNode(user);
+                        System.out.println(current.getUser());
+                        frmMenu.setCurrentUser(current);
+                        new MenuController(frmUser,frmMenu);
                         frmMenu.setVisible(true);
                     }else{
                         JOptionPane.showMessageDialog(frmUser,"Usuario o contraseña invalidos","Datos invalidos",JOptionPane.INFORMATION_MESSAGE);

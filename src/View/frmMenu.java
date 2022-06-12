@@ -1,9 +1,8 @@
 package View;
 
-import models.Client;
-import models.Product;
-import models.Provider;
-import models.Seller;
+import Lists.ProductsList;
+import Lists.SalesList;
+import models.*;
 
 import java.awt.Cursor;
 import java.awt.Image;
@@ -51,18 +50,24 @@ public class frmMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmiVerVenta;
     ImagenFondo fondo;
     private Client [] clients;
-    private int countClients;
-    private int countProviders;
-    private int countProducts;
-    private int countSellers;
     private Provider [] providers;
     private Seller [] sellers;
+    private int countClients;
+    private int countProviders;
+    private int countSellers;
+
+    private ProductsList productsList;
+    private User current;
+    private SalesList salesList;
+
 
     public frmMenu() {
         //Instanciar objetos de ImagenFondo
         clients = new Client[20];
         providers = new Provider[20];
         sellers = new Seller[20];
+        productsList = new ProductsList();
+        salesList = new SalesList();
         fondo = new ImagenFondo("src/Imagenes/fondoMenuPrincipal.jpg");
         this.setContentPane(fondo);
 
@@ -461,5 +466,17 @@ public class frmMenu extends javax.swing.JFrame {
 
     public void setSellers(Seller[] sellers) {
         this.sellers = sellers;
+    }
+
+    public ProductsList getProductsList() {
+        return productsList;
+    }
+
+    public User getCurrentUser() {
+        return current;
+    }
+
+    public void setCurrentUser(User current) {
+        this.current = current;
     }
 }
