@@ -20,7 +20,7 @@ public class SellerController implements Operations {
 
     private final JTable jTable;
     private final DefaultTableModel model;
-    private final String [] header = {"ID","Nombre","Apellido","Telefono","Puesto"};
+    private final String [] header = {"ID","Nombre","Apellido","Teléfono","Puesto"};
     private Seller sellerSelected;
     private int index;
 

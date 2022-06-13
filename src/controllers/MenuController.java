@@ -130,7 +130,7 @@ public class MenuController {
         return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frmVerProveedores frmVerProveedores = new frmVerProveedores();
+                frmVerProveedores frmVerProveedores = new frmVerProveedores(frmMenu);
                 frmMenu.setVisible(false);
                 frmVerProveedores.setVisible(true);
             }
