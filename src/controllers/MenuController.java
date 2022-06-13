@@ -163,7 +163,8 @@ public class MenuController {
         return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-              frmMenu.dispose();
+                frmMenu.dispose();
+                frameUser.dispose();
             }
         };
     }

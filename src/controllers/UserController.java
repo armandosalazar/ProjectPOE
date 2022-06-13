@@ -21,7 +21,8 @@ public class UserController {
     private final frmUser frmUser;
     private final JButton jbnIngresar, jbnRegistrar, jbnCancelar;
     private int id = 0;
-    private UsersList usersList;
+    private final UsersList usersList;
+    private frmMenu frmMenu;
 
     public UserController(frmUser frmUser) {
         this.frmUser = frmUser;
@@ -188,11 +189,13 @@ public class UserController {
                 }else{
                     if (usersList.compareElements(user,pass)){
                         frmUser.setVisible(false);
-                        frmMenu frmMenu = new frmMenu();
+                        if (frmMenu == null){
+                            frmMenu = new frmMenu();
+                            new MenuController(frmUser,frmMenu);
+                        }
                         User current = usersList.getNode(user);
                         System.out.println(current.getUser());
                         frmMenu.setCurrentUser(current);
-                        new MenuController(frmUser,frmMenu);
                         frmMenu.setVisible(true);
                     }else{
                         JOptionPane.showMessageDialog(frmUser,"Usuario o contraseña invalidos","Datos invalidos",JOptionPane.INFORMATION_MESSAGE);
@@ -244,6 +247,9 @@ public class UserController {
                 int respuesta = JOptionPane.showConfirmDialog(frmUser,"¿Desea salir?","Confirmación para salir",JOptionPane.YES_NO_CANCEL_OPTION);
                 if (respuesta == JOptionPane.YES_OPTION){
                     frmUser.dispose();
+                    if (frmMenu != null){
+                        frmMenu.dispose();
+                    }
                 }
             }
         };
