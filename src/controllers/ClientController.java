@@ -4,7 +4,6 @@ import Interfaces.Operations;
 import View.frmClientes;
 import View.frmMenu;
 import models.Client;
-import models.Provider;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -114,6 +113,7 @@ public class ClientController implements Operations {
                             JOptionPane.showMessageDialog(frmClientes,"Se ha actualizado correctamente",
                                     "Actualización exitosa",JOptionPane.INFORMATION_MESSAGE);
                             cleanFields();
+                            actualizarUITabla();
                         }
                     }
                 }
@@ -155,6 +155,21 @@ public class ClientController implements Operations {
                 frmMenu.setVisible(true);
             }
         };
+    }
+
+    private void actualizarUITabla(){
+        String name = clientSelected.getName();
+        int id = clientSelected.getId();
+        String lastName = clientSelected.getLastname();
+        String phone = clientSelected.getPhone();
+        String address = clientSelected.getAddress();
+        model.setValueAt(id,index,0);
+        model.setValueAt(name,index,1);
+        model.setValueAt(lastName,index,2);
+        model.setValueAt(phone,index,3);
+        model.setValueAt(address,index,4);
+
+        jTable.setModel(model);
     }
 
     private void showTable() {

@@ -188,6 +188,8 @@ public class ProductsController implements Operations {
                         Product product = frameMenu.getProductsList().getNode(index);
                         if (isSame(product)){
                             deleteProduct(product);
+                            updateTable(index);
+                            cleanFields();
                         }else{
                             JOptionPane.showMessageDialog(frameMenu,"Los datos no coinciden",
                                     "Verifique el producto a eliminar",JOptionPane.INFORMATION_MESSAGE);

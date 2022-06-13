@@ -115,6 +115,7 @@ public class SellerController implements Operations {
                             JOptionPane.showMessageDialog(frameVendedores,"Se ha actualizado correctamente",
                                     "Actualización exitosa",JOptionPane.INFORMATION_MESSAGE);
                             cleanFields();
+                            updateUITable();
                         }
                     }
                 }
@@ -137,6 +138,7 @@ public class SellerController implements Operations {
                     if(indexThatMatch != -1){
                         deleteClient(indexThatMatch);
                         updateTable(indexThatMatch);
+                        cleanFields();
                     }else{
                         JOptionPane.showMessageDialog(frameVendedores,"No existe el cliente: "+name+" "+lastName,
                                 "No se encontro el cliente",JOptionPane.INFORMATION_MESSAGE);
@@ -155,6 +157,22 @@ public class SellerController implements Operations {
                 frameVendedores.dispose();
             }
         };
+    }
+
+    private void updateUITable(){
+        String name = sellerSelected.getName();
+        int id = sellerSelected.getId();
+        String lastName = sellerSelected.getLastname();
+        String phone = sellerSelected.getPhone();
+
+        model.setValueAt(id,index,0);
+        model.setValueAt(name,index,1);
+        model.setValueAt(lastName,index,2);
+        model.setValueAt(phone,index,3);
+
+        jTable.setModel(model);
+        jTable.getSelectionModel().clearSelection();
+        jTable.clearSelection();
     }
 
     private void updateTable(int indexThatMatch) {

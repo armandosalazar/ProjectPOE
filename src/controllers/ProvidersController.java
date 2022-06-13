@@ -118,6 +118,7 @@ public class ProvidersController implements Operations {
                             JOptionPane.showMessageDialog(frameProveedores, "Se ha actualizado correctamente",
                                     "Actualización exitosa", JOptionPane.INFORMATION_MESSAGE);
                             cleanFields();
+                            updateUITable();
                         }
                     }
                 }
@@ -140,6 +141,7 @@ public class ProvidersController implements Operations {
                     if (indexThatMatch != -1) {
                         deleteProvider(indexThatMatch);
                         updateTable(indexThatMatch);
+                        cleanFields();
                     }else{
                         JOptionPane.showMessageDialog(frameProveedores,"No existe el proveedor: "+name+" "+lastName,
                                 "No se encontro el proveedor",JOptionPane.INFORMATION_MESSAGE);
@@ -158,6 +160,22 @@ public class ProvidersController implements Operations {
                 frameMenu.setVisible(true);
             }
         };
+    }
+
+    private void updateUITable(){
+        String name = providerSelected.getName();
+        int id = providerSelected.getId();
+        String lastName = providerSelected.getLastname();
+        String phone = providerSelected.getPhone();
+
+        model.setValueAt(id,index,0);
+        model.setValueAt(name,index,1);
+        model.setValueAt(lastName,index,2);
+        model.setValueAt(phone,index,3);
+
+        jTable.setModel(model);
+        jTable.getSelectionModel().clearSelection();
+        jTable.clearSelection();
     }
 
     private void showTable() {
