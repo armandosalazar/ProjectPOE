@@ -164,6 +164,7 @@ public class MenuController {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frmMenu.dispose();
+                frameUser.dispose();
             }
         };
     }
