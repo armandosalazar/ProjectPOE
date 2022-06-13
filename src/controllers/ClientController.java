@@ -113,7 +113,6 @@ public class ClientController implements Operations {
                             clientSelected.setPhone(phone);
                             JOptionPane.showMessageDialog(frmClientes,"Se ha actualizado correctamente",
                                     "Actualización exitosa",JOptionPane.INFORMATION_MESSAGE);
-                            updateTable(index);
                             cleanFields();
                         }
                     }
@@ -137,6 +136,7 @@ public class ClientController implements Operations {
                     if(indexThatMatch != -1){
                         deleteClient(indexThatMatch);
                         updateTable(indexThatMatch);
+                        cleanFields();
                     }else{
                         JOptionPane.showMessageDialog(frmClientes,"No existe el cliente: "+name+" "+lastName,
                                 "No se encontro el cliente",JOptionPane.INFORMATION_MESSAGE);

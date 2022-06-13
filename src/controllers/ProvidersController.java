@@ -140,7 +140,6 @@ public class ProvidersController implements Operations {
                     if(indexThatMatch != -1){
                         deleteProvider(indexThatMatch);
                         updateTable(indexThatMatch);
-
                     }else{
                         JOptionPane.showMessageDialog(frameProveedores,"No existe el proveedor: "+name+" "+lastName,
                                 "No se encontro el proveedor",JOptionPane.INFORMATION_MESSAGE);
