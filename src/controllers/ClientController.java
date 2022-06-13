@@ -114,6 +114,7 @@ public class ClientController implements Operations {
                             JOptionPane.showMessageDialog(frmClientes,"Se ha actualizado correctamente",
                                     "Actualización exitosa",JOptionPane.INFORMATION_MESSAGE);
                             cleanFields();
+                            System.out.println("asdas");
                         }
                     }
                 }
