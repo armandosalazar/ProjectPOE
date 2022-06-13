@@ -49,6 +49,7 @@ public class ProvidersController implements Operations {
                     frameProveedores.getJtfNombre().setText(providers[index].getName());
                     frameProveedores.getJtfApellido().setText(providers[index].getLastname());
                     frameProveedores.getJtfTelefono().setText(providers[index].getPhone());
+                    frameProveedores.getJtfDireccion().setText(providers[index].getAddress());
                     providerSelected = providers[index];
                 }
             }
@@ -63,26 +64,28 @@ public class ProvidersController implements Operations {
                 String name = frameProveedores.getJtfNombre().getText();
                 String lastName = frameProveedores.getJtfApellido().getText();
                 String phone = frameProveedores.getJtfTelefono().getText();
-                //String address = frmClientes.getJtfDireccion().getText();
+                String address = frameProveedores.getJtfDireccion().getText();
 
-                if (name.equals("") || lastName.equals("") || phone.equals("")) {
-                    JOptionPane.showMessageDialog(frameProveedores, "Por favor llene todos los campos", "Falta llenar campos", JOptionPane.INFORMATION_MESSAGE);
+                if (name.isBlank() || lastName.isBlank() || phone.isBlank() || address.isBlank()) {
+                    JOptionPane.showMessageDialog(frameProveedores, "Por favor llene todos los campos", "Falta llenar campos", JOptionPane.ERROR_MESSAGE);
                 } else {
                     int id = frameMenu.getSizeProviders();
-                    Provider provider = new Provider(id, name, lastName, phone);
+                    Provider provider = new Provider((id + 1), name, lastName, phone, address);
                     //Actualizo la tabla cada que se registra
-                    Object[] a = new Object[4];
+                    Object[] a = new Object[5];
                     a[0] = provider.getId();
                     a[1] = provider.getName();
                     a[2] = provider.getLastname();
                     a[3] = provider.getPhone();
+                    a[4] = provider.getAddress();
                     frameMenu.addProvider(provider, id);
+                    System.out.println(provider.getAddress());
                     JOptionPane.showMessageDialog(frameProveedores, "Se registro correctamente el proveedor", "Registro exitoso", JOptionPane.INFORMATION_MESSAGE);
                     model.addRow(a);
                     jTable.setModel(model);
-                    id++;
-                    frameMenu.setCountProviders(id);
+                    frameMenu.setCountProviders(id + 1);
                     cleanFields();
+                    frameProveedores.getJlbEditable().setText("" + (id + 2));
                 }
             }
         };
@@ -105,15 +108,17 @@ public class ProvidersController implements Operations {
                             String name = frameProveedores.getJtfNombre().getText();
                             String lastName = frameProveedores.getJtfApellido().getText();
                             String phone = frameProveedores.getJtfTelefono().getText();
+                            String address = frameProveedores.getJtfDireccion().getText();
 
                             model.setValueAt(name, index, 1);
                             model.setValueAt(lastName, index, 2);
                             model.setValueAt(phone, index, 3);
+                            model.setValueAt(address, index, 4);
                             jTable.setModel(model);
 
                             providerSelected.setName(name);
                             providerSelected.setLastname(lastName);
-                            //providerSelected.setAddress(address);
+                            providerSelected.setAddress(address);
                             providerSelected.setPhone(phone);
                             JOptionPane.showMessageDialog(frameProveedores, "Se ha actualizado correctamente",
                                     "Actualización exitosa", JOptionPane.INFORMATION_MESSAGE);
@@ -140,11 +145,11 @@ public class ProvidersController implements Operations {
                     int indexThatMatch = getIndexIfMatch(name, lastName);
                     if (indexThatMatch != -1) {
                         deleteProvider(indexThatMatch);
-                        updateTable(indexThatMatch);
+                        // updateTable(indexThatMatch);
                         cleanFields();
-                    }else{
-                        JOptionPane.showMessageDialog(frameProveedores,"No existe el proveedor: "+name+" "+lastName,
-                                "No se encontro el proveedor",JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(frameProveedores, "No existe el proveedor: " + name + " " + lastName,
+                                "No se encontro el proveedor", JOptionPane.INFORMATION_MESSAGE);
                     }
                 }
             }
@@ -162,16 +167,18 @@ public class ProvidersController implements Operations {
         };
     }
 
-    private void updateUITable(){
+    private void updateUITable() {
         String name = providerSelected.getName();
         int id = providerSelected.getId();
         String lastName = providerSelected.getLastname();
         String phone = providerSelected.getPhone();
+        String address = providerSelected.getAddress();
 
-        model.setValueAt(id,index,0);
-        model.setValueAt(name,index,1);
-        model.setValueAt(lastName,index,2);
-        model.setValueAt(phone,index,3);
+        model.setValueAt(id, index, 0);
+        model.setValueAt(name, index, 1);
+        model.setValueAt(lastName, index, 2);
+        model.setValueAt(phone, index, 3);
+        model.setValueAt(address, index, 4);
 
         jTable.setModel(model);
         jTable.getSelectionModel().clearSelection();
@@ -180,7 +187,7 @@ public class ProvidersController implements Operations {
 
     private void showTable() {
         model.setColumnIdentifiers(header);
-        Object[][] info = new Object[frameMenu.getSizeProviders()][4];
+        Object[][] info = new Object[frameMenu.getSizeProviders()][5];
         for (int i = 0; i < frameMenu.getSizeProviders(); i++) {
             Provider provider = frameMenu.getProviders()[i];
             for (int j = 0; j < 1; j++) {
@@ -188,6 +195,7 @@ public class ProvidersController implements Operations {
                 info[i][1] = provider.getName();
                 info[i][2] = provider.getLastname();
                 info[i][3] = provider.getPhone();
+                info[i][4] = provider.getAddress();
                 model.addRow(info[i]);
             }
         }
@@ -208,6 +216,7 @@ public class ProvidersController implements Operations {
         frameProveedores.getJtfNombre().setText("");
         frameProveedores.getJtfApellido().setText("");
         frameProveedores.getJtfTelefono().setText("");
+        frameProveedores.getJtfDireccion().setText("");
     }
 
     private boolean isSame(Provider a) {
@@ -235,8 +244,9 @@ public class ProvidersController implements Operations {
 
     private void deleteProvider(int indexThatMatch) {
         int input = JOptionPane.showConfirmDialog(frameProveedores, "¿Desea eliminar el proveedor "
-                + frameMenu.getProviders()[indexThatMatch].getName() + " " + frameMenu.getProviders()[indexThatMatch].getLastname() + "?",
-                "Confirmación para eliminar", JOptionPane.YES_NO_CANCEL_OPTION);
+                        + frameMenu.getProviders()[indexThatMatch].getName() + " " + frameMenu.getProviders()[indexThatMatch].getLastname() + "?",
+                "Confirmación para eliminar", JOptionPane.YES_NO_OPTION);
+        System.out.println(input);
         if (input == JOptionPane.YES_OPTION) {
             frameMenu.setProviders(eliminar(indexThatMatch, frameMenu.getProviders()));
             int id = frameMenu.getSizeProviders();
@@ -244,7 +254,8 @@ public class ProvidersController implements Operations {
             frameMenu.setCountProviders(id);
             JOptionPane.showMessageDialog(frameProveedores, "Se elimino correctamente el proveedor",
                     "Eliminación correcta", JOptionPane.INFORMATION_MESSAGE);
-        } else {
+            updateTable(indexThatMatch);
+        } else if (input == JOptionPane.NO_OPTION) {
             JOptionPane.showMessageDialog(frameProveedores, "No se elimino nada", "Canelación de eliminación", JOptionPane.INFORMATION_MESSAGE);
         }
     }

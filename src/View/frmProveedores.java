@@ -124,7 +124,7 @@ public class frmProveedores extends javax.swing.JFrame {
         jPanel1.add(jLabel1);
 
         jlbID.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jlbID.setText("ID:");
+        jlbID.setText("ID: ");
         jlbID.setBounds(40,110,jlbID.getPreferredSize().width,jlbID.getPreferredSize().height);
         jPanel1.add(jlbID);
 
@@ -267,5 +267,12 @@ public class frmProveedores extends javax.swing.JFrame {
         return jlbEditable;
     }
 
-    // End of variables declaration                   
+    public JTextField getJtfDireccion() {
+        return jtfDireccion;
+    }
+
+    public void setJtfDireccion(JTextField jtfDireccion) {
+        this.jtfDireccion = jtfDireccion;
+    }
+// End of variables declaration
 }
