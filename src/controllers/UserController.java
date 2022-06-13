@@ -16,7 +16,7 @@ public class UserController {
     private final JLabel jlbIniciarSesion;
     private final JLabel jlbRegistrarse;
     private final JLabel jlbLastName, jlbPosition, jlbTel;
-    private final JTextField  jtfName, jtfTel, jtfPosition, jtfLastName, jtfUser;
+    private final JTextField jtfName, jtfTel, jtfPosition, jtfLastName, jtfUser;
     private final JPasswordField jpfPass;
     private final frmUser frmUser;
     private final JButton jbnIngresar, jbnRegistrar, jbnCancelar;
@@ -52,6 +52,7 @@ public class UserController {
         addListeners();
         setDefaultValues();
     }
+
     private void addListeners() {
         jlbIniciarSesion.addMouseListener(lblIniciarSesion());
         jlbRegistrarse.addMouseListener(lblRegistrarse());
@@ -61,15 +62,17 @@ public class UserController {
         frmUser.getjButton1().addActionListener(salir());
     }
 
-    private MouseAdapter lblIniciarSesion(){
-        return  new MouseAdapter() {
+    private MouseAdapter lblIniciarSesion() {
+        return new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 new Thread() {
-                    @Override public void run () {
-                        SwingUtilities.invokeLater(new Runnable(){
-                            @Override public void run() {
+                    @Override
+                    public void run() {
+                        SwingUtilities.invokeLater(new Runnable() {
+                            @Override
+                            public void run() {
                                 frmUser.cleanAllFields();
                                 hideComponents();
                                 jtfUser.setVisible(true);
@@ -78,11 +81,11 @@ public class UserController {
                                 jpfPass.setVisible(true);
                                 jlbPass.setVisible(true);
                                 jbnIngresar.setVisible(true);
-                                jbnCancelar.setLocation(220,380);
+                                jbnCancelar.setLocation(220, 380);
                                 jbnCancelar.setVisible(true);
 
-                                jlbRegistrarse.setLocation(140,440);
-                                frmUser.setSize(400,510);
+                                jlbRegistrarse.setLocation(140, 440);
+                                frmUser.setSize(400, 510);
                                 frmUser.setVisible(true);
                             }
                         });
@@ -96,7 +99,8 @@ public class UserController {
             }
         };
     }
-    public void hideComponents(){
+
+    public void hideComponents() {
         jbnCancelar.setVisible(false);
         jbnRegistrar.setVisible(false);
         jbnIngresar.setVisible(false);
@@ -119,15 +123,17 @@ public class UserController {
         jtfTel.setVisible(false);
     }
 
-    private MouseAdapter lblRegistrarse(){
+    private MouseAdapter lblRegistrarse() {
         return new MouseAdapter() {
             @Override
             public void mouseClicked(MouseEvent e) {
                 super.mouseClicked(e);
                 new Thread() {
-                    @Override public void run () {
-                        SwingUtilities.invokeLater(new Runnable(){
-                            @Override public void run() {
+                    @Override
+                    public void run() {
+                        SwingUtilities.invokeLater(new Runnable() {
+                            @Override
+                            public void run() {
                                 //frmUser.setVisible(false);
                                 frmUser.cleanAllFields();
                                 showAllComponents();
@@ -145,7 +151,7 @@ public class UserController {
         };
     }
 
-    public void showAllComponents(){
+    public void showAllComponents() {
         jbnIngresar.setVisible(false);
         jtfUser.setVisible(true);
         jlbId.setVisible(true);
@@ -168,26 +174,27 @@ public class UserController {
         jbnRegistrar.setVisible(true);
 
         jlbRegistrarse.setLocation(frmUser.getDefaultRegistrarPosition());
-        jbnCancelar.setLocation(220,580);
+        jbnCancelar.setLocation(220, 580);
         frmUser.setSize(frmUser.getDefaultFrameSize().x, frmUser.getDefaultFrameSize().y);
     }
-    private void setDefaultValues(){
+
+    private void setDefaultValues() {
         hideComponents();
-        jlbRegistrarse.setLocation(140,300);
-        frmUser.setSize(400,400);
+        jlbRegistrarse.setLocation(140, 300);
+        frmUser.setSize(400, 400);
     }
 
-    private ActionListener ingresar(){
+    private ActionListener ingresar() {
         return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String user = jtfUser.getText();
                 String pass = String.valueOf(jpfPass.getPassword());
 
-                if (user.equals("") || pass.equals("")){
+                if (user.equals("") || pass.equals("")) {
                     JOptionPane.showMessageDialog(frmUser, "Ingrese el Usuario y/o la Contraseña", "Campos en blanco", JOptionPane.INFORMATION_MESSAGE);
-                }else{
-                    if (usersList.compareElements(user,pass)){
+                } else {
+                    if (usersList.compareElements(user, pass)) {
                         frmUser.setVisible(false);
                         if (frmMenu == null){
                             frmMenu = new frmMenu();
@@ -197,15 +204,15 @@ public class UserController {
                         System.out.println(current.getUser());
                         frmMenu.setCurrentUser(current);
                         frmMenu.setVisible(true);
-                    }else{
-                        JOptionPane.showMessageDialog(frmUser,"Usuario o contraseña invalidos","Datos invalidos",JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        JOptionPane.showMessageDialog(frmUser, "Usuario o contraseña invalidos", "Datos invalidos", JOptionPane.INFORMATION_MESSAGE);
                     }
                 }
             }
         };
     }
 
-    private ActionListener cancelar(){
+    private ActionListener cancelar() {
         return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -227,26 +234,26 @@ public class UserController {
                 String lastName = jtfLastName.getText();
                 String phone = jtfTel.getText();
                 String type = jtfPosition.getText();
-                if (!usersList.compareElements(user)){
-                    usersList.add(id,user,pass,name,lastName,phone,type);
+                if (!usersList.compareElements(user)) {
+                    usersList.add(id, user, pass, name, lastName, phone, type);
                     id++;
                     frmUser.cleanAllFields();
-                    JOptionPane.showMessageDialog(frmUser,"Registro exitoso");
-                }else{
-                    JOptionPane.showMessageDialog(frmUser,"El usuario que intenta registrar ya existe",
-                            "Usuario existente",JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(frmUser, "Registro exitoso");
+                } else {
+                    JOptionPane.showMessageDialog(frmUser, "El usuario que intenta registrar ya existe",
+                            "Usuario existente", JOptionPane.INFORMATION_MESSAGE);
                 }
 
             }
         };
     }
 
-    private ActionListener salir(){
+    private ActionListener salir() {
         return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int respuesta = JOptionPane.showConfirmDialog(frmUser,"¿Desea salir?","Confirmación para salir",JOptionPane.YES_NO_CANCEL_OPTION);
-                if (respuesta == JOptionPane.YES_OPTION){
+                int respuesta = JOptionPane.showConfirmDialog(frmUser, "¿Desea salir?", "Confirmación para salir", JOptionPane.YES_NO_CANCEL_OPTION);
+                if (respuesta == JOptionPane.YES_OPTION) {
                     frmUser.dispose();
                     if (frmMenu != null){
                         frmMenu.dispose();

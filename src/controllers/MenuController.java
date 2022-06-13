@@ -16,7 +16,7 @@ public class MenuController {
     private final JMenuItem registroProductos;
     private final JMenuItem registroVendedores;
 
-    public MenuController(frmUser frameuser, frmMenu frmMenu){
+    public MenuController(frmUser frameuser, frmMenu frmMenu) {
         this.frmMenu = frmMenu;
         this.frameUser = frameuser;
         registroClientes = frmMenu.getJmiVerCliente();
@@ -27,7 +27,7 @@ public class MenuController {
         addListeners();
     }
 
-    public void addListeners(){
+    public void addListeners() {
         registroClientes.addActionListener(registrarClientes());
         registroVendedores.addActionListener(registrarVendedor());
         registroVentas.addActionListener(registrarVenta());
@@ -44,67 +44,67 @@ public class MenuController {
         frmMenu.getJmiRegresar().addActionListener(logOut());
     }
 
-    private ActionListener registrarClientes(){
-        return  new ActionListener() {
+    private ActionListener registrarClientes() {
+        return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               frmMenu.setVisible(false);
+                frmMenu.setVisible(false);
                 frmClientes frmClientes = new frmClientes();
                 frmClientes.setVisible(true);
-                new ClientController(frmMenu,frmClientes);
+                new ClientController(frmMenu, frmClientes);
             }
         };
     }
 
-    private ActionListener registrarProveedor(){
+    private ActionListener registrarProveedor() {
         return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frmMenu.setVisible(false);
                 frmProveedores frmProveedor = new frmProveedores();
                 frmProveedor.setVisible(true);
-                new ProvidersController(frmMenu,frmProveedor);
+                new ProvidersController(frmMenu, frmProveedor);
             }
         };
     }
 
-    private ActionListener registrarVenta(){
+    private ActionListener registrarVenta() {
         return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frmMenu.setVisible(false);
                 frmVentas frmVentas = new frmVentas();
                 frmVentas.setVisible(true);
-                new SalesController(frmMenu,frmVentas);
+                new SalesController(frmMenu, frmVentas);
             }
         };
     }
 
-    private ActionListener registrarProducto(){
+    private ActionListener registrarProducto() {
         return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frmMenu.setVisible(false);
                 frmProductos frmProductos = new frmProductos();
                 frmProductos.setVisible(true);
-                new ProductsController(frmMenu,frmProductos);
+                new ProductsController(frmMenu, frmProductos);
             }
         };
     }
 
-    private ActionListener registrarVendedor(){
+    private ActionListener registrarVendedor() {
         return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 frmMenu.setVisible(false);
                 frmVendedores frmVendedores = new frmVendedores();
                 frmVendedores.setVisible(true);
-                new SellerController(frmMenu,frmVendedores);
+                new SellerController(frmMenu, frmVendedores);
             }
         };
     }
 
-    private ActionListener mostrarProductos(){
+    private ActionListener mostrarProductos() {
         return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -115,7 +115,7 @@ public class MenuController {
         };
     }
 
-    private ActionListener mostrarClientes(){
+    private ActionListener mostrarClientes() {
         return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -126,7 +126,7 @@ public class MenuController {
         };
     }
 
-    private ActionListener mostrarProveedores(){
+    private ActionListener mostrarProveedores() {
         return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -137,7 +137,7 @@ public class MenuController {
         };
     }
 
-    private ActionListener mostrarVentas(){
+    private ActionListener mostrarVentas() {
         return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -148,7 +148,7 @@ public class MenuController {
         };
     }
 
-    private ActionListener mostrarVendedores(){
+    private ActionListener mostrarVendedores() {
         return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -159,7 +159,7 @@ public class MenuController {
         };
     }
 
-    private ActionListener salir(){
+    private ActionListener salir() {
         return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -169,16 +169,15 @@ public class MenuController {
         };
     }
 
-    private ActionListener logOut(){
+    private ActionListener logOut() {
         return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-               frmMenu.setVisible(false);
-               frameUser.cleanAllFields();
-               frameUser.setVisible(true);
+                frmMenu.setVisible(false);
+                frameUser.cleanAllFields();
+                frameUser.setVisible(true);
             }
         };
     }
-
 
 }
