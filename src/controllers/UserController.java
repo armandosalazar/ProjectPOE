@@ -3,6 +3,7 @@ package controllers;
 import Lists.UsersList;
 import View.frmMenu;
 import View.frmUser;
+import models.User;
 
 import javax.swing.*;
 import java.awt.event.*;
@@ -68,6 +69,7 @@ public class UserController {
                     @Override public void run () {
                         SwingUtilities.invokeLater(new Runnable(){
                             @Override public void run() {
+                                frmUser.cleanAllFields();
                                 hideComponents();
                                 jtfUser.setVisible(true);
                                 jlbId.setVisible(true);
@@ -80,7 +82,7 @@ public class UserController {
 
                                 jlbRegistrarse.setLocation(140,440);
                                 frmUser.setSize(400,510);
-
+                                frmUser.setVisible(true);
                             }
                         });
                     }
@@ -125,7 +127,8 @@ public class UserController {
                     @Override public void run () {
                         SwingUtilities.invokeLater(new Runnable(){
                             @Override public void run() {
-                                frmUser.setVisible(false);
+                                //frmUser.setVisible(false);
+                                frmUser.cleanAllFields();
                                 showAllComponents();
                                 frmUser.setVisible(true);
                             }
@@ -179,11 +182,21 @@ public class UserController {
             public void actionPerformed(ActionEvent e) {
                 String user = jtfUser.getText();
                 String pass = String.valueOf(jpfPass.getPassword());
-                if ( usersList.compareElements(user,pass)){
-                    frmUser.setVisible(false);
-                    frmMenu frmMenu = new frmMenu();
-                    new MenuController(frmMenu);
-                    frmMenu.setVisible(true);
+
+                if (user.equals("") || pass.equals("")){
+                    JOptionPane.showMessageDialog(frmUser, "Ingrese el Usuario y/o la Contraseña", "Campos en blanco", JOptionPane.INFORMATION_MESSAGE);
+                }else{
+                    if (usersList.compareElements(user,pass)){
+                        frmUser.setVisible(false);
+                        frmMenu frmMenu = new frmMenu();
+                        User current = usersList.getNode(user);
+                        System.out.println(current.getUser());
+                        frmMenu.setCurrentUser(current);
+                        new MenuController(frmUser,frmMenu);
+                        frmMenu.setVisible(true);
+                    }else{
+                        JOptionPane.showMessageDialog(frmUser,"Usuario o contraseña invalidos","Datos invalidos",JOptionPane.INFORMATION_MESSAGE);
+                    }
                 }
             }
         };
@@ -210,11 +223,16 @@ public class UserController {
                 String lastName = jtfLastName.getText();
                 String phone = jtfTel.getText();
                 String type = jtfPosition.getText();
+                if (!usersList.compareElements(user)){
+                    usersList.add(id,user,pass,name,lastName,phone,type);
+                    id++;
+                    frmUser.cleanAllFields();
+                    JOptionPane.showMessageDialog(frmUser,"Registro exitoso");
+                }else{
+                    JOptionPane.showMessageDialog(frmUser,"El usuario que intenta registrar ya existe",
+                            "Usuario existente",JOptionPane.INFORMATION_MESSAGE);
+                }
 
-                usersList.add(id,user,pass,name,lastName,phone,type);
-                id++;
-                frmUser.cleanAllFields();
-                JOptionPane.showMessageDialog(frmUser,"Registro exitoso");
             }
         };
     }

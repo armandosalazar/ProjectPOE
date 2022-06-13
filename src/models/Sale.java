@@ -11,6 +11,7 @@ public class Sale {
     private Client client;
     private Seller seller;
     private double total;
+    private Sale next;
 
     public Sale(int number, Product[] products, Client client, Seller seller, double total) {
         this.number = number;
@@ -60,4 +61,11 @@ public class Sale {
         this.total = total;
     }
 
+    public Sale getNext() {
+        return next;
+    }
+
+    public void setNext(Sale next) {
+        this.next = next;
+    }
 }

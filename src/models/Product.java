@@ -12,6 +12,8 @@ public class Product {
     private int quantity;
     private Provider provider;
 
+    private Product next;
+
     public Product(int id, String name, double price, int quantity, Provider provider) {
         this.id = id;
         this.name = name;
@@ -60,4 +62,11 @@ public class Product {
         this.provider = provider;
     }
 
+    public Product getNext() {
+        return next;
+    }
+
+    public void setNext(Product next) {
+        this.next = next;
+    }
 }

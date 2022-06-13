@@ -4,12 +4,42 @@ import java.awt.Cursor;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
-import javax.swing.ImageIcon;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 public class frmVendedores extends javax.swing.JFrame {
 
     //Objeto de la clase ImagenFondo
     ImagenFondo fondo;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JButton jbnActualizar;
+    private javax.swing.JButton jbnEliminar;
+    private javax.swing.JButton jbnRegistrar;
+    private javax.swing.JButton jbnRegresar;
+    private javax.swing.JLabel jlbApellido;
+    private javax.swing.JLabel jlbPuesto;
+    private javax.swing.JLabel jlbEditable;
+    private javax.swing.JLabel jlbID;
+    private javax.swing.JLabel jlbLogo;
+    private javax.swing.JLabel jlbNombre;
+    private javax.swing.JLabel jlbTeléfono;
+    private javax.swing.JLabel jlbTitulo;
+    private javax.swing.JTextField jtfApellido;
+    private javax.swing.JTextField jtfPuesto;
+    private javax.swing.JTextField jtfNombre;
+    private javax.swing.JTextField jtfTelefono;
+    private DefaultTableModel model = new DefaultTableModel(){
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            return false;
+        }
+    };
+
 
     public frmVendedores() {
 
@@ -52,11 +82,11 @@ public class frmVendedores extends javax.swing.JFrame {
         jlbNombre = new javax.swing.JLabel();
         jlbApellido = new javax.swing.JLabel();
         jlbTeléfono = new javax.swing.JLabel();
-        jlbDireccion = new javax.swing.JLabel();
+        jlbPuesto = new javax.swing.JLabel();
         jtfNombre = new javax.swing.JTextField();
         jtfApellido = new javax.swing.JTextField();
         jtfTelefono = new javax.swing.JTextField();
-        jtfDireccion = new javax.swing.JTextField();
+        jtfPuesto = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jlbEditable = new javax.swing.JLabel();
@@ -110,10 +140,10 @@ public class frmVendedores extends javax.swing.JFrame {
         jlbTeléfono.setBounds(40,230,jlbTeléfono.getPreferredSize().width,jlbTeléfono.getPreferredSize().height);
         jPanel1.add(jlbTeléfono);
 
-        jlbDireccion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jlbDireccion.setText("Dirección:");
-        jlbDireccion.setBounds(40,270,jlbDireccion.getPreferredSize().width,jlbDireccion.getPreferredSize().height);
-        jPanel1.add(jlbDireccion);
+        jlbPuesto.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlbPuesto.setText("Puesto:");
+        jlbPuesto.setBounds(40,270, jlbPuesto.getPreferredSize().width, jlbPuesto.getPreferredSize().height);
+        jPanel1.add(jlbPuesto);
 
         jtfNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtfNombre.setBounds(140,150,200,jtfNombre.getPreferredSize().height);
@@ -127,21 +157,10 @@ public class frmVendedores extends javax.swing.JFrame {
         jtfTelefono.setBounds(140,230,200,jtfTelefono.getPreferredSize().height);
         jPanel1.add(jtfTelefono);
 
-        jtfDireccion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jtfDireccion.setBounds(140,270,200,jtfDireccion.getPreferredSize().height);
-        jPanel1.add(jtfDireccion);
+        jtfPuesto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jtfPuesto.setBounds(140,270,200, jtfPuesto.getPreferredSize().height);
+        jPanel1.add(jtfPuesto);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
         jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jScrollPane1.setViewportView(jTable1);
         jScrollPane1.setBounds(390,110,490,240);
@@ -161,7 +180,7 @@ public class frmVendedores extends javax.swing.JFrame {
         jbnActualizar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jbnActualizar.setText("Actualizar");
         jbnActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jbnActualizar.setBounds(380,390,100,40);
+        jbnActualizar.setBounds(380,390,jbnActualizar.getPreferredSize().width,40);
         jPanel1.add(jbnActualizar);
 
         jbnEliminar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -253,29 +272,51 @@ public class frmVendedores extends javax.swing.JFrame {
             }
         });
     }
+    public JButton getJbnActualizar() {
+        return jbnActualizar;
+    }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JButton jbnActualizar;
-    private javax.swing.JButton jbnEliminar;
-    private javax.swing.JButton jbnRegistrar;
-    private javax.swing.JButton jbnRegresar;
-    private javax.swing.JLabel jlbApellido;
-    private javax.swing.JLabel jlbDireccion;
-    private javax.swing.JLabel jlbEditable;
-    private javax.swing.JLabel jlbID;
-    private javax.swing.JLabel jlbLogo;
-    private javax.swing.JLabel jlbNombre;
-    private javax.swing.JLabel jlbTeléfono;
-    private javax.swing.JLabel jlbTitulo;
-    private javax.swing.JTextField jtfApellido;
-    private javax.swing.JTextField jtfDireccion;
-    private javax.swing.JTextField jtfNombre;
-    private javax.swing.JTextField jtfTelefono;
+
+    public JButton getJbnEliminar() {
+        return jbnEliminar;
+    }
+
+    public JButton getJbnRegistrar() {
+        return jbnRegistrar;
+    }
+
+    public JButton getJbnRegresar() {
+        return jbnRegresar;
+    }
+
+    public JTextField getJtfApellido() {
+        return jtfApellido;
+    }
+
+    public JLabel getJlbEditable() {
+        return jlbEditable;
+    }
+
+    public JTextField getJtfPuesto() {
+        return jtfPuesto;
+    }
+
+    public JTextField getJtfNombre() {
+        return jtfNombre;
+    }
+
+    public JTextField getJtfTelefono() {
+        return jtfTelefono;
+    }
+
     // End of variables declaration//GEN-END:variables
+
+
+    public JTable getjTable1() {
+        return jTable1;
+    }
+
+    public DefaultTableModel getModel() {
+        return model;
+    }
 }

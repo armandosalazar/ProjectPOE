@@ -1,10 +1,12 @@
 package models;
 
+import Lists.SalesList;
+
 /**
  *
  * @author armando
  */
-public class User {
+public class User{
 
     private int id;
     private String name;
@@ -14,6 +16,8 @@ public class User {
     private String user;
     private String pass;
     private User next;
+
+    private SalesList salesList;
 
     public User(int id, String user, String pass, String name, String lastname, String phone, String type) {
         this.id = id;
@@ -87,5 +91,13 @@ public class User {
 
     public void setPass(String pass) {
         this.pass = pass;
+    }
+
+    public SalesList getSalesList() {
+        return salesList;
+    }
+
+    public void setSalesList(SalesList salesList) {
+        this.salesList = salesList;
     }
 }

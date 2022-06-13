@@ -19,7 +19,6 @@ public class Client {
         this.phone = phone;
         this.address = address;
     }
-
     public int getId() {
         return id;
     }

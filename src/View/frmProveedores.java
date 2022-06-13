@@ -4,12 +4,43 @@ import java.awt.Cursor;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
-import javax.swing.ImageIcon;
+import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
 
 public class frmProveedores extends javax.swing.JFrame {
 
     //Objeto de la clase ImagenFondo
     ImagenFondo fondo;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTable1;
+    private javax.swing.JButton jbnActualizar;
+    private javax.swing.JButton jbnEliminar;
+    private javax.swing.JButton jbnRegistrar;
+    private javax.swing.JButton jbnRegresar;
+    private javax.swing.JComboBox<String> jcbProducto;
+    private javax.swing.JLabel jlbApellido;
+    private javax.swing.JLabel jlbDireccion;
+    private javax.swing.JLabel jlbEditable;
+    private javax.swing.JLabel jlbID;
+    private javax.swing.JLabel jlbLogo;
+    private javax.swing.JLabel jlbNombre;
+    private javax.swing.JLabel jlbProductos;
+    private javax.swing.JLabel jlbTeléfono;
+    private javax.swing.JLabel jlbTitulo;
+    private javax.swing.JTextField jtfApellido;
+    private javax.swing.JTextField jtfDireccion;
+    private javax.swing.JTextField jtfNombre;
+    private javax.swing.JTextField jtfTelefono;
+    private DefaultTableModel model = new DefaultTableModel(){
+        @Override
+        public boolean isCellEditable(int row, int column) {
+            return false;
+        }
+    };
 
     public frmProveedores() {
 
@@ -113,10 +144,10 @@ public class frmProveedores extends javax.swing.JFrame {
         jPanel1.add(jlbTeléfono);
 
 
-        jlbDireccion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        /*jlbDireccion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlbDireccion.setText("Dirección:");
         jlbDireccion.setBounds(40,270,jlbDireccion.getPreferredSize().width,jlbDireccion.getPreferredSize().height);
-        jPanel1.add(jlbDireccion);
+        jPanel1.add(jlbDireccion);*/
 
         jtfNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtfNombre.setBounds(140,150,200,jtfNombre.getPreferredSize().height);
@@ -130,32 +161,21 @@ public class frmProveedores extends javax.swing.JFrame {
         jtfTelefono.setBounds(140,230,200,jtfTelefono.getPreferredSize().height);
         jPanel1.add(jtfTelefono);
 
-        jtfDireccion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        /*jtfDireccion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtfDireccion.setBounds(140,270,200,jtfDireccion.getPreferredSize().height);
-        jPanel1.add(jtfDireccion);
+        jPanel1.add(jtfDireccion);*/
 
         jlbProductos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlbProductos.setText("Producto:");
         jlbProductos.setBounds(40,310,jlbProductos.getPreferredSize().width,jlbProductos.getPreferredSize().height);
         jPanel1.add(jlbProductos);
 
-        jcbProducto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        /*jcbProducto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jcbProducto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elige:" }));
         jcbProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jcbProducto.setBounds(140,310,200,jcbProducto.getPreferredSize().height);
-        jPanel1.add(jcbProducto);
+        jPanel1.add(jcbProducto);*/
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
-
-            }
-        ));
         jTable1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jScrollPane1.setViewportView(jTable1);
         jScrollPane1.setBounds(390,110,490,240);
@@ -164,13 +184,14 @@ public class frmProveedores extends javax.swing.JFrame {
         jbnActualizar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jbnActualizar.setText("Actualizar");
         jbnActualizar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jbnActualizar.setBounds(380,420,100,40);
+        jbnActualizar.setBounds(380,420,jbnActualizar.getPreferredSize().width,40);
         jPanel1.add(jbnActualizar);
 
         jbnRegistrar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jbnRegistrar.setText("Registrar");
         jbnRegistrar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        //jPanel1.add(jbnRegistrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 420, -1, 40));
+        jbnRegistrar.setBounds(190,420,jbnRegistrar.getPreferredSize().width,40);
+        jPanel1.add(jbnRegistrar);
 
         jbnEliminar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jbnEliminar.setText("Eliminar");
@@ -269,30 +290,46 @@ public class frmProveedores extends javax.swing.JFrame {
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JButton jbnActualizar;
-    private javax.swing.JButton jbnEliminar;
-    private javax.swing.JButton jbnRegistrar;
-    private javax.swing.JButton jbnRegresar;
-    private javax.swing.JComboBox<String> jcbProducto;
-    private javax.swing.JLabel jlbApellido;
-    private javax.swing.JLabel jlbDireccion;
-    private javax.swing.JLabel jlbEditable;
-    private javax.swing.JLabel jlbID;
-    private javax.swing.JLabel jlbLogo;
-    private javax.swing.JLabel jlbNombre;
-    private javax.swing.JLabel jlbProductos;
-    private javax.swing.JLabel jlbTeléfono;
-    private javax.swing.JLabel jlbTitulo;
-    private javax.swing.JTextField jtfApellido;
-    private javax.swing.JTextField jtfDireccion;
-    private javax.swing.JTextField jtfNombre;
-    private javax.swing.JTextField jtfTelefono;
+    public JButton getJbnActualizar() {
+        return jbnActualizar;
+    }
+
+    public JButton getJbnEliminar() {
+        return jbnEliminar;
+    }
+
+    public JButton getJbnRegistrar() {
+        return jbnRegistrar;
+    }
+
+    public JButton getJbnRegresar() {
+        return jbnRegresar;
+    }
+
+    public JTextField getJtfApellido() {
+        return jtfApellido;
+    }
+
+    public JTextField getJtfNombre() {
+        return jtfNombre;
+    }
+
+    public JTextField getJtfTelefono() {
+        return jtfTelefono;
+    }
+
+    public JTable getjTable1() {
+        return jTable1;
+    }
+
+    public DefaultTableModel getModel() {
+        return model;
+    }
+
+    public JLabel getJlbEditable() {
+        return jlbEditable;
+    }
+
+
     // End of variables declaration//GEN-END:variables
 }

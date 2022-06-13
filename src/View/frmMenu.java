@@ -1,17 +1,73 @@
 package View;
 
+import Lists.ProductsList;
+import Lists.SalesList;
+import models.*;
+
 import java.awt.Cursor;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
-import javax.swing.ImageIcon;
+import javax.swing.*;
 
 public class frmMenu extends javax.swing.JFrame {
 
+
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPopupMenu.Separator jSeparator1;
+    private javax.swing.JPopupMenu.Separator jSeparator4;
+    private javax.swing.JPopupMenu.Separator jSeparator5;
+    private javax.swing.JLabel jlbDireccion;
+    private javax.swing.JLabel jlbFacebook;
+    private javax.swing.JLabel jlbInstagram;
+    private javax.swing.JLabel jlbLogo;
+    private javax.swing.JLabel jlbMessenger;
+    private javax.swing.JLabel jlbTelefono;
+    private javax.swing.JLabel jlbWhatsapp;
+    private javax.swing.JMenu jmCatalogo;
+    private javax.swing.JMenu jmClientes;
+    private javax.swing.JMenu jmProveedores;
+    private javax.swing.JMenu jmUsuarios;
+    private javax.swing.JMenu jmVentas;
+    private javax.swing.JMenuItem jmiComprasCliente;
+    private javax.swing.JMenuItem jmiEditarProducto;
+    private javax.swing.JMenuItem jmiEditarVenta;
+    private javax.swing.JMenuItem jmiProductosProveedor;
+    private javax.swing.JMenuItem jmiRegresar;
+    private javax.swing.JMenuItem jmiSalr;
+    private javax.swing.JMenuItem jmiVentasVendedor;
+    private javax.swing.JMenuItem jmiVerCliente;
+    private javax.swing.JMenuItem jmiVerProducto;
+    private javax.swing.JMenuItem jmiVerProveedor;
+    private javax.swing.JMenuItem jmiVerUsuarios;
+    private javax.swing.JMenuItem jmiVerVendedor;
+    private javax.swing.JMenuItem jmiVerVenta;
     ImagenFondo fondo;
+    private Client [] clients;
+    private Provider [] providers;
+    private Seller [] sellers;
+    private int countClients;
+    private int countProviders;
+    private int countSellers;
+
+    private ProductsList productsList;
+    private User current;
+    private SalesList salesList;
+
 
     public frmMenu() {
         //Instanciar objetos de ImagenFondo
+        clients = new Client[20];
+        providers = new Provider[20];
+        sellers = new Seller[20];
+        productsList = new ProductsList();
+        salesList = new SalesList();
         fondo = new ImagenFondo("src/Imagenes/fondoMenuPrincipal.jpg");
         this.setContentPane(fondo);
 
@@ -305,41 +361,122 @@ public class frmMenu extends javax.swing.JFrame {
         });
     }
 
-    // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPopupMenu.Separator jSeparator1;
-    private javax.swing.JPopupMenu.Separator jSeparator4;
-    private javax.swing.JPopupMenu.Separator jSeparator5;
-    private javax.swing.JLabel jlbDireccion;
-    private javax.swing.JLabel jlbFacebook;
-    private javax.swing.JLabel jlbInstagram;
-    private javax.swing.JLabel jlbLogo;
-    private javax.swing.JLabel jlbMessenger;
-    private javax.swing.JLabel jlbTelefono;
-    private javax.swing.JLabel jlbWhatsapp;
-    private javax.swing.JMenu jmCatalogo;
-    private javax.swing.JMenu jmClientes;
-    private javax.swing.JMenu jmProveedores;
-    private javax.swing.JMenu jmUsuarios;
-    private javax.swing.JMenu jmVentas;
-    private javax.swing.JMenuItem jmiComprasCliente;
-    private javax.swing.JMenuItem jmiEditarProducto;
-    private javax.swing.JMenuItem jmiEditarVenta;
-    private javax.swing.JMenuItem jmiProductosProveedor;
-    private javax.swing.JMenuItem jmiRegresar;
-    private javax.swing.JMenuItem jmiSalr;
-    private javax.swing.JMenuItem jmiVentasVendedor;
-    private javax.swing.JMenuItem jmiVerCliente;
-    private javax.swing.JMenuItem jmiVerProducto;
-    private javax.swing.JMenuItem jmiVerProveedor;
-    private javax.swing.JMenuItem jmiVerUsuarios;
-    private javax.swing.JMenuItem jmiVerVendedor;
-    private javax.swing.JMenuItem jmiVerVenta;
-    // End of variables declaration//GEN-END:variables
+    public JMenuItem getJmiVerProducto() {
+        return jmiVerProducto;
+    }
+
+    public JMenuItem getJmiVerProveedor() {
+        return jmiVerProveedor;
+    }
+
+    public JMenuItem getJmiVerVendedor() {
+        return jmiVerVendedor;
+    }
+
+    public JMenuItem getJmiVerVenta() {
+        return jmiVerVenta;
+    }
+
+    public JMenuItem getJmiVerCliente() {
+        return jmiVerCliente;
+    }
+
+    public JMenuItem getJmiRegresar() {
+        return jmiRegresar;
+    }
+
+    public JMenuItem getJmiSalr() {
+        return jmiSalr;
+    }
+
+    public JMenuItem getJmiEditarProducto() {
+        return jmiEditarProducto;
+    }
+
+    public JMenuItem getJmiEditarVenta() {
+        return jmiEditarVenta;
+    }
+
+    public JMenuItem getJmiComprasCliente() {
+        return jmiComprasCliente;
+    }
+
+    public JMenuItem getJmiProductosProveedor() {
+        return jmiProductosProveedor;
+    }
+
+    public JMenuItem getJmiVentasVendedor() {
+        return jmiVentasVendedor;
+    }
+
+    public JMenuItem getJmiVerUsuarios() {
+        return jmiVerUsuarios;
+    }
+
+    public Client[] getClients() {
+        return clients;
+    }
+    public void addClient(Client client, int index){
+        this.clients[index] = client;
+    }
+
+    public void setClients(Client [] clients){
+        this.clients = clients;
+    }
+
+    public void setCountClients(int countClients) {
+        this.countClients = countClients;
+    }
+
+    public int getSizeClient(){
+        return countClients;
+    }
+
+    public Provider[] getProviders() {
+        return providers;
+    }
+    public void setProviders(Provider []providers){
+        this.providers = providers;
+    }
+
+    public void setCountProviders(int countProviders){
+        this.countProviders = countProviders;
+    }
+
+    public int getSizeProviders(){
+        return countProviders;
+    }
+    public void addProvider(Provider provider, int index){
+        this.providers[index] = provider;
+    }
+    public Seller[] getSellers() {
+        return sellers;
+    }
+
+    public void setCountSellers(int countSellers){
+        this.countSellers = countSellers;
+    }
+
+    public int getSizeSellers(){
+        return countSellers;
+    }
+    public void addSeller(Seller seller, int index){
+        this.sellers[index] = seller;
+    }
+
+    public void setSellers(Seller[] sellers) {
+        this.sellers = sellers;
+    }
+
+    public ProductsList getProductsList() {
+        return productsList;
+    }
+
+    public User getCurrentUser() {
+        return current;
+    }
+
+    public void setCurrentUser(User current) {
+        this.current = current;
+    }
 }

@@ -5,7 +5,7 @@ import java.awt.Cursor;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
-import javax.swing.ImageIcon;
+import javax.swing.*;
 
 
 public class frmVerClientes extends javax.swing.JFrame {
@@ -66,36 +66,42 @@ public class frmVerClientes extends javax.swing.JFrame {
         setIconImage(getIconImage());
 
         jPanel1.setOpaque(false);
-        //jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.setLayout(null);
 
         jlbLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoS.png"))); // NOI18N
-        //jPanel1.add(jlbLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jlbLogo.setBounds(0,0,jlbLogo.getPreferredSize().width,jlbLogo.getPreferredSize().height);
+        jPanel1.add(jlbLogo);
 
         jlbTitulo.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jlbTitulo.setForeground(new java.awt.Color(153, 0, 0));
         jlbTitulo.setText("Nuestros clientes");
-        //jPanel1.add(jlbTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 30, -1, -1));
+        jlbTitulo.add(jlbTitulo);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/clientes.png"))); // NOI18N
-        //jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 30, 50, 30));
+        jLabel1.setBounds(490,30,50,30);
+        jPanel1.add(jLabel1);
 
         jbnLimpiar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jbnLimpiar.setText("Limpiar");
         jbnLimpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        //jPanel1.add(jbnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 430, 110, 40));
+        jbnLimpiar.setBounds(470,430,110,40);
+        jPanel1.add(jbnLimpiar);
 
         jbnBuscar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jbnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/search.png"))); // NOI18N
         jbnBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        //jPanel1.add(jbnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 110, 50, 40));
+        jbnBuscar.setBounds(220,110,50,40);
+        jPanel1.add(jbnBuscar);
 
         jtfBuscar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        //jPanel1.add(jtfBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 110, 190, 40));
+        jtfBuscar.setBounds(30,110,190,40);
+        jPanel1.add(jtfBuscar);
 
         jbnMostrarTodo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jbnMostrarTodo.setText("Mostrar todo");
         jbnMostrarTodo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        //jPanel1.add(jbnMostrarTodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 430, -1, 40));
+        jbnMostrarTodo.setBounds(240,430,jbnMostrarTodo.getPreferredSize().width,40);
+        jPanel1.add(jbnMostrarTodo);
 
         jtContenido.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -109,13 +115,14 @@ public class frmVerClientes extends javax.swing.JFrame {
             }
         ));
         jScrollPane2.setViewportView(jtContenido);
-
-        //jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 160, 740, 240));
+        jScrollPane2.setBounds(30,160,740,240);
+        jPanel1.add(jScrollPane2);
 
         jbnRegresar1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jbnRegresar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/back.png"))); // NOI18N
         jbnRegresar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        //jPanel1.add(jbnRegresar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 0, 40, 40));
+        jbnRegresar1.setBounds(770,0,40,40);
+        jPanel1.add(jbnRegresar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
