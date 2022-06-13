@@ -23,7 +23,7 @@ public class ProvidersController implements Operations {
     private int index;
     private DefaultTableModel model;
 
-    private final String[] header = {"ID", "Nombre", "Apellido", "Teléfono"};
+    private final String[] header = {"ID", "Nombre", "Apellido", "Teléfono", "Dirección"};
 
     public ProvidersController(frmMenu frmMenu, frmProveedores frmProveedores) {
         this.frameMenu = frmMenu;
