@@ -215,6 +215,7 @@ public class UserController {
         };
     }
 
+
     private ActionListener registrar(){
         return new ActionListener() {
             @Override
