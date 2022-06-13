@@ -12,7 +12,6 @@ import javax.swing.*;
 
 public class frmMenu extends javax.swing.JFrame {
 
-
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel6;
@@ -49,9 +48,9 @@ public class frmMenu extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmiVerVendedor;
     private javax.swing.JMenuItem jmiVerVenta;
     ImagenFondo fondo;
-    private Client [] clients;
-    private Provider [] providers;
-    private Seller [] sellers;
+    private Client[] clients;
+    private Provider[] providers;
+    private Seller[] sellers;
     private int countClients;
     private int countProviders;
     private int countSellers;
@@ -59,7 +58,6 @@ public class frmMenu extends javax.swing.JFrame {
     private ProductsList productsList;
     private User current;
     private SalesList salesList;
-
 
     public frmMenu() {
         //Instanciar objetos de ImagenFondo
@@ -275,7 +273,7 @@ public class frmMenu extends javax.swing.JFrame {
         jmCatalogo.setOpaque(true);
 
         jmiVerProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/edit.png"))); // NOI18N
-        jmiVerProducto.setText("Sistema de Productos");
+        jmiVerProducto.setText("Sistema de productos");
         jmiVerProducto.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jmCatalogo.add(jmiVerProducto);
 
@@ -328,38 +326,6 @@ public class frmMenu extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         setResizable(false);
     }// </editor-fold>//GEN-END:initComponents
-
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmMenu.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new frmMenu().setVisible(true);
-            }
-        });
-    }
 
     public JMenuItem getJmiVerProducto() {
         return jmiVerProducto;
@@ -416,11 +382,12 @@ public class frmMenu extends javax.swing.JFrame {
     public Client[] getClients() {
         return clients;
     }
-    public void addClient(Client client, int index){
+
+    public void addClient(Client client, int index) {
         this.clients[index] = client;
     }
 
-    public void setClients(Client [] clients){
+    public void setClients(Client[] clients) {
         this.clients = clients;
     }
 
@@ -428,39 +395,43 @@ public class frmMenu extends javax.swing.JFrame {
         this.countClients = countClients;
     }
 
-    public int getSizeClient(){
+    public int getSizeClient() {
         return countClients;
     }
 
     public Provider[] getProviders() {
         return providers;
     }
-    public void setProviders(Provider []providers){
+
+    public void setProviders(Provider[] providers) {
         this.providers = providers;
     }
 
-    public void setCountProviders(int countProviders){
+    public void setCountProviders(int countProviders) {
         this.countProviders = countProviders;
     }
 
-    public int getSizeProviders(){
+    public int getSizeProviders() {
         return countProviders;
     }
-    public void addProvider(Provider provider, int index){
+
+    public void addProvider(Provider provider, int index) {
         this.providers[index] = provider;
     }
+
     public Seller[] getSellers() {
         return sellers;
     }
 
-    public void setCountSellers(int countSellers){
+    public void setCountSellers(int countSellers) {
         this.countSellers = countSellers;
     }
 
-    public int getSizeSellers(){
+    public int getSizeSellers() {
         return countSellers;
     }
-    public void addSeller(Seller seller, int index){
+
+    public void addSeller(Seller seller, int index) {
         this.sellers[index] = seller;
     }
 
