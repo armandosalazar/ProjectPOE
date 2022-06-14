@@ -3,7 +3,6 @@ package controllers;
 import Interfaces.Operations;
 import View.frmMenu;
 import View.frmProveedores;
-import models.Client;
 import models.Provider;
 
 import javax.swing.*;
@@ -80,7 +79,7 @@ public class ProvidersController implements Operations {
                     a[4] = provider.getAddress();
                     frameMenu.addProvider(provider, id);
                     System.out.println(provider.getAddress());
-                    JOptionPane.showMessageDialog(frameProveedores, "Se registro correctamente el proveedor", "Registro exitoso", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(frameProveedores, "Se registró correctamente el proveedor", "Registro exitoso", JOptionPane.INFORMATION_MESSAGE);
                     model.addRow(a);
                     jTable.setModel(model);
                     frameMenu.setCountProviders(id + 1);
@@ -98,7 +97,7 @@ public class ProvidersController implements Operations {
             public void actionPerformed(ActionEvent e) {
                 if (isBlank()) {
                     JOptionPane.showMessageDialog(frameProveedores, "Favor de llenar todos los campos",
-                            "Campos vacios", JOptionPane.INFORMATION_MESSAGE);
+                            "Campos vacíos", JOptionPane.INFORMATION_MESSAGE);
                 } else {
                     if (isSame(providerSelected)) {
                         JOptionPane.showMessageDialog(frameProveedores, "No se ha modificado nada",
@@ -138,7 +137,7 @@ public class ProvidersController implements Operations {
             public void actionPerformed(ActionEvent e) {
                 if (isBlank()) {
                     JOptionPane.showMessageDialog(frameProveedores, "Favor de llenar todos los campos",
-                            "Campos vacios", JOptionPane.INFORMATION_MESSAGE);
+                            "Campos vacíos", JOptionPane.INFORMATION_MESSAGE);
                 } else {
                     String name = frameProveedores.getJtfNombre().getText();
                     String lastName = frameProveedores.getJtfApellido().getText();
@@ -147,9 +146,10 @@ public class ProvidersController implements Operations {
                         deleteProvider(indexThatMatch);
                         // updateTable(indexThatMatch);
                         cleanFields();
+                        jTable.getSelectionModel().clearSelection();
                     } else {
                         JOptionPane.showMessageDialog(frameProveedores, "No existe el proveedor: " + name + " " + lastName,
-                                "No se encontro el proveedor", JOptionPane.INFORMATION_MESSAGE);
+                                "No se encontró el proveedor", JOptionPane.INFORMATION_MESSAGE);
                     }
                 }
             }
@@ -209,7 +209,6 @@ public class ProvidersController implements Operations {
         model.setValueAt(null, indexThatMatch, 3);
         model.removeRow(indexThatMatch);
         jTable.setModel(model);
-        System.out.println(frameMenu.getSizeProviders());
     }
 
     private void cleanFields() {
@@ -246,17 +245,17 @@ public class ProvidersController implements Operations {
         int input = JOptionPane.showConfirmDialog(frameProveedores, "¿Desea eliminar el proveedor "
                         + frameMenu.getProviders()[indexThatMatch].getName() + " " + frameMenu.getProviders()[indexThatMatch].getLastname() + "?",
                 "Confirmación para eliminar", JOptionPane.YES_NO_OPTION);
-        System.out.println(input);
         if (input == JOptionPane.YES_OPTION) {
             frameMenu.setProviders(eliminar(indexThatMatch, frameMenu.getProviders()));
             int id = frameMenu.getSizeProviders();
             id--;
             frameMenu.setCountProviders(id);
-            JOptionPane.showMessageDialog(frameProveedores, "Se elimino correctamente el proveedor",
+            JOptionPane.showMessageDialog(frameProveedores, "Se eliminó correctamente el proveedor",
                     "Eliminación correcta", JOptionPane.INFORMATION_MESSAGE);
             updateTable(indexThatMatch);
         } else if (input == JOptionPane.NO_OPTION) {
-            JOptionPane.showMessageDialog(frameProveedores, "No se elimino nada", "Canelación de eliminación", JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(frameProveedores, "No se eliminó nada", "Cancelación de eliminación", JOptionPane.INFORMATION_MESSAGE);
+            jTable.getSelectionModel().clearSelection();
         }
     }
 

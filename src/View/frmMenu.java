@@ -2,6 +2,7 @@ package View;
 
 import Lists.ProductsList;
 import Lists.SalesList;
+import Lists.UsersList;
 import models.*;
 
 import java.awt.Cursor;
@@ -58,9 +59,11 @@ public class frmMenu extends javax.swing.JFrame {
     private ProductsList productsList;
     private User current;
     private SalesList salesList;
+    private UsersList usersList;
 
-    public frmMenu() {
+    public frmMenu(UsersList usersList) {
         //Instanciar objetos de ImagenFondo
+        this.usersList = usersList;
         clients = new Client[20];
         providers = new Provider[20];
         sellers = new Seller[20];
@@ -449,5 +452,13 @@ public class frmMenu extends javax.swing.JFrame {
 
     public void setCurrentUser(User current) {
         this.current = current;
+    }
+
+    public void setUsersList(UsersList list){
+        this.usersList = list;
+    }
+
+    public UsersList getUsersList(){
+        return usersList;
     }
 }

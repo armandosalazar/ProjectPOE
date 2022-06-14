@@ -200,15 +200,16 @@ public class UserController {
                     if (usersList.compareElements(user, pass)) {
                         frmUser.setVisible(false);
                         if (frmMenu == null) {
-                            frmMenu = new frmMenu();
+                            frmMenu = new frmMenu(usersList);
                             new MenuController(frmUser, frmMenu);
                         }
                         User current = usersList.getNode(user);
                         System.out.println(current.getUser());
                         frmMenu.setCurrentUser(current);
                         frmMenu.setVisible(true);
+                        frmMenu.setUsersList(usersList);
                     } else {
-                        JOptionPane.showMessageDialog(frmUser, "¡Usuario o contraseña invalidos!", "Datos invalidos", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(frmUser, "¡Usuario o contraseña inválidos!", "Datos inválidos", JOptionPane.ERROR_MESSAGE);
                     }
                 }
             }

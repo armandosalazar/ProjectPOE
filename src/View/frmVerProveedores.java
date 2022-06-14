@@ -1,6 +1,7 @@
 
 package View;
 
+import Interfaces.GetInfo;
 import models.Provider;
 
 import java.awt.Cursor;
@@ -13,7 +14,7 @@ import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 
-public class frmVerProveedores extends javax.swing.JFrame {
+public class frmVerProveedores extends javax.swing.JFrame implements GetInfo {
 
     //Objeto de la clase ImagenFondo
     ImagenFondo fondo;

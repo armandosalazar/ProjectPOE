@@ -10,23 +10,23 @@ public class ProductsList {
     private Product current;
     private int size;
 
-    public ProductsList(){
+    public ProductsList() {
         size = 0;
     }
 
-    public void add(int id, String name, double price, int quantity, Provider provider){
-        Product user = new Product(id,name,price,quantity,provider);
-        if (isEmpty()){
+    public void add(int id, String name, double price, int quantity, Provider provider) {
+        Product user = new Product(id, name, price, quantity, provider);
+        if (isEmpty()) {
             start = user;
             end = user;
             user.setNext(null);
             start.setNext(null);
-        }else{
+        } else {
             Product aux = start;
-            if (aux == end){
+            if (aux == end) {
                 start.setNext(user);
-            }else{
-                while (aux.getNext() != null){
+            } else {
+                while (aux.getNext() != null) {
                     aux = aux.getNext();
                 }
                 aux.setNext(user);
@@ -36,24 +36,24 @@ public class ProductsList {
         size++;
     }
 
-    public void delete(int id){
+    public void delete(int id) {
         int i = 0;
         Product temp = start;
         Product prev = null;
-        if (getSize() == 1){
+        if (getSize() == 1) {
             start = null;
             end = null;
             size--;
-        }else{
-            if(!isEmpty()){
-                while (temp != null && temp.getId() != id){
+        } else {
+            if (!isEmpty()) {
+                while (temp != null && temp.getId() != id) {
                     prev = temp;
                     temp = temp.getNext();
                 }
-                if (temp != null && prev != null){
-                    if (temp == end){
+                if (temp != null && prev != null) {
+                    if (temp == end) {
                         prev.setNext(null);
-                    }else{
+                    } else {
                         temp = temp.getNext();
                         prev.setNext(temp);
                         end = temp;
@@ -65,16 +65,16 @@ public class ProductsList {
         }
     }
 
-    public Product getNode(int index){
+    public Product getNode(int index) {
         int i = 0;
-        if(isEmpty()){
+        if (isEmpty()) {
             return null;
-        }else{
+        } else {
             Product aux = start;
-            while(i <= index){
-                if (i == index){
+            while (i <= index) {
+                if (i == index) {
                     return aux;
-                }else{
+                } else {
                     aux = aux.getNext();
                 }
                 i++;
@@ -83,10 +83,11 @@ public class ProductsList {
         return current;
     }
 
-    public int getSize(){
+    public int getSize() {
         return size;
     }
-    public boolean isEmpty(){
-        return getSize()== 0;
+
+    public boolean isEmpty() {
+        return getSize() == 0;
     }
 }

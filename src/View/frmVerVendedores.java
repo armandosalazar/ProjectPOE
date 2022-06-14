@@ -1,30 +1,33 @@
 
 package View;
 
+import Interfaces.GetInfo;
+import models.Provider;
+import models.Seller;
+
 import java.awt.Cursor;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
 
-public class frmVerVendedores extends javax.swing.JFrame {
+public class frmVerVendedores extends javax.swing.JFrame implements GetInfo {
 
     //Objeto de la clase ImagenFondo
     ImagenFondo fondo;
-    private DefaultTableModel model = new DefaultTableModel(){
-        @Override
-        public boolean isCellEditable(int row, int column) {
-            return false;
-        }
-    };
-    
-    public frmVerVendedores() {
+    // TODO: Vars to GetInfo
+    private frmMenu menu;
+    private final String[] header = {"ID", "Nombre", "Apellido", "Teléfono", "Puesto"};
+    public frmVerVendedores(frmMenu menu) {
                 
         //Instanciar objetos de ImagenFondo
         fondo = new ImagenFondo("src/Imagenes/fondoProveedores.jpg");
         this.setContentPane(fondo);
+        this.menu = menu;
         
         initComponents();
         
@@ -37,6 +40,10 @@ public class frmVerVendedores extends javax.swing.JFrame {
         c = tk.createCustomCursor(img.getImage(), new Point(1,1), null);
         //Visualizar el cursor personalizado
         setCursor(c);
+
+        // TODO: Call methods
+        getData();
+        addEvents();
     }
 
     @Override
@@ -136,42 +143,6 @@ public class frmVerVendedores extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-  
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmVerVendedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmVerVendedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmVerVendedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmVerVendedores.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new frmVerVendedores().setVisible(true);
-            }
-        });
-    }
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -188,11 +159,76 @@ public class frmVerVendedores extends javax.swing.JFrame {
     private javax.swing.JTextField jtfBuscar;
     // End of variables declaration//GEN-END:variables
 
-    public DefaultTableModel getModel() {
-        return model;
-    }
-
     public JTable getJtContenido() {
         return jtContenido;
+    }
+
+    @Override
+    public void addEvents() {
+        jbnMostrarTodo.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                getData();
+            }
+        });
+
+        jbnLimpiar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jtContenido.setModel(new DefaultTableModel(new Object[][]{}, header));
+            }
+        });
+
+        jbnRegresar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                menu.setVisible(true);
+                dispose();
+            }
+
+        });
+
+        jbnBuscar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DefaultTableModel model = new DefaultTableModel(new Object[][]{}, header);
+                jtContenido.setModel(model);
+                String data = jtfBuscar.getText();
+                boolean state = false;
+                for (Seller seller : menu.getSellers()) {
+                    if (seller != null) {
+                        if (data.equals(String.valueOf(seller.getId()))) {
+                            model.addRow(new Object[]{seller.getId(), seller.getName(), seller.getLastname(), seller.getPhone(), seller.getType()});
+                            state = true;
+                            return;
+                        }
+                        if (data.equals(String.valueOf(seller.getName()))) {
+                            model.addRow(new Object[]{seller.getId(), seller.getName(), seller.getLastname(), seller.getPhone(), seller.getType()});
+                            state = true;
+                            return;
+                        }
+                        if (data.equals(String.valueOf(seller.getLastname()))) {
+                            model.addRow(new Object[]{seller.getId(), seller.getName(), seller.getLastname(), seller.getPhone(), seller.getType()});
+                            state = true;
+                            return;
+                        }
+                    }
+                }
+                if (!state) JOptionPane.showMessageDialog(null, "Elemento no encontrado", "Sin resultados", JOptionPane.ERROR_MESSAGE);
+                jtContenido.setModel(model);
+            }
+        });
+    }
+
+    @Override
+    public void getData() {
+        DefaultTableModel model = new DefaultTableModel(new Object[][]{}, header);
+        jtContenido.setModel(model);
+        for (Seller seller : menu.getSellers()) {
+            if (seller != null) {
+                model.addRow(new Object[]{seller.getId(), seller.getName(), seller.getLastname(), seller.getPhone(), seller.getType()});
+            }
+        }
+        jtContenido.setModel(model);
     }
 }

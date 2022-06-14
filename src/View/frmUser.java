@@ -1,13 +1,18 @@
 package View;
 
+import Interfaces.Validations;
+
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 /**
  *
  * @author lucia
  */
-public class frmUser extends JFrame {
+public class frmUser extends JFrame implements Validations {
 
     /**
      * Creates new form frmUser
@@ -144,16 +149,19 @@ public class frmUser extends JFrame {
         jtfNombre.setFont(new Font("Tahoma", Font.PLAIN, 14)); // NOI18N
         jtfNombre.setCursor(new Cursor(Cursor.TEXT_CURSOR));
         jtfNombre.setBounds(155,480,200,jtfNombre.getPreferredSize().height);
+        //jtfNombre.addKeyListener(Validations);
         add(jtfNombre);
 
         jtfTelefono.setFont(new Font("Tahoma", Font.PLAIN, 14)); // NOI18N
         jtfTelefono.setCursor(new Cursor(Cursor.TEXT_CURSOR));
         jtfTelefono.setBounds(155,380,200, jtfTelefono.getPreferredSize().height);
+       // jtfTelefono.addKeyListener(validarLetras());
         add(jtfTelefono);
 
         jtfLastName.setFont(new Font("Tahoma", 0, 14)); // NOI18N
         jtfLastName.setCursor(new Cursor(Cursor.TEXT_CURSOR));
         jtfLastName.setBounds(155, 430, 200, jtfLastName.getPreferredSize().height);
+       // jtfLastName.addKeyListener(validarLetras());
         add(jtfLastName);
 
         jlbRegistrase.setBackground(new Color(255, 153, 153));
@@ -179,6 +187,7 @@ public class frmUser extends JFrame {
 
         jtfPuesto.setFont(new Font("Tahoma", Font.PLAIN, 14)); // NOI18N
         jtfPuesto.setBounds(155,530,200, jtfPuesto.getPreferredSize().height);
+        //jtfPuesto.addKeyListener(validarLetras());
         add(jtfPuesto);
 
         jlbFondo.setIcon(new ImageIcon(getClass().getResource("/Imagenes/fondoMulticolor.jpg"))); // NOI18N
