@@ -99,8 +99,9 @@ public class ProductsController implements Operations {
             @Override
             public void actionPerformed(ActionEvent e) {
                 String name = jtfName.getText();
+                double price;
                 try {
-                    int price = Integer.parseInt(jtfPrice.getText());
+                    price = Double.parseDouble(jtfPrice.getText());
                 } catch (NumberFormatException error) {
                     JOptionPane.showMessageDialog(null, "El precio tiene que ser un número", "Error de tipo", JOptionPane.ERROR_MESSAGE);
                     return;
@@ -113,8 +114,8 @@ public class ProductsController implements Operations {
                 int id = list.getSize();
 
                 if (!isBlank()) {
-                    list.add((id + 1), name, Integer.parseInt(jtfPrice.getText()), opcion, provider);
-                    Product product = new Product((id + 1), name, Integer.parseInt(jtfPrice.getText()), opcion, provider);
+                    list.add((id + 1), name, price, opcion, provider);
+                    Product product = new Product((id + 1), name, price, opcion, provider);
                     String providerName = provider.getName() + " " + provider.getLastname();
                     Object[] a = new Object[5];
                     a[0] = product.getId();
@@ -150,12 +151,13 @@ public class ProductsController implements Operations {
                             String name = jtfName.getText();
                             product.setName(name);
                             ;
-                            double price = -1;
+                            double price;
                             try {
-                                price = Integer.parseInt(jtfPrice.getText());
+                                price = Double.parseDouble(jtfPrice.getText());
                                 product.setPrice(price);
                             } catch (NumberFormatException error) {
-                                System.out.println(error.getMessage());
+                                JOptionPane.showMessageDialog(null, "El precio tiene que ser un número", "Error de tipo", JOptionPane.ERROR_MESSAGE);
+                                return;
                             }
                             int indexCB = jcbProvider.getSelectedIndex();
                             Provider provider = jcbProvider.getItemAt(indexCB);

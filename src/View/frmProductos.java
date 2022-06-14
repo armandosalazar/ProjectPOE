@@ -2,10 +2,7 @@ package View;
 
 import models.Provider;
 
-import java.awt.Cursor;
-import java.awt.Image;
-import java.awt.Point;
-import java.awt.Toolkit;
+import java.awt.*;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
@@ -134,6 +131,7 @@ public class frmProductos extends javax.swing.JFrame {
         jrbOpcion1.setText("1");
         jrbOpcion1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jrbOpcion1.setBounds(40,280,jrbOpcion1.getPreferredSize().width,jrbOpcion1.getPreferredSize().height);
+        jrbOpcion1.setBackground(new Color(254, 109, 2));
         jPanel1.add(jrbOpcion1);
 
         jcbProveedor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -146,12 +144,14 @@ public class frmProductos extends javax.swing.JFrame {
         jrbOpcion2.setText("12");
         jrbOpcion2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jrbOpcion2.setBounds(40,310,jrbOpcion2.getPreferredSize().width,jrbOpcion2.getPreferredSize().height);
+        jrbOpcion2.setBackground(new Color(254, 109, 2));
         jPanel1.add(jrbOpcion2);
 
         Grupo1.add(jrbOpcion3);
         jrbOpcion3.setText("24");
         jrbOpcion3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jrbOpcion3.setBounds(40,340,jrbOpcion3.getPreferredSize().width,jrbOpcion3.getPreferredSize().height);
+        jrbOpcion3.setBackground(new Color(254, 109, 2));
         jPanel1.add(jrbOpcion3);
 
         jtfPrecio.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -200,69 +200,6 @@ public class frmProductos extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(918, 536));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new frmProductos().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup Grupo1;

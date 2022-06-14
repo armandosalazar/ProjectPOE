@@ -32,9 +32,9 @@ public class frmUser extends JFrame implements Validations {
     private JLabel jlbRegistrase;
     private JLabel jlbTelefono;
     private JPasswordField jpfContrasena;
-    private JTextField jtfTelefono;
+    private JTextField jtfName;
     private JTextField jtfUsuario;
-    private JTextField jtfNombre;
+    private JTextField jtfPhone;
     private JTextField jtfLastName;
     private JButton jbnRegistrarse, jbnCancelar, jbnIngresar;
 
@@ -71,8 +71,8 @@ public class frmUser extends JFrame implements Validations {
         jlbLastName = new JLabel();
         jlbTelefono = new JLabel();
         jlbContrasena = new JLabel();
-        jtfNombre = new JTextField();
-        jtfTelefono = new JTextField();
+        jtfPhone = new JTextField();
+        jtfName = new JTextField();
         jtfLastName = new JTextField();
         jlbRegistrase = new JLabel();
         jlbIniciarSesion = new JLabel();
@@ -146,22 +146,21 @@ public class frmUser extends JFrame implements Validations {
         jlbContrasena.setBounds(45,330,jlbContrasena.getPreferredSize().width,20);
         add(jlbContrasena);
 
-        jtfNombre.setFont(new Font("Tahoma", Font.PLAIN, 14)); // NOI18N
-        jtfNombre.setCursor(new Cursor(Cursor.TEXT_CURSOR));
-        jtfNombre.setBounds(155,480,200,jtfNombre.getPreferredSize().height);
-        //jtfNombre.addKeyListener(Validations);
-        add(jtfNombre);
+        jtfPhone.setFont(new Font("Tahoma", Font.PLAIN, 14)); // NOI18N
+        jtfPhone.setCursor(new Cursor(Cursor.TEXT_CURSOR));
+        jtfPhone.setBounds(155,480,200, jtfPhone.getPreferredSize().height);
+        add(jtfPhone);
 
-        jtfTelefono.setFont(new Font("Tahoma", Font.PLAIN, 14)); // NOI18N
-        jtfTelefono.setCursor(new Cursor(Cursor.TEXT_CURSOR));
-        jtfTelefono.setBounds(155,380,200, jtfTelefono.getPreferredSize().height);
-       // jtfTelefono.addKeyListener(validarLetras());
-        add(jtfTelefono);
+        jtfName.setFont(new Font("Tahoma", Font.PLAIN, 14)); // NOI18N
+        jtfName.setCursor(new Cursor(Cursor.TEXT_CURSOR));
+        jtfName.setBounds(155,380,200, jtfName.getPreferredSize().height);
+        // jtfTelefono.addKeyListener(validarLetras());
+        add(jtfName);
 
         jtfLastName.setFont(new Font("Tahoma", 0, 14)); // NOI18N
         jtfLastName.setCursor(new Cursor(Cursor.TEXT_CURSOR));
         jtfLastName.setBounds(155, 430, 200, jtfLastName.getPreferredSize().height);
-       // jtfLastName.addKeyListener(validarLetras());
+        // jtfLastName.addKeyListener(validarLetras());
         add(jtfLastName);
 
         jlbRegistrase.setBackground(new Color(255, 153, 153));
@@ -187,7 +186,7 @@ public class frmUser extends JFrame implements Validations {
 
         jtfPuesto.setFont(new Font("Tahoma", Font.PLAIN, 14)); // NOI18N
         jtfPuesto.setBounds(155,530,200, jtfPuesto.getPreferredSize().height);
-        //jtfPuesto.addKeyListener(validarLetras());
+        jtfPuesto.addKeyListener(validarLetras());
         add(jtfPuesto);
 
         jlbFondo.setIcon(new ImageIcon(getClass().getResource("/Imagenes/fondoMulticolor.jpg"))); // NOI18N
@@ -201,8 +200,8 @@ public class frmUser extends JFrame implements Validations {
     }// </editor-fold>//GEN-END:initComponents
 
     public void cleanAllFields() {
-        jtfTelefono.setText("");
-        jtfNombre.setText("");
+        jtfName.setText("");
+        jtfPhone.setText("");
         jtfPuesto.setText("");
         jtfLastName.setText("");
         jtfUsuario.setText("");
@@ -253,16 +252,16 @@ public class frmUser extends JFrame implements Validations {
         return jpfContrasena;
     }
 
-    public JTextField getJtfTelefono() {
-        return jtfTelefono;
+    public JTextField getJtfName() {
+        return jtfName;
     }
 
     public JTextField getJtfUsuario() {
         return jtfUsuario;
     }
 
-    public JTextField getJtfNombre() {
-        return jtfNombre;
+    public JTextField getJtfPhone() {
+        return jtfPhone;
     }
 
     public JTextField getJtfLastName() {
@@ -287,5 +286,31 @@ public class frmUser extends JFrame implements Validations {
 
     public JButton getJbnIngresar() {
         return jbnIngresar;
+    }
+
+    private KeyListener validarNumeros(){
+        return new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                super.keyTyped(e);
+                char c= e.getKeyChar();
+                if (!Character.isDigit(c)){
+                    e.consume();
+                }
+            }
+        };
+    }
+
+    private KeyListener validarLetras(){
+        return new KeyAdapter() {
+            @Override
+            public void keyTyped(KeyEvent e) {
+                super.keyTyped(e);
+                char c = e.getKeyChar();
+                if (!(Character.isAlphabetic(c) || c == KeyEvent.VK_BACK_SPACE || c == KeyEvent.VK_DELETE)){
+                    e.consume();
+                }
+            }
+        };
     }
 }

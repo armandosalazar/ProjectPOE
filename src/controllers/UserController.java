@@ -1,5 +1,6 @@
 package controllers;
 
+import Lists.SalesList;
 import Lists.UsersList;
 import View.frmMenu;
 import View.frmUser;
@@ -21,7 +22,7 @@ public class UserController {
     private final JPasswordField jpfPass;
     private final frmUser frmUser;
     private final JButton jbnIngresar, jbnRegistrar, jbnCancelar;
-    private int id = 0;
+    private int id = 1;
     private final UsersList usersList;
     private frmMenu frmMenu;
 
@@ -30,10 +31,10 @@ public class UserController {
         usersList = new UsersList();
 
         jtfLastName = frmUser.getJtfLastName();
-        jtfName = frmUser.getJtfNombre();
+        jtfName = frmUser.getJtfName();
         jpfPass = frmUser.getJpfContrasena();
         jtfPosition = frmUser.getJtfPuesto();
-        jtfTel = frmUser.getJtfTelefono();
+        jtfTel = frmUser.getJtfPhone();
         jtfUser = frmUser.getJtfUsuario();
 
         jlbId = frmUser.getJlbUsuario();
@@ -203,11 +204,16 @@ public class UserController {
                             frmMenu = new frmMenu(usersList);
                             new MenuController(frmUser, frmMenu);
                         }
+
                         User current = usersList.getNode(user);
                         System.out.println(current.getUser());
                         frmMenu.setCurrentUser(current);
                         frmMenu.setVisible(true);
                         frmMenu.setUsersList(usersList);
+                        if (frmMenu.getCurrentUser().getSalesList() == null){
+                            SalesList salesList = new SalesList();
+                            current.setSalesList(salesList);
+                        }
                     } else {
                         JOptionPane.showMessageDialog(frmUser, "¡Usuario o contraseña inválidos!", "Datos inválidos", JOptionPane.ERROR_MESSAGE);
                     }

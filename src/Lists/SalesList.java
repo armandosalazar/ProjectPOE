@@ -13,8 +13,8 @@ public class SalesList {
         size = 0;
     }
 
-    public void add(int number, Product[] products, Client client, Seller seller, double total){
-        Sale user = new Sale(number, products, client, seller, total);
+    public void add(int number, ProductsList products, Client client, Seller seller, double total, String data){
+        Sale user = new Sale(number, products, client, seller, total,data);
         if (isEmpty()){
             start = user;
             end = user;

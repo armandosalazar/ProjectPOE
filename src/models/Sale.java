@@ -1,5 +1,9 @@
 package models;
 
+import Lists.ProductsList;
+
+import java.util.Date;
+
 /**
  *
  * @author armando
@@ -7,18 +11,21 @@ package models;
 public class Sale {
 
     private int number;
-    private Product[] products;
+    private ProductsList products;
     private Client client;
     private Seller seller;
     private double total;
     private Sale next;
 
-    public Sale(int number, Product[] products, Client client, Seller seller, double total) {
+    private String date;
+
+    public Sale(int number, ProductsList products, Client client, Seller seller, double total, String date) {
         this.number = number;
         this.products = products;
         this.client = client;
         this.seller = seller;
         this.total = total;
+        this.date = date;
     }
 
     public int getNumber() {
@@ -29,11 +36,11 @@ public class Sale {
         this.number = number;
     }
 
-    public Product[] getProducts() {
+    public ProductsList getProducts() {
         return products;
     }
 
-    public void setProducts(Product[] products) {
+    public void setProducts(ProductsList products) {
         this.products = products;
     }
 
@@ -67,5 +74,13 @@ public class Sale {
 
     public void setNext(Sale next) {
         this.next = next;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
     }
 }

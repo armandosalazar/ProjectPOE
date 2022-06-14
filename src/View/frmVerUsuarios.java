@@ -20,7 +20,7 @@ public class frmVerUsuarios extends javax.swing.JFrame {
     //Objeto de la clase ImagenFondo
     ImagenFondo fondo;
     private frmMenu menu;
-    private final String[] header = {"ID", "Nombre", "Precio", "Cantidad", "Proveedor"};
+    private final String[] header = {"ID", "Usuario", "Nombre", "Apellido", "Teléfono", "Puesto"};
 
     public frmVerUsuarios(frmMenu menu) {
                 
@@ -54,6 +54,7 @@ public class frmVerUsuarios extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
@@ -77,66 +78,74 @@ public class frmVerUsuarios extends javax.swing.JFrame {
         setIconImage(getIconImage());
 
         jPanel1.setOpaque(false);
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        jPanel1.setLayout(null);
 
         jlbLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logoS.png"))); // NOI18N
-        jPanel1.add(jlbLogo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, -1));
+        jlbLogo.setBounds(0,0,jlbLogo.getPreferredSize().width,jlbLogo.getPreferredSize().height);
+        jPanel1.add(jlbLogo);
 
         jlbTitulo.setFont(new java.awt.Font("Times New Roman", 1, 24)); // NOI18N
         jlbTitulo.setForeground(new java.awt.Color(153, 0, 0));
         jlbTitulo.setText("Usuarios");
-        jPanel1.add(jlbTitulo, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 30, -1, -1));
+        jlbTitulo.setBounds(390,30,jlbTitulo.getPreferredSize().width,jlbTitulo.getPreferredSize().height);
+        jPanel1.add(jlbTitulo);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/userSmall.png"))); // NOI18N
-        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 30, -1, -1));
+        jLabel1.setBounds(490,30,jLabel1.getPreferredSize().width,jLabel1.getPreferredSize().height);
+        jPanel1.add(jLabel1);
 
         jbnLimpiar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jbnLimpiar.setText("Limpiar");
         jbnLimpiar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jbnLimpiar, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 430, 120, 40));
+        jbnLimpiar.setBounds(470,430,120,40);
+        jPanel1.add(jbnLimpiar);
 
         jbnBuscar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jbnBuscar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/search.png"))); // NOI18N
         jbnBuscar.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jbnBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, 50, 40));
+        jbnBuscar.setBounds(210,80,50,40);
+        jPanel1.add(jbnBuscar);
 
         jtfBuscar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jPanel1.add(jtfBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 80, 180, 40));
+        jtfBuscar.setBounds(30,80,180,40);
+        jPanel1.add(jtfBuscar);
 
         jbnMostrarTodo.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jbnMostrarTodo.setText("Mostrar todo");
         jbnMostrarTodo.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jbnMostrarTodo, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 430, -1, 40));
+        jbnMostrarTodo.setBounds(270,430,jbnMostrarTodo.getPreferredSize().width,40);
+        jPanel1.add(jbnMostrarTodo);
 
         jtContenido.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {},
-                {},
-                {},
-                {}
-            },
-            new String [] {
+                new Object [][] {
+                        {},
+                        {},
+                        {},
+                        {}
+                },
+                new String [] {
 
-            }
+                }
         ));
         jScrollPane2.setViewportView(jtContenido);
-
-        jPanel1.add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 130, 750, 270));
+        jScrollPane2.setBounds(30,130,750,270);
+        jPanel1.add(jScrollPane2);
 
         jbnRegresar1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jbnRegresar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/back.png"))); // NOI18N
         jbnRegresar1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jPanel1.add(jbnRegresar1, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 0, 40, 40));
+        jbnRegresar1.setBounds(760,0,40,40);
+        jPanel1.add(jbnRegresar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
+                layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 498, Short.MAX_VALUE)
         );
 
         setSize(new java.awt.Dimension(823, 537));
@@ -178,12 +187,17 @@ public class frmVerUsuarios extends javax.swing.JFrame {
                     User user = menu.getUsersList().getNode(a);
                     if (user != null) {
                         if (data.equals(String.valueOf(user.getId()))) {
-                            model.addRow(new Object[]{user.getId(), user.getName(), user.getLastname(), user.getPhone(), user.getType()});
+                            model.addRow(new Object[]{user.getId(), user.getUser(), user.getName(), user.getLastname(), user.getPhone(), user.getType()});
                             state = true;
                             return;
                         }
                         if (data.equals(String.valueOf(user.getName()))) {
-                            model.addRow(new Object[]{user.getId(), user.getName(), user.getLastname(), user.getPhone(), user.getType()});
+                            model.addRow(new Object[]{user.getId(), user.getUser(), user.getName(), user.getLastname(), user.getPhone(), user.getType()});
+                            state = true;
+                            return;
+                        }
+                        if (data.equals(String.valueOf(user.getLastname()))) {
+                            model.addRow(new Object[]{user.getId(), user.getUser(), user.getName(), user.getLastname(), user.getPhone(), user.getType()});
                             state = true;
                             return;
                         }
@@ -201,7 +215,7 @@ public class frmVerUsuarios extends javax.swing.JFrame {
         for (int i = 0; i < menu.getUsersList().getSize(); i++) {
             User user = menu.getUsersList().getNode(i);
             if (user != null) {
-                model.addRow(new Object[]{user.getId(), user.getName(), user.getLastname(), user.getPhone(), user.getType()});
+                model.addRow(new Object[]{user.getId(), user.getUser(), user.getName(), user.getLastname(), user.getPhone(), user.getType()});
             }
         }
         jtContenido.setModel(model);
