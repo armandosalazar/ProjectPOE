@@ -161,7 +161,7 @@ public class frmMenu extends javax.swing.JFrame {
 
         jlbLogo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/logo.png"))); // NOI18N
         jlbLogo.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        jlbLogo.setBounds(280,90,jlbLogo.getPreferredSize().width,jlbLogo.getPreferredSize().height);
+        jlbLogo.setBounds(250,90,jlbLogo.getPreferredSize().width,jlbLogo.getPreferredSize().height);
         jPanel1.add(jlbLogo);
 
         jlbTelefono.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
@@ -181,22 +181,22 @@ public class frmMenu extends javax.swing.JFrame {
 
         jlbWhatsapp.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/Whatsapp.png"))); // NOI18N
         jlbWhatsapp.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jlbWhatsapp.setBounds(510,270,jlbWhatsapp.getPreferredSize().width,jlbWhatsapp.getPreferredSize().height);
+        jlbWhatsapp.setBounds(460,270,jlbWhatsapp.getPreferredSize().width,jlbWhatsapp.getPreferredSize().height);
         jPanel1.add(jlbWhatsapp);
 
         jlbMessenger.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/messenger.png"))); // NOI18N
         jlbMessenger.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jlbMessenger.setBounds(560,270,jlbMessenger.getPreferredSize().width,jlbMessenger.getPreferredSize().height);
+        jlbMessenger.setBounds(510,270,jlbMessenger.getPreferredSize().width,jlbMessenger.getPreferredSize().height);
         jPanel1.add(jlbMessenger);
 
         jlbInstagram.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/instagram.png"))); // NOI18N
         jlbInstagram.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jlbInstagram.setBounds(460,270,jlbInstagram.getPreferredSize().width,jlbInstagram.getPreferredSize().height);
+        jlbInstagram.setBounds(410,270,jlbInstagram.getPreferredSize().width,jlbInstagram.getPreferredSize().height);
         jPanel1.add(jlbInstagram);
 
         jlbFacebook.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/facebook.png"))); // NOI18N
         jlbFacebook.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        jlbFacebook.setBounds(410,270,jlbFacebook.getPreferredSize().width,jlbFacebook.getPreferredSize().height);
+        jlbFacebook.setBounds(360,270,jlbFacebook.getPreferredSize().width,jlbFacebook.getPreferredSize().height);
         jPanel1.add(jlbFacebook);
 
         jmProveedores.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -325,7 +325,7 @@ public class frmMenu extends javax.swing.JFrame {
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        setSize(new java.awt.Dimension(635, 396));
+        setSize(new java.awt.Dimension(570, 396));
         setLocationRelativeTo(null);
         setResizable(false);
     }// </editor-fold>//GEN-END:initComponents
