@@ -124,7 +124,7 @@ public class frmProveedores extends javax.swing.JFrame {
         jPanel1.add(jLabel1);
 
         jlbID.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jlbID.setText("ID:");
+        jlbID.setText("ID: ");
         jlbID.setBounds(40,110,jlbID.getPreferredSize().width,jlbID.getPreferredSize().height);
         jPanel1.add(jlbID);
 
@@ -144,10 +144,10 @@ public class frmProveedores extends javax.swing.JFrame {
         jPanel1.add(jlbTeléfono);
 
 
-        /*jlbDireccion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jlbDireccion.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlbDireccion.setText("Dirección:");
         jlbDireccion.setBounds(40,270,jlbDireccion.getPreferredSize().width,jlbDireccion.getPreferredSize().height);
-        jPanel1.add(jlbDireccion);*/
+        jPanel1.add(jlbDireccion);
 
         jtfNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtfNombre.setBounds(140,150,200,jtfNombre.getPreferredSize().height);
@@ -161,14 +161,14 @@ public class frmProveedores extends javax.swing.JFrame {
         jtfTelefono.setBounds(140,230,200,jtfTelefono.getPreferredSize().height);
         jPanel1.add(jtfTelefono);
 
-        /*jtfDireccion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jtfDireccion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jtfDireccion.setBounds(140,270,200,jtfDireccion.getPreferredSize().height);
-        jPanel1.add(jtfDireccion);*/
+        jPanel1.add(jtfDireccion);
 
-        jlbProductos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        /*jlbProductos.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jlbProductos.setText("Producto:");
         jlbProductos.setBounds(40,310,jlbProductos.getPreferredSize().width,jlbProductos.getPreferredSize().height);
-        jPanel1.add(jlbProductos);
+        jPanel1.add(jlbProductos);*/
 
         /*jcbProducto.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jcbProducto.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Elige:" }));
@@ -267,5 +267,12 @@ public class frmProveedores extends javax.swing.JFrame {
         return jlbEditable;
     }
 
-    // End of variables declaration                   
+    public JTextField getJtfDireccion() {
+        return jtfDireccion;
+    }
+
+    public void setJtfDireccion(JTextField jtfDireccion) {
+        this.jtfDireccion = jtfDireccion;
+    }
+// End of variables declaration
 }

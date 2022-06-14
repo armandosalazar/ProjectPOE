@@ -1,10 +1,15 @@
 
 package View;
 
+import models.Product;
+import models.Provider;
+
 import java.awt.Cursor;
 import java.awt.Image;
 import java.awt.Point;
 import java.awt.Toolkit;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
 import javax.swing.table.DefaultTableModel;
 
@@ -19,13 +24,15 @@ public class frmVerProductos extends javax.swing.JFrame {
             return false;
         }
     };
+    private frmMenu menu;
+    private final String[] header = {"ID", "Nombre", "Precio", "Cantidad", "Proveedor"};
     
-    public frmVerProductos() {
+    public frmVerProductos(frmMenu frmMenu) {
                 
         //Instanciar objetos de ImagenFondo
         fondo = new ImagenFondo("src/Imagenes/fondoProveedores.jpg");
         this.setContentPane(fondo);
-        
+        this.menu  = frmMenu;
         initComponents();
         
         //Definir el objeto para la imagen personalizada
@@ -37,6 +44,8 @@ public class frmVerProductos extends javax.swing.JFrame {
         c = tk.createCustomCursor(img.getImage(), new Point(1,1), null);
         //Visualizar el cursor personalizado
         setCursor(c);
+        getData();
+        addEvents();
     }
 
     @Override
@@ -44,6 +53,71 @@ public class frmVerProductos extends javax.swing.JFrame {
         //Se elige de los recursos de imágenes, la que se utilizará como icono
         Image valorRetorno = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("Imagenes/mostrar.png"));
         return valorRetorno;
+    }
+
+    public void addEvents() {
+        jbnMostrarTodo.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                getData();
+            }
+        });
+
+        jbnLimpiar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                jtContenido.setModel(new DefaultTableModel(new Object[][]{}, header));
+            }
+        });
+
+        jbnRegresar1.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                menu.setVisible(true);
+                dispose();
+            }
+
+        });
+
+        jbnBuscar.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                DefaultTableModel model = new DefaultTableModel(new Object[][]{}, header);
+                jtContenido.setModel(model);
+                String data = jtfBuscar.getText();
+                boolean state = false;
+                for (int a = 0; a < menu.getProductsList().getSize(); a++) {
+                    Product product = menu.getProductsList().getNode(a);
+                    if (product != null) {
+                        if (data.equals(String.valueOf(product.getId()))) {
+                            model.addRow(new Object[]{product.getId(), product.getName(), product.getPrice(), product.getQuantity()});
+                            state = true;
+                            return;
+                        }
+                        if (data.equals(String.valueOf(product.getName()))) {
+                            model.addRow(new Object[]{product.getId(), product.getName(), product.getPrice(), product.getQuantity()});
+                            state = true;
+                            return;
+                        }
+                    }
+                }
+                if (!state) JOptionPane.showMessageDialog(null, "Elemento no encontrado", "Sin resultados", JOptionPane.ERROR_MESSAGE);
+                jtContenido.setModel(model);
+            }
+        });
+    }
+
+    public void getData() {
+        DefaultTableModel model = new DefaultTableModel(new Object[][]{}, header);
+        jtContenido.setModel(model);
+        for (int i = 0; i < menu.getProductsList().getSize(); i++) {
+            Product provide = menu.getProductsList().getNode(i);
+            if (provide != null) {
+                model.addRow(new Object[]{provide.getId(), provide.getName(), provide.getPrice(),provide.getQuantity(),
+                        provide.getProvider().getName() + " " +provide.getProvider().getLastname()});
+            }
+        }
+        jtContenido.setModel(model);
     }
   
     @SuppressWarnings("unchecked")
@@ -135,42 +209,6 @@ public class frmVerProductos extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(824, 526));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-  
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmVerProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmVerProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmVerProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmVerProductos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new frmVerProductos().setVisible(true);
-            }
-        });
-    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;

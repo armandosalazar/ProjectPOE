@@ -1,5 +1,6 @@
 package Lists;
 
+import models.Product;
 import models.User;
 
 public class UsersList {
@@ -81,6 +82,25 @@ public class UsersList {
         }
         return null;
     }
+
+    public User getNode(int index) {
+        int i = 0;
+        if (isEmpty()) {
+            return null;
+        } else {
+            User aux = start;
+            while (i <= index) {
+                if (i == index) {
+                    return aux;
+                } else {
+                    aux = aux.getNext();
+                }
+                i++;
+            }
+        }
+        return null;
+    }
+
     public int getSize(){
         return size;
     }

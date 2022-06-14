@@ -7,6 +7,7 @@ import models.User;
 
 import javax.swing.*;
 import java.awt.event.*;
+import java.util.Locale;
 
 public class UserController {
 
@@ -191,21 +192,24 @@ public class UserController {
                 String user = jtfUser.getText();
                 String pass = String.valueOf(jpfPass.getPassword());
 
-                if (user.equals("") || pass.equals("")) {
-                    JOptionPane.showMessageDialog(frmUser, "Ingrese el Usuario y/o la Contraseña", "Campos en blanco", JOptionPane.INFORMATION_MESSAGE);
+                // TODO: Cambie la validación para que no acepte espacios en blanco como texto.
+                if (user.isBlank() || pass.isBlank()) {
+                    // JOptionPane.showMessageDialog(frmUser, "Ingrese el Usuario y/o la Contraseña", "Campos en blanco", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(frmUser, "¡Rellena todos los campos!", "Campos vacíos", JOptionPane.ERROR_MESSAGE);
                 } else {
                     if (usersList.compareElements(user, pass)) {
                         frmUser.setVisible(false);
-                        if (frmMenu == null){
-                            frmMenu = new frmMenu();
-                            new MenuController(frmUser,frmMenu);
+                        if (frmMenu == null) {
+                            frmMenu = new frmMenu(usersList);
+                            new MenuController(frmUser, frmMenu);
                         }
                         User current = usersList.getNode(user);
                         System.out.println(current.getUser());
                         frmMenu.setCurrentUser(current);
                         frmMenu.setVisible(true);
+                        frmMenu.setUsersList(usersList);
                     } else {
-                        JOptionPane.showMessageDialog(frmUser, "Usuario o contraseña invalidos", "Datos invalidos", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(frmUser, "¡Usuario o contraseña inválidos!", "Datos inválidos", JOptionPane.ERROR_MESSAGE);
                     }
                 }
             }
@@ -223,25 +227,35 @@ public class UserController {
     }
 
 
-    private ActionListener registrar(){
+    private ActionListener registrar() {
         return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-
-                String user = jtfUser.getText();
-                String pass = String.valueOf(jpfPass.getPassword());
-                String name = jtfName.getText();
-                String lastName = jtfLastName.getText();
-                String phone = jtfTel.getText();
-                String type = jtfPosition.getText();
-                if (!usersList.compareElements(user)) {
-                    usersList.add(id, user, pass, name, lastName, phone, type);
-                    id++;
-                    frmUser.cleanAllFields();
-                    JOptionPane.showMessageDialog(frmUser, "Registro exitoso");
+                // TODO: Ya hice la validación, corregí algunos JOptionsPane.
+                if (!jtfUser.getText().isBlank() && !jpfPass.getText().isBlank() && !jtfName.getText().isBlank() &&
+                        !jtfLastName.getText().isBlank() && !jtfTel.getText().isBlank() && !jtfPosition.getText().isBlank()) {
+                    String user = jtfUser.getText();
+                    String pass = String.valueOf(jpfPass.getPassword());
+                    String name = jtfName.getText();
+                    String lastName = jtfLastName.getText();
+                    String phone = jtfTel.getText();
+                    String type = jtfPosition.getText();
+                    if (!usersList.compareElements(user)) {
+                        usersList.add(id, user, pass, name, lastName, phone, type);
+                        id++;
+                        frmUser.cleanAllFields();
+                        // JOptionPane.showMessageDialog(frmUser, "Registro exitoso");
+                        JOptionPane.showMessageDialog(frmUser, "¡Registro exitoso!", "Usuario registrado", JOptionPane.INFORMATION_MESSAGE);
+                        // TODO: Abrir el fragmento de Iniciar sesión.
+                        // Aquí cierro el fragmento de Registrar.
+                        setDefaultValues();
+                        frmUser.cleanAllFields();
+                    } else {
+                        JOptionPane.showMessageDialog(frmUser, "El usuario que intenta registrar ya existe",
+                                "Usuario existente", JOptionPane.WARNING_MESSAGE);
+                    }
                 } else {
-                    JOptionPane.showMessageDialog(frmUser, "El usuario que intenta registrar ya existe",
-                            "Usuario existente", JOptionPane.INFORMATION_MESSAGE);
+                    JOptionPane.showMessageDialog(frmUser, "¡Rellena todos los campos!", "Campos vacíos", JOptionPane.ERROR_MESSAGE);
                 }
 
             }
@@ -252,10 +266,12 @@ public class UserController {
         return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                int respuesta = JOptionPane.showConfirmDialog(frmUser, "¿Desea salir?", "Confirmación para salir", JOptionPane.YES_NO_CANCEL_OPTION);
+                // TODO: Edite el JOptionPane.
+                // int respuesta = JOptionPane.showConfirmDialog(frmUser, "¿Desea salir?", "Confirmación para salir", JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.WARNING_MESSAGE);
+                int respuesta = JOptionPane.showConfirmDialog(frmUser, "¿Desea salir?", "Conformación para salir", JOptionPane.YES_NO_OPTION, JOptionPane.WARNING_MESSAGE);
                 if (respuesta == JOptionPane.YES_OPTION) {
                     frmUser.dispose();
-                    if (frmMenu != null){
+                    if (frmMenu != null) {
                         frmMenu.dispose();
                     }
                 }

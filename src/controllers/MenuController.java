@@ -33,6 +33,7 @@ public class MenuController {
         registroVentas.addActionListener(registrarVenta());
         registroProductos.addActionListener(registrarProducto());
         registroProveedores.addActionListener(registrarProveedor());
+        frmMenu.getJmiVerUsuarios().addActionListener(verUsuarios());
 
         frmMenu.getJmiComprasCliente().addActionListener(mostrarClientes());
         frmMenu.getJmiEditarProducto().addActionListener(mostrarProductos());
@@ -108,7 +109,7 @@ public class MenuController {
         return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frmVerProductos frmVerProductos = new frmVerProductos();
+                frmVerProductos frmVerProductos = new frmVerProductos(frmMenu);
                 frmMenu.setVisible(false);
                 frmVerProductos.setVisible(true);
             }
@@ -119,7 +120,7 @@ public class MenuController {
         return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frmVerClientes frmVerClientes = new frmVerClientes();
+                frmVerClientes frmVerClientes = new frmVerClientes(frmMenu);
                 frmMenu.setVisible(false);
                 frmVerClientes.setVisible(true);
             }
@@ -130,7 +131,7 @@ public class MenuController {
         return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frmVerProveedores frmVerProveedores = new frmVerProveedores();
+                frmVerProveedores frmVerProveedores = new frmVerProveedores(frmMenu);
                 frmMenu.setVisible(false);
                 frmVerProveedores.setVisible(true);
             }
@@ -152,7 +153,7 @@ public class MenuController {
         return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                frmVerVendedores frmVerVendedores = new frmVerVendedores();
+                frmVerVendedores frmVerVendedores = new frmVerVendedores(frmMenu);
                 frmMenu.setVisible(false);
                 frmVerVendedores.setVisible(true);
             }
@@ -176,6 +177,17 @@ public class MenuController {
                 frmMenu.setVisible(false);
                 frameUser.cleanAllFields();
                 frameUser.setVisible(true);
+            }
+        };
+    }
+
+    private ActionListener verUsuarios(){
+        return new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                frmMenu.setVisible(false);
+                frmVerUsuarios verUsuarios = new frmVerUsuarios(frmMenu);
+                verUsuarios.setVisible(true);
             }
         };
     }

@@ -1,7 +1,6 @@
 package models;
 
 /**
- *
  * @author armando
  */
 public class Provider {
@@ -10,14 +9,14 @@ public class Provider {
     private String name;
     private String lastname;
     private String phone;
-    private Product product;
+    private String address;
 
-    public Provider(int id, String name, String lastname, String phone, Product product) {
+    public Provider(int id, String name, String lastname, String phone, String address) {
         this.id = id;
         this.name = name;
         this.lastname = lastname;
         this.phone = phone;
-        this.product = product;
+        this.address = address;
     }
 
     public Provider(int id, String name, String lastname, String phone) {
@@ -59,12 +58,12 @@ public class Provider {
         this.phone = phone;
     }
 
-    public Product getProduct() {
-        return product;
+
+    public String getAddress() {
+        return address;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
+    public void setAddress(String address) {
+        this.address = address;
     }
-
 }

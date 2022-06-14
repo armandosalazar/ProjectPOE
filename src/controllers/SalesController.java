@@ -20,16 +20,17 @@ public class SalesController implements Operations {
     private final DefaultTableModel model;
 
     private final JComboBox<Client> jcbClients;
-    private final JComboBox<Product>jcbProducts;
-    private final JComboBox<Seller>jcbSeller;
+    private final JComboBox<Product> jcbProducts;
+    private final JComboBox<Seller> jcbSeller;
     private DefaultComboBoxModel<Client> cBClientModel;
     private DefaultComboBoxModel<Product> cbProductModel;
     private DefaultComboBoxModel<Seller> cbSellerModel;
     private ProductsList productsList;
     private int listElementsCount = 0;
 
-    private final String [] header = {"ID","Nombre","Precio","Cantidad"};
-    public SalesController(frmMenu frameMenu, frmVentas frameVentas){
+    private final String[] header = {"ID", "Nombre", "Precio", "Cantidad"};
+
+    public SalesController(frmMenu frameMenu, frmVentas frameVentas) {
         productsList = new ProductsList();
         this.frameMenu = frameMenu;
         this.frameVentas = frameVentas;
@@ -55,36 +56,36 @@ public class SalesController implements Operations {
         jcbProducts.setSelectedItem(null);
     }
 
-    private void addListeners(){
+    private void addListeners() {
         frameVentas.getJbnRegresar().addActionListener(regresar());
         frameVentas.getJbnAddToCar().addActionListener(addToCar());
         frameVentas.getJbnDeleteFromCar().addActionListener(deleteFromCar());
         frameVentas.getJbnRegistrar().addActionListener(registrar());
 
-       new KeySelectionRenderer(jcbClients) {
+        new KeySelectionRenderer(jcbClients) {
             @Override
             public String getDisplayValue(Object item) {
                 Client client = (Client) item;
-                return client.getName()+" "+client.getLastname();
+                return client.getName() + " " + client.getLastname();
             }
         };
 
-       new KeySelectionRenderer(jcbSeller) {
+        new KeySelectionRenderer(jcbSeller) {
             @Override
             public String getDisplayValue(Object item) {
                 Seller seller = (Seller) item;
-                return seller.getName()+" "+seller.getLastname();
+                return seller.getName() + " " + seller.getLastname();
             }
         };
 
-       new KeySelectionRenderer(jcbProducts){
+        new KeySelectionRenderer(jcbProducts) {
 
-           @Override
-           public String getDisplayValue(Object item) {
-               Product product = (Product) item;
-               return product.getName();
-           }
-       };
+            @Override
+            public String getDisplayValue(Object item) {
+                Product product = (Product) item;
+                return product.getName();
+            }
+        };
     }
 
     @Override
@@ -103,17 +104,17 @@ public class SalesController implements Operations {
         };
     }
 
-    private void addJComboBoxModels(){
+    private void addJComboBoxModels() {
         for (int i = 0; i < frameMenu.getSizeClient(); i++) {
-            cBClientModel.insertElementAt(frameMenu.getClients()[i],i);
+            cBClientModel.insertElementAt(frameMenu.getClients()[i], i);
         }
         for (int i = 0; i <= frameMenu.getSizeSellers(); i++) {
-            cbSellerModel.insertElementAt(frameMenu.getSellers()[i],i );
+            cbSellerModel.insertElementAt(frameMenu.getSellers()[i], i);
         }
 
         ProductsList list = frameMenu.getProductsList();
         for (int i = 0; i < list.getSize(); i++) {
-            cbProductModel.insertElementAt(list.getNode(i),i);
+            cbProductModel.insertElementAt(list.getNode(i), i);
         }
 
         jcbProducts.setModel(cbProductModel);
@@ -152,8 +153,8 @@ public class SalesController implements Operations {
         };
     }
 
-    private ActionListener addToCar(){
-        return  new ActionListener() {
+    private ActionListener addToCar() {
+        return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 int productIndex = jcbProducts.getSelectedIndex();
@@ -164,8 +165,8 @@ public class SalesController implements Operations {
         };
     }
 
-    private ActionListener deleteFromCar(){
-        return  new ActionListener() {
+    private ActionListener deleteFromCar() {
+        return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
 
@@ -173,7 +174,7 @@ public class SalesController implements Operations {
         };
     }
 
-    private void cleanFields(){
+    private void cleanFields() {
         jtfTotal.setText("");
         jcbClients.setSelectedItem(null);
         jcbSeller.setSelectedItem(null);

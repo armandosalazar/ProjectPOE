@@ -4,7 +4,6 @@ import Interfaces.Operations;
 import View.frmClientes;
 import View.frmMenu;
 import models.Client;
-import models.Provider;
 
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
@@ -20,11 +19,11 @@ public class ClientController implements Operations {
     private final frmClientes frmClientes;
     private final JTable jTable;
     private final DefaultTableModel model;
-    private final String [] header = {"ID","Nombre","Apellido","Telefono","Dirección"};
+    private final String[] header = {"ID", "Nombre", "Apellido", "Teléfono", "Dirección"};
     private Client clientSelected;
     private int index;
 
-    public ClientController(frmMenu frmMenu, frmClientes frmClientes){
+    public ClientController(frmMenu frmMenu, frmClientes frmClientes) {
         this.frmMenu = frmMenu;
         this.frmClientes = frmClientes;
         this.jTable = frmClientes.getTable();
@@ -32,7 +31,8 @@ public class ClientController implements Operations {
         addListeners();
         showTable();
     }
-    public void addListeners(){
+
+    public void addListeners() {
         frmClientes.getJbnRegresar().addActionListener(regresar());
         frmClientes.getJbnRegistrar().addActionListener(registrar());
         frmClientes.getJbnEliminar().addActionListener(eliminar());
@@ -41,8 +41,8 @@ public class ClientController implements Operations {
             @Override
             public void valueChanged(ListSelectionEvent e) {
                 index = jTable.getSelectedRow();
-                Client [] clients = frmMenu.getClients();
-                if (index != -1){
+                Client[] clients = frmMenu.getClients();
+                if (index != -1) {
                     frmClientes.getJlbEditable().setText(String.valueOf(clients[index].getId()));
                     frmClientes.getJtfNombre().setText(clients[index].getName());
                     frmClientes.getJtfApellido().setText(clients[index].getLastname());
@@ -64,11 +64,11 @@ public class ClientController implements Operations {
                 String phone = frmClientes.getJtfTelefono().getText();
                 String address = frmClientes.getJtfDireccion().getText();
 
-                if (name.equals("") || lastName.equals("") || phone.equals("") || address.equals("")){
-                    JOptionPane.showMessageDialog(frmClientes,"Por favor llene todos los campos","Falta llenar campos",JOptionPane.INFORMATION_MESSAGE);
-                }else{
+                if (name.isBlank() || lastName.isBlank() || phone.isBlank() || address.isBlank()) {
+                    JOptionPane.showMessageDialog(frmClientes, "Por favor llene todos los campos", "Falta llenar campos", JOptionPane.ERROR_MESSAGE);
+                } else {
                     int id = frmMenu.getSizeClient();
-                    Client client = new Client(id,name,lastName,phone,address);
+                    Client client = new Client((id + 1), name, lastName, phone, address);
                     //Actualizo la tabla cada que se registra
                     Object[] a = new Object[5];
                     a[0] = client.getId();
@@ -76,13 +76,13 @@ public class ClientController implements Operations {
                     a[2] = client.getLastname();
                     a[3] = client.getPhone();
                     a[4] = client.getAddress();
-                    frmMenu.addClient(client,id);
-                    JOptionPane.showMessageDialog(frmClientes,"Se registro correctamente el usuario","Registro exitoso",JOptionPane.INFORMATION_MESSAGE);
+                    frmMenu.addClient(client, id);
+                    JOptionPane.showMessageDialog(frmClientes, "Se registró correctamente el usuario", "Registro exitoso", JOptionPane.INFORMATION_MESSAGE);
                     model.addRow(a);
                     jTable.setModel(model);
-                    id++;
-                    frmMenu.setCountClients(id);
+                    frmMenu.setCountClients(id + 1);
                     cleanFields();
+                    frmClientes.getJlbEditable().setText("" + (id + 2));
                 }
             }
         };
@@ -93,15 +93,15 @@ public class ClientController implements Operations {
         return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (isBlank()){
-                    JOptionPane.showMessageDialog(frmClientes,"Favor de llenar todos los campos",
-                            "Campos vacios",JOptionPane.INFORMATION_MESSAGE);
-                }else{
-                    if (isSame(clientSelected)){
-                        JOptionPane.showMessageDialog(frmClientes,"No se ha modificado nada",
-                                "Sin cambios",JOptionPane.INFORMATION_MESSAGE);
-                    }else{
-                        if (clientSelected != null){
+                if (isBlank()) {
+                    JOptionPane.showMessageDialog(frmClientes, "Favor de llenar todos los campos",
+                            "Campos vacíos", JOptionPane.INFORMATION_MESSAGE);
+                } else {
+                    if (isSame(clientSelected)) {
+                        JOptionPane.showMessageDialog(frmClientes, "No se ha modificado nada",
+                                "Sin cambios", JOptionPane.INFORMATION_MESSAGE);
+                    } else {
+                        if (clientSelected != null) {
                             String name = frmClientes.getJtfNombre().getText();
                             String lastName = frmClientes.getJtfApellido().getText();
                             String phone = frmClientes.getJtfTelefono().getText();
@@ -111,9 +111,10 @@ public class ClientController implements Operations {
                             clientSelected.setLastname(lastName);
                             clientSelected.setAddress(address);
                             clientSelected.setPhone(phone);
-                            JOptionPane.showMessageDialog(frmClientes,"Se ha actualizado correctamente",
-                                    "Actualización exitosa",JOptionPane.INFORMATION_MESSAGE);
+                            JOptionPane.showMessageDialog(frmClientes, "Se ha actualizado correctamente",
+                                    "Actualización exitosa", JOptionPane.INFORMATION_MESSAGE);
                             cleanFields();
+                            actualizarUITabla();
                         }
                     }
                 }
@@ -126,20 +127,21 @@ public class ClientController implements Operations {
         return new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if (isBlank()){
-                    JOptionPane.showMessageDialog(frmClientes,"Favor de llenar todos los campos",
-                            "Campos vacios",JOptionPane.INFORMATION_MESSAGE);
-                }else{
+                if (isBlank()) {
+                    JOptionPane.showMessageDialog(frmClientes, "Favor de llenar todos los campos",
+                            "Campos vacíos", JOptionPane.INFORMATION_MESSAGE);
+                } else {
                     String name = frmClientes.getJtfNombre().getText();
                     String lastName = frmClientes.getJtfApellido().getText();
-                    int indexThatMatch = getIndexIfMatch(name,lastName);
-                    if(indexThatMatch != -1){
+                    int indexThatMatch = getIndexIfMatch(name, lastName);
+                    if (indexThatMatch != -1) {
                         deleteClient(indexThatMatch);
-                        updateTable(indexThatMatch);
+                        //updateTable(indexThatMatch);
                         cleanFields();
-                    }else{
-                        JOptionPane.showMessageDialog(frmClientes,"No existe el cliente: "+name+" "+lastName,
-                                "No se encontro el cliente",JOptionPane.INFORMATION_MESSAGE);
+                        jTable.getSelectionModel().clearSelection();
+                    } else {
+                        JOptionPane.showMessageDialog(frmClientes, "No existe el cliente: " + name + " " + lastName,
+                                "No se encontró el cliente", JOptionPane.INFORMATION_MESSAGE);
                     }
                 }
             }
@@ -157,9 +159,26 @@ public class ClientController implements Operations {
         };
     }
 
+    private void actualizarUITabla() {
+        String name = clientSelected.getName();
+        int id = clientSelected.getId();
+        String lastName = clientSelected.getLastname();
+        String phone = clientSelected.getPhone();
+        String address = clientSelected.getAddress();
+        model.setValueAt(id, index, 0);
+        model.setValueAt(name, index, 1);
+        model.setValueAt(lastName, index, 2);
+        model.setValueAt(phone, index, 3);
+        model.setValueAt(address, index, 4);
+
+        jTable.setModel(model);
+        jTable.getSelectionModel().clearSelection();
+        jTable.clearSelection();
+    }
+
     private void showTable() {
         model.setColumnIdentifiers(header);
-        Object [][] info = new Object[frmMenu.getSizeClient()][5];
+        Object[][] info = new Object[frmMenu.getSizeClient()][5];
         for (int i = 0; i < frmMenu.getSizeClient(); i++) {
             Client client = frmMenu.getClients()[i];
             for (int j = 0; j < 1; j++) {
@@ -175,69 +194,72 @@ public class ClientController implements Operations {
     }
 
     private void updateTable(int indexThatMatch) {
-        model.setValueAt(null,indexThatMatch,0);
-        model.setValueAt(null,indexThatMatch,1);
-        model.setValueAt(null,indexThatMatch,2);
-        model.setValueAt(null,indexThatMatch,3);
+        model.setValueAt(null, indexThatMatch, 0);
+        model.setValueAt(null, indexThatMatch, 1);
+        model.setValueAt(null, indexThatMatch, 2);
+        model.setValueAt(null, indexThatMatch, 3);
         model.removeRow(indexThatMatch);
         jTable.setModel(model);
     }
 
-    private void cleanFields(){
+    private void cleanFields() {
         frmClientes.getJtfNombre().setText("");
         frmClientes.getJtfApellido().setText("");
         frmClientes.getJtfTelefono().setText("");
         frmClientes.getJtfDireccion().setText("");
     }
 
-    private boolean isSame(Client a){
-        if (a != null){
+    private boolean isSame(Client a) {
+        if (a != null) {
             return a.getName().equals(frmClientes.getJtfNombre().getText()) && a.getLastname().equals(frmClientes.getJtfApellido().getText())
                     && a.getPhone().equals(frmClientes.getJtfTelefono().getText()) && a.getAddress().equals(frmClientes.getJtfDireccion().getText());
         }
         return false;
     }
 
-    private boolean isBlank(){
+    private boolean isBlank() {
         return frmClientes.getJtfNombre().getText().equals("") || frmClientes.getJtfApellido().getText().equals("")
                 || frmClientes.getJtfTelefono().getText().equals("") || frmClientes.getJtfDireccion().getText().equals("");
     }
 
-    private int getIndexIfMatch(String name, String lastName){
-        Client [] clients = frmMenu.getClients();
+    private int getIndexIfMatch(String name, String lastName) {
+        Client[] clients = frmMenu.getClients();
         for (int i = 0; i < frmMenu.getSizeClient(); i++) {
-            if ( name.equals(clients[i].getName()) && lastName.equals(clients[i].getLastname())){
+            if (name.equals(clients[i].getName()) && lastName.equals(clients[i].getLastname())) {
                 return i;
             }
         }
-       return -1;
+        return -1;
     }
-    private void deleteClient(int indexThatMatch){
-        int input = JOptionPane.showConfirmDialog(frmClientes,"¿Desea eliminar el cliente "
-                        +frmMenu.getClients()[indexThatMatch].getName()+" "+frmMenu.getClients()[indexThatMatch].getLastname()+"?",
-                "Confirmación para eliminar",JOptionPane.YES_NO_CANCEL_OPTION);
-        if (input == JOptionPane.YES_OPTION){
+
+    private void deleteClient(int indexThatMatch) {
+        int input = JOptionPane.showConfirmDialog(frmClientes, "¿Desea eliminar el cliente "
+                        + frmMenu.getClients()[indexThatMatch].getName() + " " + frmMenu.getClients()[indexThatMatch].getLastname() + "?",
+                "Confirmación para eliminar", JOptionPane.YES_NO_OPTION);
+        if (input == JOptionPane.YES_OPTION) {
             frmMenu.setClients(eliminar(indexThatMatch, frmMenu.getClients()));
             int id = frmMenu.getSizeClient();
             id--;
             frmMenu.setCountClients(id);
-            JOptionPane.showMessageDialog(frmClientes,"Se elimino correctamente el cliente",
-                    "Eliminación correcta",JOptionPane.INFORMATION_MESSAGE);
-        }else{
-            JOptionPane.showMessageDialog(frmClientes,"No se elimino nada","Canelación de eliminación",JOptionPane.INFORMATION_MESSAGE);
+            JOptionPane.showMessageDialog(frmClientes, "Se eliminó correctamente el cliente",
+                    "Eliminación correcta", JOptionPane.INFORMATION_MESSAGE);
+            updateTable(indexThatMatch);
+        } else {
+            JOptionPane.showMessageDialog(frmClientes, "No se eliminó nada", "Cancelación de eliminación", JOptionPane.INFORMATION_MESSAGE);
+            jTable.getSelectionModel().clearSelection();
         }
     }
 
-    public Client[]eliminar(int indexEliminar, Client[]clients){
+    public Client[] eliminar(int indexEliminar, Client[] clients) {
         if (clients.length == 1) {
             Arrays.fill(clients, null);
-        }else{
+        } else {
             for (int i = 0; i < clients.length; i++) {
                 if (i == indexEliminar) {
                     for (int j = i; j < clients.length; j++) {
-                        if (j+1 < clients.length) {
-                            clients[j] = clients[j+1] ;
-                            clients[j+1] = null;
+                        if (j + 1 < clients.length) {
+                            clients[j] = clients[j + 1];
+                            clients[j + 1] = null;
                         }
                     }
                 }
